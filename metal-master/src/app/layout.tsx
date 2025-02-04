@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,6 +8,12 @@ const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-roboto",
+});
+
+const oswald = Oswald({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-oswald",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} font-roboto antialiased bg-background text-foreground`}
+        className={`${roboto.variable} ${oswald.variable} font-roboto antialiased bg-background text-foreground`}
       >
         <Navbar />
         <main className="min-h-screen flex flex-col justify-center items-center p-4">
