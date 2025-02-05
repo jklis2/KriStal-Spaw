@@ -10,24 +10,42 @@ export default function Hero() {
           layout="fill"
           objectFit="cover"
           priority
-          className="w-full h-full"
+          className="w-full h-full brightness-50"
         />
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-industrialGray/90"></div>
       </div>
-      <div className="relative z-10 text-center text-white max-w-5xl w-full">
-        <h1 className="text-5xl md:text-6xl font-bold font-oswald text-shadow-red">
-          Mistrzostwo w Metalu
-        </h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-300">
+      <div className="relative z-10 text-center text-white max-w-5xl w-full px-4">
+        <div className="relative inline-block">
+          <h1 className="text-5xl md:text-7xl font-bold font-oswald mb-2 relative z-10">
+            <span className="text-white">Mistrzostwo</span>{" "}
+            <span className="text-weldingRed">w Metalu</span>
+          </h1>
+          <div className="absolute -bottom-2 left-0 w-full h-1 bg-ctaOrange transform -skew-x-12"></div>
+        </div>
+        <p className="mt-6 text-xl md:text-2xl font-roboto text-gray-300 max-w-2xl mx-auto leading-relaxed">
           Profesjonalne bramy, ogrodzenia i dekoracje od 2005 roku
         </p>
-        <a
-          href="/gallery"
-          className="mt-6 inline-block bg-ctaOrange text-white px-6 py-3 text-lg font-semibold rounded-lg transition-transform transform hover:scale-105 animate-pulse"
-        >
-          Zobacz nasze realizacje
-        </a>
+        <div className="mt-10 space-x-6">
+          <a
+            href="/gallery"
+            className="inline-block bg-weldingRed text-white px-8 py-4 text-lg font-roboto font-semibold 
+                     rounded transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
+                     transition-all duration-300 relative overflow-hidden group"
+          >
+            <span className="relative z-10">Zobacz nasze realizacje</span>
+            <div className="absolute inset-0 bg-ctaOrange transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+          </a>
+          <a
+            href="/contact"
+            className="inline-block bg-transparent text-white border-2 border-white px-8 py-4 text-lg font-roboto font-semibold 
+                     rounded transform hover:-translate-y-1 hover:border-ctaOrange hover:text-ctaOrange
+                     transition-all duration-300"
+          >
+            Kontakt
+          </a>
+        </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialGray to-transparent"></div>
     </section>
   );
 }
