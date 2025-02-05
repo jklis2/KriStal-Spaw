@@ -6,8 +6,6 @@ import { whyUsItems } from "@/consts/whyUsItems";
 export default function WhyUs() {
   return (
     <section className="py-24 bg-industrialGray relative">
-      <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white/5 to-transparent"></div>
-      
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold font-oswald text-white relative inline-block">
@@ -40,8 +38,6 @@ export default function WhyUs() {
           ))}
         </div>
       </div>
-      
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white/5 to-transparent"></div>
     </section>
   );
 }
