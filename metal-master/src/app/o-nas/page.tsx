@@ -1,5 +1,13 @@
+import History from "@/containers/History";
+import Team from "@/containers/Team";
+import Certificates from "@/containers/Certificates";
+
 export default function About() {
   return (
-    <div>O nas</div>
-  )
+    <div>
+      <History />
+      <Team />
+      <Certificates />
+    </div>
+  );
 }
