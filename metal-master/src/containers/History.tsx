@@ -1,40 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { FaIndustry, FaTools, FaUsers, FaTrophy } from "react-icons/fa";
-import React from "react";
-
-interface Milestone {
-  year: string;
-  title: string;
-  description: string;
-  Icon: React.ComponentType<{ className?: string }>;
-}
-
-const milestones: Milestone[] = [
-  {
-    year: "2005",
-    title: "Początki",
-    description: "Założenie firmy i otwarcie pierwszego warsztatu spawalniczego w Warszawie.",
-    Icon: FaIndustry,
-  },
-  {
-    year: "2010",
-    title: "Rozwój",
-    description: "Rozbudowa warsztatu i wprowadzenie nowoczesnych technologii spawania.",
-    Icon: FaTools,
-  },
-  {
-    year: "2015",
-    title: "Zespół",
-    description: "Powiększenie zespołu o wykwalifikowanych specjalistów.",
-    Icon: FaUsers,
-  },
-  {
-    year: "2025",
-    title: "Lider Branży",
-    description: "Uznany lider w branży metalowej z setkami zrealizowanych projektów.",
-    Icon: FaTrophy,
-  },
-];
+import { historyItems } from "@/consts/historyItems";
 
 export default function History() {
   return (
@@ -79,7 +46,7 @@ export default function History() {
           </div>
 
           <div className="space-y-8">
-            {milestones.map((milestone, index) => (
+            {historyItems.map((milestone, index) => (
               <div key={index} className="relative pl-12 group hover:bg-gray-900/30 p-6 rounded-lg transition-all duration-300">
                 <div
                   className="absolute left-0 top-6 w-8 h-8 bg-weldingRed/10 rounded-lg flex items-center justify-center

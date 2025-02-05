@@ -1,23 +1,7 @@
-import { FaHistory, FaAward, FaRuler } from "react-icons/fa";
-import React from 'react';
+"use client";
 
-const benefits = [
-  { 
-    title: "20 lat doświadczenia",
-    description: "Dwie dekady praktyki w obróbce metalu i realizacji projektów",
-    icon: <FaHistory />
-  },
-  { 
-    title: "Gwarancja jakości",
-    description: "Najwyższe standardy wykonania i materiałów",
-    icon: <FaAward />
-  },
-  { 
-    title: "Projekty na wymiar",
-    description: "Indywidualne podejście do każdego zlecenia",
-    icon: <FaRuler />
-  },
-];
+import React from "react";
+import { whyUsItems } from "@/consts/whyUsItems";
 
 export default function WhyUs() {
   return (
@@ -33,7 +17,7 @@ export default function WhyUs() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
+          {whyUsItems.map((benefit, index) => (
             <div 
               key={index} 
               className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-8 group
@@ -41,10 +25,10 @@ export default function WhyUs() {
             >
               <div className="bg-weldingRed/10 w-16 h-16 rounded-lg flex items-center justify-center mb-6
                             group-hover:bg-weldingRed/20 transform group-hover:rotate-6 transition-all duration-300">
-                {React.cloneElement(benefit.icon, {
-                  size: 32,
-                  className: "text-weldingRed group-hover:text-ctaOrange transition-colors duration-300"
-                })}
+                <benefit.Icon 
+                  size={32} 
+                  className="text-weldingRed group-hover:text-ctaOrange transition-colors duration-300" 
+                />
               </div>
               <h3 className="text-2xl font-oswald font-bold text-white mb-3">
                 {benefit.title}
