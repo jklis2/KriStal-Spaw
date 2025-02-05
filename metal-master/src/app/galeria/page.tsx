@@ -6,7 +6,7 @@ import { useState } from "react";
 import { galleryItems, categories } from "@/consts/galleryItems";
 
 export default function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
+  const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
 
   const filteredItems = galleryItems.filter(
     (item) =>
@@ -20,7 +20,7 @@ export default function Gallery() {
         description="Zobacz nasze najlepsze projekty i realizacje. Każdy produkt to połączenie rzemieślniczej precyzji z nowoczesnym designem."
       />
       <section className="py-24 relative">
-        <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute inset-0 bg-repeat"
             style={{
@@ -30,17 +30,18 @@ export default function Gallery() {
           ></div>
         </div>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-12 relative z-10">
             {categories.map((category) => (
               <button
                 key={category}
+                type="button"
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-lg font-oswald text-lg transition-all duration-300
-                          ${
-                            category === selectedCategory
-                              ? "bg-weldingRed text-white"
-                              : "bg-gray-900/50 text-gray-300 hover:bg-weldingRed/20 hover:text-white"
-                          }`}
+                  ${
+                    category === selectedCategory
+                      ? "bg-weldingRed text-white"
+                      : "bg-gray-900/50 text-gray-300 hover:bg-weldingRed/20 hover:text-white"
+                  }`}
               >
                 {category}
               </button>
@@ -64,7 +65,6 @@ export default function Gallery() {
                     className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent 
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   ></div>
-
                   <div
                     className="absolute inset-0 p-6 flex flex-col justify-end
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -80,7 +80,6 @@ export default function Gallery() {
                     </p>
                   </div>
                 </div>
-
                 <div
                   className="absolute top-0 left-0 w-full h-1 bg-weldingRed transform origin-left 
                               scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
