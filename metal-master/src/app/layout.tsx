@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${roboto.variable} ${oswald.variable} font-roboto antialiased bg-background text-foreground`}
       >
         <Navbar />
-        <main className="min-h-screen flex flex-col justify-center items-center p-4">
+        <main className="min-h-screen">
           {children}
         </main>
         <Footer />
