@@ -38,7 +38,7 @@ export default function Footer() {
                 <span className="mr-2">→</span>
                 Home
               </Link>
-              {["O nas", "Oferta", "Galeria", "FAQ", "Kontakt"].map((item) => (
+              {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase().replace(" ", "-")}`}

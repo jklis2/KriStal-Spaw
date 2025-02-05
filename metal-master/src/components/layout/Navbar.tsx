@@ -20,7 +20,7 @@ export default function Navbar() {
         </Link>
         <nav className="hidden md:flex gap-8">
           <Link href="/" className="font-roboto hover:text-ctaOrange transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ctaOrange hover:after:w-full after:transition-all">Home</Link>
-          {["O nas", "Oferta", "Galeria", "FAQ", "Kontakt"].map((item) => (
+          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
             <Link
               key={item}
               href={`/${item.toLowerCase().replace(" ", "-")}`}
@@ -47,7 +47,7 @@ export default function Navbar() {
             >
               Home
             </Link>
-            {["O nas", "Oferta", "Galeria", "FAQ", "Kontakt"].map((item) => (
+            {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
               <Link
                 key={item}
                 href={`/${item.toLowerCase().replace(" ", "-")}`}
