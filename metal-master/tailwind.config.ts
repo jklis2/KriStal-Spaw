@@ -12,7 +12,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        industrialGray: "#2D3748",
+        industrialGray: "#1f2530",
         weldingRed: "#E53E3E",
         ctaOrange: "#DD6B20",
       },

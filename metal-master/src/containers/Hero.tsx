@@ -5,8 +5,8 @@ export default function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center bg-industrialGray m-0 p-0">
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="https://picsum.photos/1920/1080"
-          alt="Placeholder image"
+          src="/weldingHero.jpg"
+          alt="Welding Hero Image"
           layout="fill"
           objectFit="cover"
           priority
