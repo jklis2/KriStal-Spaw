@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -26,23 +27,26 @@ export default function Hero() {
           Profesjonalne bramy, ogrodzenia i dekoracje od 2005 roku
         </p>
         <div className="mt-10 space-x-6">
-          <a
-            href="/gallery"
-            className="inline-block bg-weldingRed text-white px-8 py-4 text-lg font-roboto font-semibold 
-                     rounded transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
-                     transition-all duration-300 relative overflow-hidden group"
-          >
-            <span className="relative z-10">Zobacz nasze realizacje</span>
-            <div className="absolute inset-0 bg-ctaOrange transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          </a>
-          <a
-            href="/contact"
-            className="inline-block bg-transparent text-white border-2 border-white px-8 py-4 text-lg font-roboto font-semibold 
-                     rounded transform hover:-translate-y-1 hover:border-ctaOrange hover:text-ctaOrange
-                     transition-all duration-300"
-          >
-            Kontakt
-          </a>
+          <Link href="/galeria" legacyBehavior>
+            <a
+              className="inline-block bg-weldingRed text-white px-8 py-4 text-lg font-roboto font-semibold 
+                 rounded transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
+                 transition-all duration-300 relative overflow-hidden group"
+            >
+              <span className="relative z-10">Zobacz nasze realizacje</span>
+              <div className="absolute inset-0 bg-ctaOrange transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+            </a>
+          </Link>
+
+          <Link href="/kontakt" legacyBehavior>
+            <a
+              className="inline-block bg-transparent text-white border-2 border-white px-8 py-4 text-lg font-roboto font-semibold 
+                 rounded transform hover:-translate-y-1 hover:border-ctaOrange hover:text-ctaOrange
+                 transition-all duration-300"
+            >
+              Kontakt
+            </a>
+          </Link>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialGray to-transparent"></div>

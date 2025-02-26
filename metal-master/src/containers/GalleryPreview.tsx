@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function GalleryPreview() {
   return (
@@ -30,10 +31,19 @@ export default function GalleryPreview() {
           <div className="grid grid-rows-3 gap-6">
             {[
               { src: "https://picsum.photos/400/300?random=2", alt: "Brama" },
-              { src: "https://picsum.photos/400/300?random=3", alt: "Dekoracja metalowa" },
-              { src: "https://picsum.photos/400/300?random=4", alt: "Spawacz przy pracy" }
+              {
+                src: "https://picsum.photos/400/300?random=3",
+                alt: "Dekoracja metalowa",
+              },
+              {
+                src: "https://picsum.photos/400/300?random=4",
+                alt: "Spawacz przy pracy",
+              },
             ].map((img, index) => (
-              <div key={index} className="relative w-full h-[180px] group overflow-hidden">
+              <div
+                key={index}
+                className="relative w-full h-[180px] group overflow-hidden"
+              >
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300 z-10"></div>
                 <Image
                   src={img.src}
@@ -51,17 +61,17 @@ export default function GalleryPreview() {
             ))}
           </div>
         </div>
-
         <div className="text-center mt-16">
-          <a
-            href="/gallery"
-            className="inline-block bg-weldingRed text-white px-8 py-4 text-lg font-roboto font-semibold 
-                     rounded transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
-                     transition-all duration-300 relative overflow-hidden group"
-          >
-            <span className="relative z-10">Zobacz więcej projektów</span>
-            <div className="absolute inset-0 bg-ctaOrange transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          </a>
+          <Link href="/galeria" legacyBehavior>
+            <a
+              className="inline-block bg-weldingRed text-white px-8 py-4 text-lg font-roboto font-semibold 
+                 rounded transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
+                 transition-all duration-300 relative overflow-hidden group"
+            >
+              <span className="relative z-10">Zobacz więcej projektów</span>
+              <div className="absolute inset-0 bg-ctaOrange transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+            </a>
+          </Link>
         </div>
       </div>
     </section>

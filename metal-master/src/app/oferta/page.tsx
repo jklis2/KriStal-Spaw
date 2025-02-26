@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import SmallHeroSection from "@/components/ui/SmallHeroSection";
 import OfferCard from "@/components/ui/OfferCard";
 import { FaArrowRight } from "react-icons/fa";
@@ -40,15 +41,18 @@ export default function Offer() {
             Skontaktuj się z nami, aby omówić szczegóły Twojego zamówienia.
             Oferujemy bezpłatną wycenę i konsultację.
           </p>
-          <button
-            className="py-4 px-12 bg-ctaOrange hover:bg-ctaOrange/90 
-                           text-white font-oswald text-xl rounded-lg
-                           transform hover:-translate-y-1 transition-all duration-300
-                           flex items-center mx-auto"
-          >
-            Skontaktuj się z nami
-            <FaArrowRight className="ml-3" />
-          </button>
+
+          <Link href="/kontakt" legacyBehavior>
+            <a
+              className="py-4 px-12 bg-ctaOrange hover:bg-ctaOrange/90 
+                       text-white font-oswald text-xl rounded-lg
+                         transform hover:-translate-y-1 transition-all duration-300
+                         flex items-center mx-auto w-auto max-w-fit"
+            >
+              Skontaktuj się z nami
+              <FaArrowRight className="ml-3" />
+            </a>
+          </Link>
         </div>
       </section>
     </main>
