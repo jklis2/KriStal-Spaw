@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from "@/components/ui/ThemeToggle";
@@ -20,12 +21,19 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/">
           <div className="flex items-center gap-3 cursor-pointer group">
+            <Image 
+              src="/metalMaster/logo.svg" 
+              alt="KRISTAL-SPAW Logo" 
+              width={100}
+              height={100}
+              className="object-contain"
+              priority
+            />
             <span className={`font-oswald text-2xl font-bold group-hover:text-weldingRed transition-colors duration-300 ${
               isDark ? "text-white" : "text-steelBlue-dark"
             }`}>
-              Metal<span className="text-weldingRed group-hover:text-foreground transition-colors duration-300">Master</span>
+              KRISTAL-SPAW
             </span>
-            <span className="text-weldingRed text-3xl animate-pulse">🔥</span>
           </div>
         </Link>
         <div className="hidden md:flex items-center gap-8">
