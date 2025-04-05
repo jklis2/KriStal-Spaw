@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 interface FAQItem {
   question: string;
@@ -14,6 +15,8 @@ interface FAQAccordionProps {
 
 export default function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -24,13 +27,17 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300 hover:bg-gray-900/60"
+          className={`backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300 ${
+            isDark 
+              ? "bg-gray-900/50 hover:bg-gray-900/60" 
+              : "bg-white/70 hover:bg-white/80 shadow-md"
+          }`}
         >
           <button
             onClick={() => toggleAccordion(index)}
             className="w-full px-6 py-4 flex items-center justify-between text-left"
           >
-            <h3 className="text-xl font-oswald text-white">{item.question}</h3>
+            <h3 className={`text-xl font-oswald ${isDark ? "text-white" : "text-steelBlue-dark"}`}>{item.question}</h3>
             <FaChevronDown
               className={`text-weldingRed transition-transform duration-300 ${
                 openIndex === index ? 'transform rotate-180' : ''
@@ -45,7 +52,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
           >
             <div className="px-6 pb-4">
               <div className="pt-2 border-t border-weldingRed/20">
-                <p className="text-gray-300 font-roboto mt-3">{item.answer}</p>
+                <p className={`font-roboto mt-3 ${isDark ? "text-gray-300" : "text-gray-600"}`}>{item.answer}</p>
               </div>
             </div>
           </div>

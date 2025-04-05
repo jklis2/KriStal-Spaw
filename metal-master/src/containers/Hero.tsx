@@ -1,9 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function Hero() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-industrialGray m-0 p-0">
+    <section className={`relative w-full h-screen flex items-center justify-center m-0 p-0 ${
+      isDark ? "bg-industrialGray" : "bg-industrialLight"
+    }`}>
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/weldingHero.jpg"
@@ -13,7 +21,11 @@ export default function Hero() {
           priority
           className="w-full h-full brightness-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-industrialGray/90"></div>
+        <div className={`absolute inset-0 bg-gradient-to-b ${
+          isDark 
+            ? "from-black/70 to-industrialGray/90" 
+            : "from-black/60 to-industrialLight/80"
+        }`}></div>
       </div>
       <div className="relative z-10 text-center text-white max-w-5xl w-full px-4">
         <div className="relative inline-block">
@@ -49,7 +61,11 @@ export default function Hero() {
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialGray to-transparent"></div>
+      <div className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t ${
+        isDark 
+          ? "from-industrialGray to-transparent" 
+          : "from-industrialLight to-transparent"
+      }`}></div>
     </section>
   );
 }

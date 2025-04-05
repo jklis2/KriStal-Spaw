@@ -1,12 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function GalleryPreview() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  
   return (
-    <section className="py-24 bg-industrialGray relative">
+    <section className={`py-24 relative ${isDark ? "bg-industrialGray" : "bg-industrialLight"}`}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold font-oswald text-white relative inline-block">
+          <h2 className={`text-5xl font-bold font-oswald relative inline-block ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
             Nasze Realizacje
             <div className="absolute -bottom-4 left-0 w-full h-1 bg-weldingRed transform -skew-x-12"></div>
           </h2>

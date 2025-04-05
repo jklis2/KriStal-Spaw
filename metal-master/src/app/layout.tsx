@@ -3,6 +3,7 @@ import { Roboto, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -31,11 +32,13 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${oswald.variable} font-roboto antialiased bg-background text-foreground`}
       >
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

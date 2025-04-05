@@ -1,9 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function Footer() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+  
   return (
-    <footer className="bg-industrialGray text-white border-t-2 border-weldingRed">
+    <footer className={`border-t-2 border-weldingRed ${
+      isDark
+        ? "bg-industrialGray text-white"
+        : "bg-industrialLight text-steelBlue-dark"
+    }`}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
           <div className="space-y-4">
@@ -12,15 +22,21 @@ export default function Footer() {
             </h3>
             <div className="font-roboto space-y-3">
               <p className="flex items-center justify-center md:justify-start gap-3 hover:text-ctaOrange transition-colors duration-300">
-                <span className="bg-gray-700/30 p-2 rounded-lg">📍</span>
+                <span className={`p-2 rounded-lg ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}>📍</span>
                 ul. Przemysłowa 10, Warszawa
               </p>
               <p className="flex items-center justify-center md:justify-start gap-3 hover:text-ctaOrange transition-colors duration-300">
-                <span className="bg-gray-700/30 p-2 rounded-lg">📞</span>
+                <span className={`p-2 rounded-lg ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}>📞</span>
                 +48 123 456 789
               </p>
               <p className="flex items-center justify-center md:justify-start gap-3 hover:text-ctaOrange transition-colors duration-300">
-                <span className="bg-gray-700/30 p-2 rounded-lg">✉️</span>
+                <span className={`p-2 rounded-lg ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}>✉️</span>
                 kontakt@metalmaster.pl
               </p>
             </div>
@@ -59,21 +75,27 @@ export default function Footer() {
               <Link 
                 href="https://facebook.com" 
                 target="_blank" 
-                className="bg-gray-700/30 p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300"
+                className={`p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300 ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}
               >
                 <FaFacebook className="text-2xl" />
               </Link>
               <Link 
                 href="https://instagram.com" 
                 target="_blank"
-                className="bg-gray-700/30 p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300"
+                className={`p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300 ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}
               >
                 <FaInstagram className="text-2xl" />
               </Link>
               <Link 
                 href="https://linkedin.com" 
                 target="_blank"
-                className="bg-gray-700/30 p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300"
+                className={`p-3 rounded-lg hover:bg-weldingRed hover:scale-110 transition-all duration-300 ${
+                  isDark ? "bg-gray-700/30" : "bg-gray-200/70"
+                }`}
               >
                 <FaLinkedin className="text-2xl" />
               </Link>
@@ -82,9 +104,13 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="border-t border-gray-700 mt-12">
+      <div className={`border-t mt-12 ${
+        isDark ? "border-gray-700" : "border-gray-200"
+      }`}>
         <div className="container mx-auto px-4 py-6">
-          <p className="text-center font-roboto text-sm text-gray-400">
+          <p className={`text-center font-roboto text-sm ${
+            isDark ? "text-gray-400" : "text-gray-500"
+          }`}>
             &copy; {new Date().getFullYear()} Metal Master. Wszelkie prawa zastrzeżone.
           </p>
         </div>

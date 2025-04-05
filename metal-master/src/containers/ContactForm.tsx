@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ export default function ContactForm() {
     phone: '',
     message: ''
   });
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,11 +26,19 @@ export default function ContactForm() {
     });
   };
 
+  const inputClasses = `w-full px-4 py-3 rounded-lg font-roboto
+                     focus:outline-none focus:border-weldingRed focus:ring-1 focus:ring-weldingRed
+                     transition-all duration-300 ${
+                       isDark 
+                         ? "bg-gray-900/50 border border-gray-800 text-white placeholder-gray-400" 
+                         : "bg-white/80 border border-gray-200 text-steelBlue-dark placeholder-gray-500"
+                     }`;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-gray-300 font-oswald mb-2">
+          <label htmlFor="name" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
             Imię i Nazwisko
           </label>
           <input
@@ -37,16 +48,13 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg
-                     text-white placeholder-gray-400 font-roboto
-                     focus:outline-none focus:border-weldingRed focus:ring-1 focus:ring-weldingRed
-                     transition-all duration-300"
+            className={inputClasses}
             placeholder="Jan Kowalski"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-gray-300 font-oswald mb-2">
+          <label htmlFor="email" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
             Email
           </label>
           <input
@@ -56,17 +64,14 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg
-                     text-white placeholder-gray-400 font-roboto
-                     focus:outline-none focus:border-weldingRed focus:ring-1 focus:ring-weldingRed
-                     transition-all duration-300"
+            className={inputClasses}
             placeholder="jan@example.com"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-gray-300 font-oswald mb-2">
+        <label htmlFor="phone" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
           Telefon
         </label>
         <input
@@ -75,16 +80,13 @@ export default function ContactForm() {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg
-                   text-white placeholder-gray-400 font-roboto
-                   focus:outline-none focus:border-weldingRed focus:ring-1 focus:ring-weldingRed
-                   transition-all duration-300"
+          className={inputClasses}
           placeholder="+48 123 456 789"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-gray-300 font-oswald mb-2">
+        <label htmlFor="message" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
           Wiadomość
         </label>
         <textarea
@@ -94,10 +96,7 @@ export default function ContactForm() {
           onChange={handleChange}
           required
           rows={6}
-          className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg
-                   text-white placeholder-gray-400 font-roboto
-                   focus:outline-none focus:border-weldingRed focus:ring-1 focus:ring-weldingRed
-                   transition-all duration-300 resize-none"
+          className={`${inputClasses} resize-none`}
           placeholder="Opisz swój projekt..."
         />
       </div>

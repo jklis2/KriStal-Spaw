@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import { FiSun } from "react-icons/fi";
 import { BsWrench } from "react-icons/bs";
 import { HiOutlineFire } from "react-icons/hi";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    // The actual theme switching functionality will be implemented later
-  };
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
-      className="relative inline-flex items-center p-1 rounded-full w-14 h-7 bg-gradient-to-r from-industrialGray to-gray-700 shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-weldingRed"
+      className={`relative inline-flex items-center p-1 rounded-full w-14 h-7 shadow-inner transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-weldingRed ${
+        isDark
+          ? "bg-gradient-to-r from-industrialGray to-gray-700"
+          : "bg-gradient-to-r from-industrialLight-dark to-industrialLight-darker"
+      }`}
       aria-label="Toggle theme"
     >
       <span className="sr-only">Toggle theme</span>
@@ -35,7 +35,9 @@ export default function ThemeToggle() {
       {/* Toggle switch */}
       <span
         className={`flex items-center justify-center w-5 h-5 transform transition-transform duration-300 ease-in-out ${
-          isDark ? "translate-x-7 bg-industrialGray" : "translate-x-0 bg-yellow-300"
+          isDark
+            ? "translate-x-7 bg-industrialGray"
+            : "translate-x-0 bg-yellow-300"
         } rounded-full shadow-md`}
       >
         {isDark ? (
@@ -47,7 +49,11 @@ export default function ThemeToggle() {
       
       {/* Welding tool decoration */}
       <span className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-        <BsWrench className={`text-gray-400 rotate-45 ${isDark ? "text-opacity-70" : "text-opacity-40"}`} size={12} />
+        <BsWrench className={`rotate-45 ${
+          isDark
+            ? "text-gray-400 text-opacity-70"
+            : "text-steelBlue text-opacity-60"
+        }`} size={12} />
       </span>
     </button>
   );
