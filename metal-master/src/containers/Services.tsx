@@ -2,6 +2,8 @@
 
 import { servicesItems } from "@/consts/servicesItems";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function Services() {
   const { theme } = useTheme();
@@ -11,6 +13,7 @@ export default function Services() {
     <section className={`py-24 relative overflow-hidden ${
       isDark ? "bg-industrialGray" : "bg-industrialLight"
     }`}>
+      {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0 bg-repeat"
@@ -21,47 +24,106 @@ export default function Services() {
           }}
         ></div>
       </div>
-      <div className="max-w-6xl mx-auto px-6 relative">
+      
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-weldingRed/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
+      
+      <div className="container mx-auto px-6 relative">
+        {/* Section header */}
         <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className={`px-4 py-1 rounded-full text-sm font-medium ${
+              isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
+            }`}>
+              NASZE USŁUGI
+            </span>
+          </div>
           <h2 className={`text-5xl font-bold font-oswald relative inline-block ${
             isDark ? "text-white" : "text-steelBlue-dark"
           }`}>
             Czym się zajmujemy?
-            <div className="absolute -bottom-4 left-0 w-full h-1 bg-weldingRed transform -skew-x-12"></div>
+            <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
           </h2>
+          <p className={`mt-6 max-w-2xl mx-auto text-lg ${
+            isDark ? "text-gray-400" : "text-gray-600"
+          }`}>
+            Oferujemy kompleksowe usługi spawalnicze i ślusarskie dla klientów indywidualnych i firm.
+            Każdy projekt traktujemy z najwyższą starannością.
+          </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        
+        {/* Services grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesItems.map((service, index) => (
             <div
               key={index}
-              className={`backdrop-blur-sm rounded-lg p-8 group transform hover:-translate-y-2 transition-all duration-300 border-l-4 border-weldingRed ${
+              className={`backdrop-blur-sm rounded-xl p-8 group transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-weldingRed shadow-lg ${
                 isDark
-                  ? "bg-gray-900/50 hover:bg-weldingRed/10"
-                  : "bg-white/70 hover:bg-weldingRed/5"
+                  ? "bg-gray-900/50 hover:bg-gray-800/70 shadow-black/20"
+                  : "bg-white/90 hover:bg-white shadow-gray-200/70"
               }`}
             >
-              <div className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-all duration-300 ${
-                isDark
-                  ? "bg-weldingRed/10 group-hover:bg-weldingRed/20"
-                  : "bg-weldingRed/5 group-hover:bg-weldingRed/10"
-              }`}>
-                <service.Icon 
-                  className="text-weldingRed group-hover:text-ctaOrange transition-colors duration-300" 
-                  size={32}
-                />
+              <div className="flex items-center justify-between mb-6">
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-all duration-300 ${
+                  isDark
+                    ? "bg-weldingRed/10 group-hover:bg-weldingRed/20"
+                    : "bg-weldingRed/5 group-hover:bg-weldingRed/10"
+                }`}>
+                  <service.Icon 
+                    className="text-weldingRed group-hover:text-ctaOrange transition-colors duration-300" 
+                    size={32}
+                  />
+                </div>
+                <span className={`text-sm font-medium px-3 py-1 rounded-full ${
+                  isDark
+                    ? "bg-gray-800 text-gray-400"
+                    : "bg-gray-100 text-gray-500"
+                }`}>
+                  0{index + 1}
+                </span>
               </div>
-              <h3 className={`text-2xl font-oswald font-bold mb-4 ${
+              
+              <h3 className={`text-2xl font-oswald font-bold mb-4 group-hover:text-weldingRed transition-colors duration-300 ${
                 isDark ? "text-white" : "text-steelBlue-dark"
-              }`}>{service.title}</h3>
-              <p className={`font-roboto leading-relaxed transition-colors duration-300 ${
+              }`}>
+                {service.title}
+              </h3>
+              
+              <p className={`font-roboto leading-relaxed mb-6 transition-colors duration-300 ${
                 isDark
                   ? "text-gray-400 group-hover:text-gray-300"
                   : "text-gray-600 group-hover:text-gray-700"
               }`}>
                 {service.description}
               </p>
+              
+              <div className={`mt-auto pt-4 border-t border-dashed flex justify-between items-center ${
+                isDark ? "border-gray-700" : "border-gray-200"
+              }`}>
+                <span className={`text-sm font-medium ${
+                  isDark ? "text-gray-400" : "text-gray-500"
+                }`}>
+                  Dowiedz się więcej
+                </span>
+                <Link href="/oferta" className="group/arrow">
+                  <div className={`p-2 rounded-full group-hover/arrow:bg-weldingRed transition-all duration-300 ${
+                    isDark ? "bg-gray-800" : "bg-gray-100"
+                  }`}>
+                    <FaArrowRight className="text-weldingRed group-hover/arrow:text-white transition-colors duration-300" />
+                  </div>
+                </Link>
+              </div>
             </div>
           ))}
+        </div>
+        
+        {/* CTA button */}
+        <div className="text-center mt-16">
+          <Link href="/oferta" className="inline-flex items-center gap-2 bg-weldingRed text-white px-8 py-4 rounded-lg font-medium hover:bg-ctaOrange transition-all duration-300 shadow-lg shadow-weldingRed/20 hover:shadow-ctaOrange/30">
+            <span>Zobacz pełną ofertę</span>
+            <FaArrowRight />
+          </Link>
         </div>
       </div>
     </section>

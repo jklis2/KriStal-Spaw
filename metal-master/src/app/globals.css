@@ -26,3 +26,67 @@
     transition-timing-function: ease-in-out;
   }
 }
+
+/* Custom animations */
+@layer utilities {
+  /* Slow zoom animation for hero background */
+  .animate-slow-zoom {
+    animation: slow-zoom 30s ease-in-out infinite alternate;
+  }
+  
+  @keyframes slow-zoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.15); }
+  }
+  
+  /* Slow pulse animation for badges */
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  
+  /* Welding sparks animation */
+  .animate-sparkle {
+    animation: sparkle 8s linear infinite;
+  }
+  
+  @keyframes sparkle {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 0% 100%; }
+  }
+  
+  /* Slow bounce animation for scroll indicator */
+  .animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+  }
+  
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0) translateX(-50%); }
+    50% { transform: translateY(-10px) translateX(-50%); }
+  }
+  
+  /* Scroll animation for the scroll indicator dot */
+  .animate-scroll {
+    animation: scroll 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes scroll {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* Fade-in animation */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}

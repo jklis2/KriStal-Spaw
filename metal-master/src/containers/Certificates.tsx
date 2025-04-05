@@ -24,6 +24,9 @@ export default function Certificates() {
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1 rounded-full bg-weldingRed/10 text-weldingRed font-medium text-sm mb-4 border border-weldingRed/20">
+            CERTYFIKATY I UPRAWNIENIA
+          </span>
           <h2 className={`text-5xl font-bold font-oswald relative inline-block ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
             Nasze Certyfikaty
             <div className="absolute -bottom-4 left-0 w-full h-1 bg-weldingRed transform -skew-x-12"></div>
