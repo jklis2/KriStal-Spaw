@@ -21,24 +21,33 @@ export default function Footer() {
       {/* Main footer content */}
       <div className="container mx-auto px-6 py-16">
         {/* Footer top with logo */}
-        <div className="flex flex-col items-center mb-12">
-          <div className="relative w-20 h-20 mb-4 bg-gradient-to-br from-weldingRed to-ctaOrange p-1 rounded-full shadow-lg">
-            <Image 
-              src="/metalMaster/logo.svg" 
-              alt="KRISTAL-SPAW Logo" 
-              width={80}
-              height={80}
-              className="object-contain"
-              priority
-            />
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 hover:shadow-weldingRed/50 hover:scale-105 group">
+            <div className={`rounded-xl p-3 ${isDark ? 'bg-zinc-900' : 'bg-white'}`}>
+              <Image 
+                src="/metalMaster/logo.svg" 
+                alt="KRISTAL-SPAW Logo" 
+                width={100}
+                height={100}
+                className="object-contain drop-shadow-md"
+                priority
+              />
+            </div>
+            
+            {/* Dekoracyjne elementy */}
+            <div className="absolute -top-6 -right-6 w-12 h-12 bg-weldingRed/10 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-ctaOrange/10 rounded-full blur-xl"></div>
           </div>
-          <h2 className={`font-oswald text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
-            KRISTAL-SPAW
-          </h2>
-          <p className={`text-sm max-w-md text-center mb-6 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-            Profesjonalne usługi spawalnicze, produkcja ogrodzeń i konstrukcji metalowych najwyższej jakości od 2005 roku.
-          </p>
-          <div className="w-24 h-1 bg-weldingRed rounded-full mb-8"></div>
+          
+          <div className="flex flex-col items-center md:items-start">
+            <h2 className={`font-oswald text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KRISTAL</span>-SPAW
+            </h2>
+            <p className={`text-sm max-w-md text-center md:text-left mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+              Profesjonalne usługi spawalnicze, produkcja ogrodzeń i konstrukcji metalowych najwyższej jakości od 2005 roku.
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange rounded-full mb-4"></div>
+          </div>
         </div>
         
         {/* Footer grid */}

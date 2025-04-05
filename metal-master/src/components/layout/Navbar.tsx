@@ -35,24 +35,37 @@ export default function Navbar() {
     }`}>
       <div className="container mx-auto flex items-center justify-between px-6">
         <Link href="/">
-          <div className="flex items-center gap-3 cursor-pointer group">
-            <div className="relative overflow-hidden rounded-full bg-gradient-to-br from-weldingRed to-ctaOrange p-1 shadow-lg transition-all duration-300 group-hover:shadow-weldingRed/30">
-              <Image 
-                src="/metalMaster/logo.svg" 
-                alt="KRISTAL-SPAW Logo" 
-                width={scrolled ? 70 : 80}
-                height={scrolled ? 70 : 80}
-                className="object-contain transition-all duration-300"
-                priority
-              />
+          <div className="flex items-center gap-4 cursor-pointer group">
+            <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 group-hover:shadow-weldingRed/50 group-hover:scale-105">
+              <div className={`rounded-xl p-2 ${isDark ? 'bg-zinc-900' : 'bg-white'}`}>
+                <Image 
+                  src="/metalMaster/logo.svg" 
+                  alt="KRISTAL-SPAW Logo" 
+                  width={scrolled ? 60 : 70}
+                  height={scrolled ? 60 : 70}
+                  className="object-contain transition-all duration-300 drop-shadow-md"
+                  priority
+                />
+              </div>
+              
+              {/* Dekoracyjny element */}
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-weldingRed/10 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-ctaOrange/10 rounded-full blur-xl"></div>
             </div>
+            
             <div className="flex flex-col">
-              <span className={`font-oswald text-2xl font-bold group-hover:text-weldingRed transition-colors duration-300 ${
-                isDark ? "text-white" : "text-steelBlue-dark"
+              <span className={`font-oswald text-2xl font-bold transition-colors duration-300 ${
+                isDark 
+                  ? "text-white group-hover:text-weldingRed drop-shadow-md" 
+                  : "text-steelBlue-dark group-hover:text-weldingRed drop-shadow-sm"
               }`}>
-                KRISTAL-SPAW
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KRISTAL</span>-SPAW
               </span>
-              <span className={`text-xs font-medium tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <span className={`text-xs font-medium tracking-wider ${
+                isDark 
+                  ? 'text-gray-300 group-hover:text-gray-200' 
+                  : 'text-gray-600 group-hover:text-gray-800'
+              } transition-colors duration-300`}>
                 PROFESJONALNE SPAWALNICTWO
               </span>
             </div>
