@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Navbar() {
             <span className="text-weldingRed text-3xl animate-pulse">🔥</span>
           </div>
         </Link>
-        <nav className="hidden md:flex gap-8">
+        <div className="hidden md:flex items-center gap-8">
           <Link href="/" className="font-roboto hover:text-ctaOrange transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ctaOrange hover:after:w-full after:transition-all">Home</Link>
           {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
             <Link
@@ -29,7 +30,8 @@ export default function Navbar() {
               {item}
             </Link>
           ))}
-        </nav>
+          <ThemeToggle />
+        </div>
         <button 
           className="md:hidden text-2xl hover:text-ctaOrange transition-colors duration-300 p-2 rounded-lg hover:bg-gray-700/30" 
           onClick={() => setIsOpen(!isOpen)}
@@ -57,6 +59,9 @@ export default function Navbar() {
                 {item}
               </Link>
             ))}
+            <div className="p-4 border-b border-gray-700 flex justify-center">
+              <ThemeToggle />
+            </div>
           </nav>
         </div>
       )}
