@@ -40,12 +40,12 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 max-w-3xl mx-auto px-6"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-weldingRed/10 text-weldingRed font-medium text-sm mb-4 border border-weldingRed/20">
-            SKONTAKTUJ SIĘ Z NAMI
-          </span>
-          <h2 className={`text-4xl font-bold font-oswald relative inline-block ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-weldingRed/10 mb-4">
+            <FaEnvelope className="text-weldingRed" />
+            <span className="text-sm font-medium uppercase text-weldingRed">SKONTAKTUJ SIĘ Z NAMI</span>
+          </div>
+          <h2 className={`text-3xl md:text-4xl font-oswald mb-4 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
             Jesteśmy do Twojej dyspozycji
-            <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
           </h2>
         </motion.div>
         <div className="max-w-7xl mx-auto px-6">

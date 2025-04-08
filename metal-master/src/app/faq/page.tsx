@@ -18,7 +18,6 @@ export default function FAQ() {
         description="Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług i produktów"
       />
       <section className="py-24 relative overflow-hidden">
-        {/* Tło z wzorem */}
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0 bg-repeat"
@@ -29,11 +28,8 @@ export default function FAQ() {
             }}
           ></div>
         </div>
-        
-        {/* Dekoracyjne elementy */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
-        
         <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -53,7 +49,6 @@ export default function FAQ() {
               Jeśli nie znajdziesz odpowiedzi na swoje pytanie, skontaktuj się z nami bezpośrednio.
             </p>
           </motion.div>
-          
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

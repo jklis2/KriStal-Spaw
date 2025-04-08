@@ -1,12 +1,12 @@
 "use client";
 
 import SmallHeroSection from "@/components/ui/SmallHeroSection";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { galleryItems, categories } from "@/consts/galleryItems";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCamera, FaFilter, FaSearch } from 'react-icons/fa';
+import GalleryCard from "@/components/ui/GalleryCard";
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
@@ -14,7 +14,6 @@ export default function Gallery() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
-  // Efekt animacji przy zmianie filtra
   useEffect(() => {
     setIsFiltering(true);
     const timer = setTimeout(() => {
@@ -35,7 +34,6 @@ export default function Gallery() {
         description="Zobacz nasze najlepsze projekty i realizacje. Każdy produkt to połączenie rzemieślniczej precyzji z nowoczesnym designem."
       />
       <section className="py-24 relative overflow-hidden">
-        {/* Tło z wzorem */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute inset-0 bg-repeat"
@@ -46,8 +44,6 @@ export default function Gallery() {
             }}
           ></div>
         </div>
-        
-        {/* Dekoracyjne elementy */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -67,7 +63,6 @@ export default function Gallery() {
             <p className={`max-w-2xl mx-auto mb-8 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
               Filtruj według kategorii, aby zobaczyć projekty, które Cię interesują
             </p>
-            
             <motion.div 
               className="flex flex-wrap justify-center gap-3 relative z-10 mb-12"
               initial={{ opacity: 0 }}
@@ -101,7 +96,6 @@ export default function Gallery() {
               </div>
             </motion.div>
           </motion.div>
-          
           <AnimatePresence mode="wait">
             <motion.div 
               key={selectedCategory}
@@ -125,62 +119,15 @@ export default function Gallery() {
               )}
               
               {filteredItems.map((item, index) => (
-                <motion.div
+                <GalleryCard
                   key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
-                  className={`group relative overflow-hidden rounded-lg backdrop-blur-sm
-                           hover:shadow-xl hover:shadow-weldingRed/10 transition-all duration-300 ${
-                             isDark ? "bg-gray-900/50" : "bg-white/70 shadow-md"
-                           }`}
-                >
-                  <div className="aspect-square relative">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 right-4 bg-weldingRed text-white text-xs font-medium py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {item.category}
-                    </div>
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent 
-                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    ></div>
-                    <div
-                      className="absolute inset-0 p-6 flex flex-col justify-end
-                                  opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    >
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <span className="text-ctaOrange font-oswald text-sm mb-2 inline-block">
-                          {item.category}
-                        </span>
-                        <h3 className="text-2xl font-bold font-oswald text-white mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-300 font-roboto text-sm">
-                          {item.description}
-                        </p>
-                        <div className="mt-4 pt-4 border-t border-white/20">
-                          <button className="flex items-center gap-2 text-white font-oswald group-hover:text-weldingRed transition-colors">
-                            <FaSearch className="text-sm" />
-                            <span>Zobacz szczegóły</span>
-                          </button>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                  <div
-                    className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform origin-left 
-                                scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                  ></div>
-                </motion.div>
+                  title={item.title}
+                  category={item.category}
+                  image={item.image}
+                  description={item.description}
+                  isDark={isDark}
+                  index={index}
+                />
               ))}
               
               {filteredItems.length === 0 && (

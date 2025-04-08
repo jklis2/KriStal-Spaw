@@ -52,7 +52,7 @@ export default function SmallHeroSection({
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-block mb-4">
-              <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm">
+              <span className="px-4 py-1 mr-4 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm">
                 KRISTAL-SPAW
               </span>
             </div>

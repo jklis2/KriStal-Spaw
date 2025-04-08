@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import SmallHeroSection from "@/components/ui/SmallHeroSection";
 import OfferCard from "@/components/ui/OfferCard";
 import { FaArrowRight, FaTools } from "react-icons/fa";
 import { offers } from "@/consts/offerItems";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion } from "framer-motion";
+import SectionHeader from "@/components/ui/SectionHeader";
+import CTAButton from "@/components/ui/CTAButton";
 
 export default function Offer() {
   const { theme } = useTheme();
@@ -19,7 +20,6 @@ export default function Offer() {
         description="Poznaj nasze rzemieślnicze produkty metalowe, tworzone z pasją i dbałością o najdrobniejsze detale"
       />
       <section className="py-24 relative">
-        {/* Decorative background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0 bg-repeat"
@@ -30,31 +30,23 @@ export default function Offer() {
             }}
           ></div>
         </div>
-        
-        {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
-        
+        <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div> 
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
-            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-weldingRed/10 text-weldingRed font-medium text-sm mb-4 border border-weldingRed/20">
-              NASZA OFERTA
-            </span>
-            <h2 className={`text-4xl font-bold font-oswald relative inline-block ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
-              Profesjonalne Usługi Spawalnicze
-              <div className="absolute -bottom-4 left-0 w-full h-1 bg-weldingRed transform -skew-x-12"></div>
-            </h2>
-            <p className={`mt-6 text-xl font-roboto max-w-3xl mx-auto leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+            <SectionHeader
+              title="Profesjonalne Usługi Spawalnicze"
+              subtitle="NASZA OFERTA"
+              isDark={isDark}
+            >
               Oferujemy kompleksowe usługi spawalnicze dla klientów indywidualnych i firm. 
               Nasze wieloletnie doświadczenie gwarantuje najwyższą jakość wykonania.
-            </p>
+            </SectionHeader>
           </motion.div>
-          
           <div className="grid md:grid-cols-2 gap-12">
             {offers.map((offer, index) => (
               <motion.div
@@ -70,10 +62,8 @@ export default function Offer() {
         </div>
       </section>
       <section className="py-24 relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute -top-10 -right-10 w-64 h-64 bg-weldingRed/5 rounded-full filter blur-3xl"></div>
         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
-        
         <motion.div 
           className="max-w-4xl mx-auto px-6 text-center relative"
           initial={{ opacity: 0 }}
@@ -83,34 +73,22 @@ export default function Offer() {
           <div className="inline-flex items-center justify-center p-3 bg-weldingRed/10 rounded-full mb-6">
             <FaTools className="text-weldingRed text-xl" />
           </div>
-          
-          <h2 className={`text-4xl font-bold font-oswald mb-6 relative inline-block ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
-            Zrealizujemy Twój Projekt
-            <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
-          </h2>
-          <p className={`text-xl font-roboto mb-12 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+          <SectionHeader
+            title="Zrealizujemy Twój Projekt"
+            isDark={isDark}
+          >
             Skontaktuj się z nami, aby omówić szczegóły Twojego zamówienia.
             Oferujemy bezpłatną wycenę i konsultację.
-          </p>
-
+          </SectionHeader>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
+            className="mt-8"
           >
-            <Link 
-              href="/kontakt"
-              className="py-4 px-12 bg-weldingRed hover:bg-ctaOrange 
-                      text-white font-oswald text-xl rounded-lg
-                      transition-all duration-300
-                      flex items-center mx-auto w-auto max-w-fit
-                      shadow-lg shadow-weldingRed/20 hover:shadow-ctaOrange/30"
-            >
+            <CTAButton href="/kontakt" icon={<FaArrowRight />}>
               Skontaktuj się z nami
-              <FaArrowRight className="ml-3" />
-            </Link>
+            </CTAButton>
           </motion.div>
-          
-          {/* Decorative dots */}
           <div className="absolute top-10 left-10 grid grid-cols-3 gap-2 opacity-20">
             {[...Array(9)].map((_, i) => (
               <div key={i} className="w-2 h-2 rounded-full bg-weldingRed"></div>
