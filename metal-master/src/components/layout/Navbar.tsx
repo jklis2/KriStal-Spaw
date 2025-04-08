@@ -6,12 +6,14 @@ import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const pathname = usePathname();
 
   // Handle scroll effect
   useEffect(() => {
@@ -37,13 +39,13 @@ export default function Navbar() {
         <Link href="/">
           <div className="flex items-center gap-4 cursor-pointer group">
             <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 group-hover:shadow-weldingRed/50 group-hover:scale-105">
-              <div className={`rounded-xl p-2 ${isDark ? 'bg-zinc-900' : 'bg-white'}`}>
+              <div className={`rounded-xl ${isDark ? 'bg-zinc-900' : 'bg-white'} flex items-center justify-center`} style={{width: scrolled ? '64px' : '74px', height: scrolled ? '64px' : '74px'}}>
                 <Image 
                   src="/metalMaster/logo.svg" 
                   alt="KRISTAL-SPAW Logo" 
                   width={scrolled ? 60 : 70}
                   height={scrolled ? 60 : 70}
-                  className="object-contain transition-all duration-300 drop-shadow-md"
+                  className="w-full h-full p-1 transition-all duration-300 drop-shadow-md"
                   priority
                 />
               </div>
@@ -75,19 +77,23 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           <Link 
             href="/" 
-            className="font-roboto font-medium hover:text-ctaOrange transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ctaOrange hover:after:w-full after:transition-all"
+            className={`font-roboto font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-ctaOrange after:transition-all ${pathname === '/' ? 'text-ctaOrange after:w-full' : 'hover:text-ctaOrange after:w-0 hover:after:w-full'}`}
           >
             Home
           </Link>
-          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase().replace(" ", "-")}`}
-              className="font-roboto font-medium hover:text-ctaOrange transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ctaOrange hover:after:w-full after:transition-all"
-            >
-              {item}
-            </Link>
-          ))}
+          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => {
+            const itemPath = `/${item.toLowerCase().replace(" ", "-")}`;
+            const isActive = pathname === itemPath;
+            return (
+              <Link
+                key={item}
+                href={itemPath}
+                className={`font-roboto font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-ctaOrange after:transition-all ${isActive ? 'text-ctaOrange after:w-full' : 'hover:text-ctaOrange after:w-0 hover:after:w-full'}`}
+              >
+                {item}
+              </Link>
+            );
+          })}
           <div className="pl-4 border-l border-weldingRed/30">
             <ThemeToggle />
           </div>
@@ -129,33 +135,37 @@ export default function Navbar() {
           </div>
           <Link 
             href="/" 
-            className={`font-roboto p-4 hover:text-ctaOrange transition-all duration-300 border-b flex items-center gap-3 ${
+            className={`font-roboto p-4 transition-all duration-300 border-b flex items-center gap-3 ${
               isDark
-                ? "hover:bg-gray-800 border-gray-700"
-                : "hover:bg-gray-100 border-gray-200"
+                ? `${pathname === '/' ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800'} border-gray-700`
+                : `${pathname === '/' ? 'bg-gray-100 text-ctaOrange' : 'hover:bg-gray-100'} border-gray-200`
             }`} 
             onClick={() => setIsOpen(false)}
           >
             <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">🏠</span>
             Home
           </Link>
-          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item, index) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase().replace(" ", "-")}`}
-              className={`font-roboto p-4 hover:text-ctaOrange transition-all duration-300 border-b flex items-center gap-3 ${
-                isDark
-                  ? "hover:bg-gray-800 border-gray-700"
-                  : "hover:bg-gray-100 border-gray-200"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
-                {['👥', '🔧', '🖼️', '📝', '❓', '📞'][index]}
-              </span>
-              {item}
-            </Link>
-          ))}
+          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item, index) => {
+            const itemPath = `/${item.toLowerCase().replace(" ", "-")}`;
+            const isActive = pathname === itemPath;
+            return (
+              <Link
+                key={item}
+                href={itemPath}
+                className={`font-roboto p-4 transition-all duration-300 border-b flex items-center gap-3 ${
+                  isDark
+                    ? `${isActive ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800'} border-gray-700`
+                    : `${isActive ? 'bg-gray-100 text-ctaOrange' : 'hover:bg-gray-100'} border-gray-200`
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
+                  {['👥', '🔧', '🖼️', '📝', '❓', '📞'][index]}
+                </span>
+                {item}
+              </Link>
+            );
+          })}
           <div className="mt-auto p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} flex justify-between items-center">
             <span className="text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}">
               Przełącz motyw

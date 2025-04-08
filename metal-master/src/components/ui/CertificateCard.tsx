@@ -32,14 +32,14 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
           objectFit="cover"
           className="transform group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/20"></div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <div className="relative">
           <FaCertificate className="text-weldingRed text-4xl mb-3 transform group-hover:rotate-12 transition-transform duration-300" />
           <div className="flex justify-between items-center mb-3">
-            <h3 className={`text-2xl font-oswald font-bold ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+            <h3 className="text-2xl font-oswald font-bold text-white">
               {name}
             </h3>
             <span className="text-ctaOrange font-oswald">
@@ -49,7 +49,7 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
           <p className={`font-roboto text-sm leading-relaxed transition-colors duration-300 ${
             isDark 
               ? "text-gray-300 group-hover:text-white" 
-              : "text-gray-600 group-hover:text-gray-800"
+              : "text-gray-200 group-hover:text-white"
           }`}>
             {description}
           </p>

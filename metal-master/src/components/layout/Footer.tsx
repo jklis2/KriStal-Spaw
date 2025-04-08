@@ -23,13 +23,13 @@ export default function Footer() {
         {/* Footer top with logo */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 hover:shadow-weldingRed/50 hover:scale-105 group">
-            <div className={`rounded-xl p-3 ${isDark ? 'bg-zinc-900' : 'bg-white'}`}>
+            <div className={`rounded-xl ${isDark ? 'bg-zinc-900' : 'bg-white'} flex items-center justify-center`} style={{width: '140px', height: '140px'}}>
               <Image 
                 src="/metalMaster/logo.svg" 
                 alt="KRISTAL-SPAW Logo" 
-                width={100}
-                height={100}
-                className="object-contain drop-shadow-md"
+                width={130}
+                height={130}
+                className="w-full h-full p-1 drop-shadow-md"
                 priority
               />
             </div>
