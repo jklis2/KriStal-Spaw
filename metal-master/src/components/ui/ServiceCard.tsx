@@ -40,13 +40,24 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             size={32}
           />
         </div>
-        <span className={`text-sm font-medium px-3 py-1 rounded-full ${
-          isDark
-            ? "bg-gray-800 text-gray-400"
-            : "bg-gray-100 text-gray-500"
-        }`}>
-          0{index + 1}
-        </span>
+        <div className="relative">
+          <div className={`w-12 h-12 flex items-center justify-center overflow-hidden ${isDark ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg transform rotate-45 group-hover:rotate-0 transition-all duration-500`}>
+            <div className="absolute inset-0 bg-gradient-to-br from-weldingRed/20 to-ctaOrange/20 group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+            <div className="absolute top-0 left-0 w-full h-full">
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-weldingRed transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+              <div className="absolute top-0 right-0 w-0.5 h-full bg-weldingRed transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-700 delay-100"></div>
+              <div className="absolute bottom-0 right-0 w-full h-0.5 bg-ctaOrange transform origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-700 delay-200"></div>
+              <div className="absolute bottom-0 left-0 w-0.5 h-full bg-ctaOrange transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-700 delay-300"></div>
+            </div>
+            <div className="transform -rotate-45 group-hover:rotate-0 transition-all duration-500">
+              {index % 5 === 0 && <span className="text-weldingRed text-xl font-bold">⚡</span>}
+              {index % 5 === 1 && <span className="text-weldingRed text-xl font-bold">⚙️</span>}
+              {index % 5 === 2 && <span className="text-weldingRed text-xl font-bold">🔥</span>}
+              {index % 5 === 3 && <span className="text-weldingRed text-xl font-bold">🛠️</span>}
+              {index % 5 === 4 && <span className="text-weldingRed text-xl font-bold">⚒️</span>}
+            </div>
+          </div>
+        </div>
       </div>
       
       <h3 className={`text-2xl font-oswald font-bold mb-4 group-hover:text-weldingRed transition-colors duration-300 ${

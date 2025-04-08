@@ -83,7 +83,7 @@ export default function NotFound() {
         
         <motion.p 
           variants={itemVariants}
-          className={`mb-6 max-w-lg font-roboto ${
+          className={`mb-6 max-w-lg mx-auto text-center font-roboto ${
             isDark ? "text-gray-300" : "text-gray-600"
           }`}
         >
