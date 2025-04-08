@@ -13,10 +13,10 @@ export default function Terms() {
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4 font-oswald">1. Postanowienia ogólne</h2>
           <p className="mb-4">
-            Niniejszy regulamin określa zasady korzystania z serwisu internetowego Kristal-Spaw, dostępnego pod adresem [adres strony internetowej], zwanego dalej "Serwisem".
+            Niniejszy regulamin określa zasady korzystania z serwisu internetowego Kristal-Spaw, dostępnego pod adresem [adres strony internetowej], zwanego dalej &quot;Serwisem&quot;.
           </p>
           <p className="mb-4">
-            Właścicielem i administratorem Serwisu jest Kristal-Spaw z siedzibą w [adres siedziby], NIP: [numer NIP], REGON: [numer REGON], wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS: [numer KRS], zwana dalej "Usługodawcą".
+            Właścicielem i administratorem Serwisu jest Kristal-Spaw z siedzibą w [adres siedziby], NIP: [numer NIP], REGON: [numer REGON], wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS: [numer KRS], zwana dalej &quot;Usługodawcą&quot;.
           </p>
           <p className="mb-4">
             Każdy Użytkownik z chwilą podjęcia czynności zmierzających do korzystania z Serwisu zobowiązany jest do przestrzegania postanowień niniejszego Regulaminu.
@@ -67,7 +67,7 @@ export default function Terms() {
             <li>Udostępnianie informacji o Usługodawcy i świadczonych przez niego usługach</li>
           </ul>
           <p className="mb-4">
-            Szczegółowy opis usług świadczonych przez Usługodawcę znajduje się w zakładce "Oferta" w Serwisie.
+            Szczegółowy opis usług świadczonych przez Usługodawcę znajduje się w zakładce &quot;Oferta&quot; w Serwisie.
           </p>
         </div>
 
