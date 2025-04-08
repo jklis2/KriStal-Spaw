@@ -15,19 +15,23 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div className="mb-16">
-      <div className="relative">
-        <div className="text-center">
+      <div className="relative text-center">
+        <div className="inline-block relative">
+          {subtitle && (
+            <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4">
+              <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
+                isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
+              }`}>
+                {subtitle}
+              </span>
+            </div>
+          )}
           <h2 className={`text-5xl font-bold font-oswald relative inline-block ${
             isDark ? "text-white" : "text-steelBlue-dark"
           }`}>
             {title}
             <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
           </h2>
-          <span className={`absolute inline-block px-4 py-1 rounded-full text-sm font-medium mr-6 ${
-            isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
-          }`} style={{ right: 'calc(50% + 220px)', top: '50%', transform: 'translateY(-50%)' }}>
-            {subtitle}
-          </span>
         </div>
       </div>
       {children && (

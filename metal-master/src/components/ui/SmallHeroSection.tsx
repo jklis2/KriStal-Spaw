@@ -51,18 +51,20 @@ export default function SmallHeroSection({
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block mb-4">
-              <span className="px-4 py-1 mr-4 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm">
-                KRISTAL-SPAW
-              </span>
+            <div className="relative inline-block">
+              <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4">
+                <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm whitespace-nowrap">
+                  KRISTAL-SPAW
+                </span>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl font-bold font-oswald text-white mb-6 relative inline-block tracking-tight">
+                <span className="inline-block relative">
+                  {title}
+                  <span className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></span>
+                </span>
+              </h1>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl font-bold font-oswald text-white mb-6 relative inline-block tracking-tight">
-              <span className="inline-block relative">
-                {title}
-                <span className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></span>
-              </span>
-            </h1>
             
             <p className="text-xl text-gray-200 font-roboto max-w-2xl mx-auto px-6 leading-relaxed">
               {description}
