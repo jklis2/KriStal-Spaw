@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiHome, FiUsers, FiTool, FiImage, FiFileText, FiHelpCircle, FiPhone } from "react-icons/fi";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
@@ -14,6 +14,11 @@ export default function Navbar() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const pathname = usePathname();
+
+  // Close mobile menu when navigating to a different page
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   // Handle scroll effect - only when menu is closed
   useEffect(() => {
@@ -183,7 +188,9 @@ export default function Navbar() {
             }`} 
 
           >
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">🏠</span>
+            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
+              <FiHome className="text-xl" />
+            </span>
             Home
           </Link>
           {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item, index) => {
@@ -201,7 +208,7 @@ export default function Navbar() {
 
               >
                 <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
-                  {['👥', '🔧', '🖼️', '📝', '❓', '📞'][index]}
+                  {[<FiUsers key="users" className="text-xl" />, <FiTool key="tool" className="text-xl" />, <FiImage key="image" className="text-xl" />, <FiFileText key="file" className="text-xl" />, <FiHelpCircle key="help" className="text-xl" />, <FiPhone key="phone" className="text-xl" />][index]}
                 </span>
                 {item}
               </Link>
