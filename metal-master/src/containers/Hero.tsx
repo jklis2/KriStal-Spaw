@@ -10,7 +10,7 @@ export default function Hero() {
   const isDark = theme === "dark";
   
   return (
-    <section className={`relative w-full h-screen flex items-center justify-center m-0 p-0 overflow-hidden ${
+    <section className={`relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden ${
       isDark ? "bg-industrialGray" : "bg-industrialLight"
     }`}>
       {/* Background with parallax effect */}
@@ -78,7 +78,7 @@ export default function Hero() {
         </div>
         
         {/* Feature badges */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-4xl w-full">
+        <div className="flex flex-col md:grid md:grid-cols-3 gap-3 mt-4 max-w-4xl w-full px-4 md:px-0 mb-8 md:mb-0">
           {[
             { icon: FaShieldAlt, text: "Gwarancja jakości" },
             { icon: FaTools, text: "Profesjonalny sprzęt" },

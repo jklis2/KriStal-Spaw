@@ -51,8 +51,16 @@ export default function SmallHeroSection({
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Mobile: KRISTAL-SPAW above title */}
+            <div className="block md:hidden mb-3">
+              <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm whitespace-nowrap">
+                KRISTAL-SPAW
+              </span>
+            </div>
+            
             <div className="relative inline-block">
-              <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4">
+              {/* Desktop: KRISTAL-SPAW to the left of title */}
+              <div className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 mr-4">
                 <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm whitespace-nowrap">
                   KRISTAL-SPAW
                 </span>

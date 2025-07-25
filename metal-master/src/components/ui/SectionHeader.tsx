@@ -16,9 +16,21 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className="mb-16">
       <div className="relative text-center">
+        {/* Mobile: subtitle above title */}
+        {subtitle && (
+          <div className="block md:hidden mb-3">
+            <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
+              isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
+            }`}>
+              {subtitle}
+            </span>
+          </div>
+        )}
+        
         <div className="inline-block relative">
+          {/* Desktop: subtitle to the left of title */}
           {subtitle && (
-            <div className="absolute right-full top-1/2 -translate-y-1/2 mr-4">
+            <div className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 mr-4">
               <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
                 isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
               }`}>

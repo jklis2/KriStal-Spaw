@@ -40,30 +40,30 @@ export default function Team() {
           doświadczenie z pasją do spawalnictwa.
         </SectionHeader>
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-br from-weldingRed/20 to-ctaOrange/10 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-80"></div>
+          <div className="relative group mx-auto w-full max-w-[90%] md:max-w-[95%] lg:max-w-[90%]">
+            <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-br from-weldingRed/20 to-ctaOrange/10 rounded-2xl transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 opacity-80"></div>
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src={teamItems.img}
                 alt={teamItems.name}
                 width={500}
                 height={600}
-                className="w-full h-[500px] object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-[400px] sm:h-[450px] md:h-[500px] object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   e.currentTarget.src = fallbackImage;
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="bg-weldingRed text-white text-xs font-bold px-3 py-1 rounded-full">
+              <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <span className="bg-weldingRed text-white text-xs font-bold px-2 sm:px-3 py-1 rounded-full">
                     {teamItems.role}
                   </span>
-                  <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full">
+                  <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-2 sm:px-3 py-1 rounded-full">
                     {teamItems.experience} lat doświadczenia
                   </span>
                 </div>
-                <h3 className="text-white text-3xl font-oswald font-bold">
+                <h3 className="text-white text-2xl sm:text-3xl font-oswald font-bold">
                   {teamItems.name}
                 </h3>
               </div>
