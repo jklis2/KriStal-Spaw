@@ -10,7 +10,7 @@ export default function Team() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const fallbackImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000";
+  const fallbackImage = "/images/photoPlaceholder.webp";
 
   return (
     <section

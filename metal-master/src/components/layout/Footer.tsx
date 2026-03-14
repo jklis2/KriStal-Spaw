@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 hover:shadow-weldingRed/50 hover:scale-105 group">
             <div className={`rounded-xl ${isDark ? 'bg-zinc-900' : 'bg-white'} flex items-center justify-center`} style={{width: '140px', height: '140px'}}>
               <Image 
-                src="/metalMaster/logo.svg" 
+                src="/logo.svg" 
                 alt="KRISTAL-SPAW Logo" 
                 width={130}
                 height={130}

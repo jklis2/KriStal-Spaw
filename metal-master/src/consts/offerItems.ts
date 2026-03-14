@@ -9,7 +9,7 @@ export const offers: OfferItem[] = [
   {
     title: "Bramy kute",
     description: "Ręcznie wykonane bramy z najwyższej jakości stali, łączące tradycyjne rzemiosło z nowoczesnymi technikami obróbki metalu.",
-    image: "https://picsum.photos/401",
+    image: "/images/photoPlaceholder.webp",
     features: [
       "Indywidualny projekt",
       "Zabezpieczenie antykorozyjne",
@@ -20,7 +20,7 @@ export const offers: OfferItem[] = [
   {
     title: "Ogrodzenia",
     description: "Kompleksowe rozwiązania ogrodzeniowe, od klasycznych po nowoczesne wzory, wykonane z dbałością o każdy detal.",
-    image: "https://picsum.photos/402",
+    image: "/images/photoPlaceholder.webp",
     features: [
       "Dowolna wysokość",
       "Malowanie proszkowe",
@@ -31,7 +31,7 @@ export const offers: OfferItem[] = [
   {
     title: "Balustrady",
     description: "Eleganckie i trwałe balustrady schodowe i balkonowe, zapewniające bezpieczeństwo i podkreślające charakter wnętrza.",
-    image: "https://picsum.photos/403",
+    image: "/images/photoPlaceholder.webp",
     features: [
       "Stal nierdzewna",
       "Wzory na zamówienie",
@@ -42,7 +42,7 @@ export const offers: OfferItem[] = [
   {
     title: "Meble metalowe",
     description: "Unikalne meble łączące metal i drewno, tworzone na zamówienie według indywidualnych projektów.",
-    image: "https://picsum.photos/404",
+    image: "/images/photoPlaceholder.webp",
     features: [
       "Stal i drewno",
       "Projekty custom",

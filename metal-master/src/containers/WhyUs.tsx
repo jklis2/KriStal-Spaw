@@ -58,7 +58,7 @@ export default function WhyUs() {
           location="Warszawa"
           testimonial="Współpraca z firmą KRISTAL-SPAW to czysta przyjemność. Profesjonalne podejście, terminowość i najwyższa jakość wykonania. Konstrukcje, które dla nas wykonali, są nie tylko funkcjonalne, ale również estetyczne. Polecam każdemu, kto szuka solidnego partnera w branży metalowej."
           rating={5}
-          imageSrc="/testimonial-image.jpg"
+          imageSrc="/images/photoPlaceholder.webp"
           isDark={isDark}
         />
         <div className="text-center mt-16">

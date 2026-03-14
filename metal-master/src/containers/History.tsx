@@ -58,7 +58,7 @@ export default function History() {
               <div className="absolute -inset-4 bg-weldingRed/20 rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
               <div className="relative overflow-hidden rounded-lg">
                 <Image
-                  src="https://picsum.photos/800/500"
+                  src="/images/photoPlaceholder.webp"
                   alt="Warsztat Metal Master"
                   width={800}
                   height={500}

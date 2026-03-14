@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaSearch } from 'react-icons/fa';
 
 interface GalleryCardProps {
   title: string;
@@ -62,12 +61,6 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
             <p className="text-gray-300 font-roboto text-sm">
               {description}
             </p>
-            <div className="mt-4 pt-4 border-t border-white/20">
-              <button className="flex items-center gap-2 text-white font-oswald group-hover:text-weldingRed transition-colors">
-                <FaSearch className="text-sm" />
-                <span>Zobacz szczegóły</span>
-              </button>
-            </div>
           </motion.div>
         </div>
       </div>

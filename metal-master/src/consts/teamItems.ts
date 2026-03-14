@@ -16,7 +16,7 @@ export interface TeamMember {
 export const teamItems: TeamMember = {
   name: "Jan Kowalski",
   role: "Główny Spawacz / Właściciel",
-  img: "https://picsum.photos/400",
+  img: "/images/photoPlaceholder.webp",
   experience: 20, // 20 lat doświadczenia
   quote: "Jako spawacz z wieloletnim doświadczeniem, wierzę że jakość i precyzja są kluczem do trwałych konstrukcji. Każdy projekt traktuję z najwyższą starannością.",
   description:

@@ -33,9 +33,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             fill
             sizes="(max-width: 768px) 100vw, 40vw"
             className="object-cover"
-            onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000";
-            }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
           <div className="absolute bottom-0 left-0 p-6">

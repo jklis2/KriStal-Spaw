@@ -12,13 +12,13 @@ interface HeroSectionProps {
 export default function SmallHeroSection({
   title,
   description,
-  imageSrc = "/hero-backgrounds/welding-workshop.jpg" // Domyślne zdjęcie tła
+  imageSrc = "/images/weldingHero.jpg" // Domyślne zdjęcie tła
 }: HeroSectionProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
   // Fallback image jeśli podany obraz nie istnieje
-  const fallbackImage = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2000";
+  const fallbackImage = "/images/photoPlaceholder.webp";
   
   return (
     <section className="relative h-[60vh] overflow-hidden">

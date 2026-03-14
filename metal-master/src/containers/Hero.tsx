@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
           <Image
-            src="/weldingHero.jpg"
+            src="/images/weldingHero.jpg"
             alt="Profesjonalne spawalnictwo - KRISTAL-SPAW"
             fill
             priority

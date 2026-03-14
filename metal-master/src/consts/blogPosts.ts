@@ -40,7 +40,7 @@ MIG/MAG (Metal Inert Gas/Metal Active Gas) to metoda spawania łukowego, gdzie �
 - Pracuj w rękawicach spawalniczych
 - Zapewnij dobrą wentylację
 - Używaj odzieży ochronnej`,
-    image: "https://picsum.photos/800/600?random=1",
+    image: "/images/photoPlaceholder.webp",
     date: "2025-02-05",
     author: "Jakub Kowalski",
     slug: "podstawy-spawania-mig-mag"
@@ -71,7 +71,7 @@ MIG/MAG (Metal Inert Gas/Metal Active Gas) to metoda spawania łukowego, gdzie �
 2. Przygotowanie gaśnicy
 3. Zabezpieczenie obszaru pracy
 4. Odpowiednie oświetlenie`,
-    image: "https://picsum.photos/800/600?random=2",
+    image: "/images/photoPlaceholder.webp",
     date: "2025-02-04",
     author: "Marek Nowak",
     slug: "bezpieczenstwo-w-spawalnictwie"
@@ -107,7 +107,7 @@ TIG (Tungsten Inert Gas) to metoda spawania łukowego elektrodą nietopliwą w o
 - Spawanie stali nierdzewnej
 - Spawanie aluminium
 - Precyzyjne prace spawalnicze`,
-    image: "https://picsum.photos/800/600?random=3",
+    image: "/images/photoPlaceholder.webp",
     date: "2025-02-03",
     author: "Adam Wiśniewski",
     slug: "spawanie-tig-przewodnik"
@@ -145,7 +145,7 @@ TIG (Tungsten Inert Gas) to metoda spawania łukowego elektrodą nietopliwą w o
 - Regularne czyszczenie
 - Wymiana części eksploatacyjnych
 - Przeglądy techniczne`,
-    image: "https://picsum.photos/800/600?random=4",
+    image: "/images/photoPlaceholder.webp",
     date: "2025-02-02",
     author: "Piotr Kowalczyk",
     slug: "wybor-odpowiedniego-sprzetu-spawalniczego"
