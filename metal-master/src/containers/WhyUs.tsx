@@ -8,6 +8,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import CTAButton from "@/components/ui/CTAButton";
 import FeatureCard from "@/components/ui/FeatureCard";
 import TestimonialCard from "@/components/ui/TestimonialCard";
+import { SVG_PATTERNS } from "@/consts/svgPatterns";
 
 export default function WhyUs() {
   const { theme } = useTheme();
@@ -25,9 +26,7 @@ export default function WhyUs() {
         <div
           className="absolute inset-0 bg-repeat"
           style={{
-            backgroundImage: isDark
-              ? "url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E')"
-              : "url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E')",
+            backgroundImage: isDark ? SVG_PATTERNS.dots.dark : SVG_PATTERNS.dots.light,
           }}
         ></div>
       </div>
