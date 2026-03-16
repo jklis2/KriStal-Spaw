@@ -1,35 +1,29 @@
-"use client";
-
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaArrowRight } from 'react-icons/fa';
-import { useTheme } from '@/components/providers/ThemeProvider';
+
+const contactItems = [
+  {
+    icon: FaPhone,
+    title: "Telefon",
+    content: "+48 123 456 789"
+  },
+  {
+    icon: FaEnvelope,
+    title: "Email",
+    content: "kontakt@metalmaster.pl"
+  },
+  {
+    icon: FaMapMarkerAlt,
+    title: "Adres",
+    content: "ul. Metalowa 123\n00-001 Warszawa"
+  },
+  {
+    icon: FaClock,
+    title: "Godziny Otwarcia",
+    content: "Poniedziałek - Piątek: 8:00 - 16:00\nSobota - Niedziela: Zamknięte"
+  }
+];
 
 export default function ContactInfo() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-  
-  const contactItems = [
-    {
-      icon: FaPhone,
-      title: "Telefon",
-      content: "+48 123 456 789"
-    },
-    {
-      icon: FaEnvelope,
-      title: "Email",
-      content: "kontakt@metalmaster.pl"
-    },
-    {
-      icon: FaMapMarkerAlt,
-      title: "Adres",
-      content: "ul. Metalowa 123\n00-001 Warszawa"
-    },
-    {
-      icon: FaClock,
-      title: "Godziny Otwarcia",
-      content: "Poniedziałek - Piątek: 8:00 - 16:00\nSobota - Niedziela: Zamknięte"
-    }
-  ];
-  
   return (
     <div className="space-y-8">
       <div>
@@ -37,12 +31,12 @@ export default function ContactInfo() {
           <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
             <FaEnvelope className="text-weldingRed" />
           </div>
-          <h2 className={`text-3xl font-oswald relative ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+          <h2 className="text-3xl font-oswald relative text-steelBlue-dark dark:text-white">
             Informacje Kontaktowe
           </h2>
         </div>
         <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange mb-6"></div>
-        <p className={isDark ? "text-gray-300 font-roboto mb-8" : "text-gray-600 font-roboto mb-8"}>
+        <p className="font-roboto mb-8 text-gray-600 dark:text-gray-300">
           Skontaktuj się z nami, aby omówić Twój projekt. Jesteśmy dostępni od poniedziałku do piątku
           w godzinach 8:00-16:00.
         </p>
@@ -52,42 +46,32 @@ export default function ContactInfo() {
         {contactItems.map((item, index) => (
           <div 
             key={index} 
-            className={`flex items-start space-x-4 group animate-fade-up`}
+            className="flex items-start space-x-4 group animate-fade-up"
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform transition-all duration-300 group-hover:scale-110 ${
-              isDark ? "bg-weldingRed/20 group-hover:bg-weldingRed/30" : "bg-weldingRed/10 group-hover:bg-weldingRed/20"
-            }`}>
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transform transition-all duration-300 group-hover:scale-110 bg-weldingRed/10 group-hover:bg-weldingRed/20 dark:bg-weldingRed/20 dark:group-hover:bg-weldingRed/30">
               <item.icon className="text-weldingRed text-xl" />
             </div>
             <div className="flex-1">
-              <h3 className={`font-oswald text-xl mb-1 transition-colors duration-300 group-hover:text-weldingRed ${
-                isDark ? "text-white" : "text-steelBlue-dark"
-              }`}>{item.title}</h3>
-              <p className={`whitespace-pre-line ${
-                isDark ? "text-gray-300 font-roboto" : "text-gray-600 font-roboto"
-              }`}>{item.content}</p>
+              <h3 className="font-oswald text-xl mb-1 transition-colors duration-300 group-hover:text-weldingRed text-steelBlue-dark dark:text-white">{item.title}</h3>
+              <p className="whitespace-pre-line font-roboto text-gray-600 dark:text-gray-300">{item.content}</p>
             </div>
           </div>
         ))}
       </div>
 
       <div 
-        className={`mt-12 p-6 backdrop-blur-sm rounded-lg border border-transparent animate-fade-up delay-500 ${
-          isDark 
-            ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
-            : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
-        } transition-all duration-300`}
+        className="mt-12 p-6 rounded-lg border animate-fade-up delay-500 transition-all duration-300 bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10 dark:bg-gray-900/50 dark:border-gray-800 dark:hover:border-weldingRed/20 dark:shadow-none"
       >
         <div className="flex items-center gap-3 mb-4">
           <div className="w-8 h-8 rounded-full bg-weldingRed/10 flex items-center justify-center">
             <FaPhone className="text-weldingRed text-sm" />
           </div>
-          <h3 className={`text-xl font-oswald ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+          <h3 className="text-xl font-oswald text-steelBlue-dark dark:text-white">
             Umów się na konsultację
           </h3>
         </div>
-        <p className={`font-roboto mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+        <p className="font-roboto mb-4 text-gray-600 dark:text-gray-300">
           Chętnie pomożemy w realizacji Twojego projektu. Zadzwoń lub napisz do nas,
           aby umówić się na bezpłatną konsultację.
         </p>

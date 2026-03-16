@@ -1,15 +1,7 @@
-import dynamic from "next/dynamic";
 import Hero from "@/containers/Hero";
-
-const Services = dynamic(() => import("@/containers/Services"), {
-  loading: () => <section className="py-24 min-h-[600px]" />,
-});
-const GalleryPreview = dynamic(() => import("@/containers/GalleryPreview"), {
-  loading: () => <section className="py-24 min-h-[700px]" />,
-});
-const WhyUs = dynamic(() => import("@/containers/WhyUs"), {
-  loading: () => <section className="py-24 min-h-[600px]" />,
-});
+import Services from "@/containers/Services";
+import GalleryPreview from "@/containers/GalleryPreview";
+import WhyUs from "@/containers/WhyUs";
 
 export default function Home() {
   return (

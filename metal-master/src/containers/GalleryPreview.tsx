@@ -1,22 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight } from "react-icons/fa";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CTAButton from "@/components/ui/CTAButton";
 import { galleryItems, fallbackImages } from "@/consts/galleryPreviewItems";
 
 export default function GalleryPreview() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-
   return (
     <section
-      className={`py-24 relative ${
-        isDark ? "bg-industrialGray" : "bg-industrialLight"
-      }`}
+      className="py-24 relative bg-industrialLight dark:bg-industrialGray content-auto"
     >
       <div className="absolute top-20 right-0 w-64 h-64 bg-weldingRed/5 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-48 h-48 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
@@ -24,7 +16,6 @@ export default function GalleryPreview() {
         <SectionHeader
           title="Nasze Realizacje"
           subtitle="GALERIA"
-          isDark={isDark}
         >
           Prezentujemy wybrane projekty z naszego portfolio. Każda realizacja to
           połączenie precyzji, jakości i estetyki.
@@ -106,11 +97,7 @@ export default function GalleryPreview() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center">
-          <p
-            className={`text-lg mb-6 max-w-2xl text-center ${
-              isDark ? "text-gray-300" : "text-gray-700"
-            }`}
-          >
+          <p className="text-lg mb-6 max-w-2xl text-center text-gray-700 dark:text-gray-300">
             Zapraszamy do zapoznania się z pełną galerią naszych realizacji.
             Każdy projekt jest wyjątkowy i dopasowany do potrzeb klienta.
           </p>

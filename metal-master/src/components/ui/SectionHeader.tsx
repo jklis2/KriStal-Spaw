@@ -3,14 +3,12 @@ import React, { ReactNode } from 'react';
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
-  isDark?: boolean;
   children?: ReactNode;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ 
   title, 
   subtitle, 
-  isDark = false,
   children
 }) => {
   return (
@@ -19,9 +17,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         {/* Mobile: subtitle above title */}
         {subtitle && (
           <div className="block md:hidden mb-3">
-            <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
-              isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
-            }`}>
+            <span className="inline-block px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/10 dark:bg-weldingRed/20 text-weldingRed">
               {subtitle}
             </span>
           </div>
@@ -31,16 +27,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
           {/* Desktop: subtitle to the left of title */}
           {subtitle && (
             <div className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 mr-4">
-              <span className={`inline-block px-4 py-1 rounded-full text-sm font-medium ${
-                isDark ? "bg-weldingRed/20 text-weldingRed" : "bg-weldingRed/10 text-weldingRed"
-              }`}>
+              <span className="inline-block px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/10 dark:bg-weldingRed/20 text-weldingRed">
                 {subtitle}
               </span>
             </div>
           )}
-          <h2 className={`text-5xl font-bold font-oswald relative inline-block ${
-            isDark ? "text-white" : "text-steelBlue-dark"
-          }`}>
+          <h2 className="text-5xl font-bold font-oswald relative inline-block text-steelBlue-dark dark:text-white">
             {title}
             <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
           </h2>
@@ -48,9 +40,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       </div>
       {children && (
         <div className="text-center">
-          <p className={`mt-6 max-w-2xl mx-auto text-lg ${
-            isDark ? "text-gray-400" : "text-gray-600"
-          }`}>
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
             {children}
           </p>
         </div>

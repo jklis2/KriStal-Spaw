@@ -8,7 +8,6 @@ interface TestimonialCardProps {
   testimonial: string;
   rating: number;
   imageSrc: string;
-  isDark: boolean;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -18,12 +17,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   testimonial,
   rating,
   imageSrc,
-  isDark
 }) => {
   return (
-    <div className={`rounded-2xl overflow-hidden shadow-xl ${
-      isDark ? "bg-gray-900/50 shadow-black/20" : "bg-white/90 shadow-gray-200/70"
-    }`}>
+    <div className="rounded-2xl overflow-hidden shadow-xl bg-white/90 shadow-gray-200/70 dark:bg-gray-900/50 dark:shadow-black/20">
       <div className="grid md:grid-cols-5">
         {/* Image column */}
         <div className="md:col-span-2 relative h-64 md:h-auto">
@@ -33,6 +29,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             fill
             sizes="(max-width: 768px) 100vw, 40vw"
             className="object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
           <div className="absolute bottom-0 left-0 p-6">
@@ -52,9 +49,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             </svg>
           </div>
           <blockquote className="relative">
-            <p className={`text-xl font-medium mb-8 ${
-              isDark ? "text-white" : "text-gray-800"
-            }`}>
+            <p className="text-xl font-medium mb-8 text-gray-800 dark:text-white">
               {testimonial}
             </p>
             <div className="flex items-center gap-4">
@@ -70,7 +65,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                   </svg>
                 ))}
               </div>
-              <span className={`text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 {rating}.0 / 5.0
               </span>
             </div>

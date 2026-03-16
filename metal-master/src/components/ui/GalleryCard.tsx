@@ -6,7 +6,6 @@ interface GalleryCardProps {
   category: string;
   image: string;
   description: string;
-  isDark: boolean;
   index?: number;
 }
 
@@ -15,15 +14,12 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
   category,
   image,
   description,
-  isDark,
   index = 0
 }) => {
   return (
     <div
-      className={`group relative overflow-hidden rounded-lg backdrop-blur-sm
-               hover:shadow-xl hover:shadow-weldingRed/10 transition-all duration-300 animate-fade-up ${
-                 isDark ? "bg-gray-900/50" : "bg-white/70 shadow-md"
-               }`}
+      className="group relative overflow-hidden rounded-lg
+               hover:shadow-xl hover:shadow-weldingRed/10 transition-all duration-300 animate-fade-up bg-white/70 shadow-md dark:bg-gray-900/50 dark:shadow-none"
       style={{ animationDelay: `${index * 50}ms` }}
     >
       <div className="aspect-square relative">

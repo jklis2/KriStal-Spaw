@@ -1,6 +1,3 @@
-"use client";
-
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight, FaTools } from "react-icons/fa";
 import OfferCard from "@/components/ui/OfferCard";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -19,13 +16,10 @@ interface OfferContentProps {
 }
 
 export default function OfferContent({ offers }: OfferContentProps) {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-
   return (
     <>
       <section className="py-24 relative">
-        <BackgroundPattern isDark={isDark} />
+        <BackgroundPattern />
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
         <div className="max-w-7xl mx-auto px-6">
@@ -33,7 +27,6 @@ export default function OfferContent({ offers }: OfferContentProps) {
             <SectionHeader
               title="Profesjonalne Usługi Spawalnicze"
               subtitle="NASZA OFERTA"
-              isDark={isDark}
             >
               Oferujemy kompleksowe usługi spawalnicze dla klientów indywidualnych i firm.
               Nasze wieloletnie doświadczenie gwarantuje najwyższą jakość wykonania.
@@ -63,7 +56,6 @@ export default function OfferContent({ offers }: OfferContentProps) {
           </div>
           <SectionHeader
             title="Zrealizujemy Twój Projekt"
-            isDark={isDark}
           >
             Skontaktuj się z nami, aby omówić szczegóły Twojego zamówienia.
             Oferujemy bezpłatną wycenę i konsultację.

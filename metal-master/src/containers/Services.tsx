@@ -1,31 +1,22 @@
-"use client";
-
 import SectionHeader from "@/components/ui/SectionHeader";
 import ServiceCard from "@/components/ui/ServiceCard";
 import CTAButton from "@/components/ui/CTAButton";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
 import { servicesItems } from "@/consts/servicesItems";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function Services() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-
   return (
     <section
-      className={`py-24 relative overflow-hidden ${
-        isDark ? "bg-industrialGray" : "bg-industrialLight"
-      }`}
+      className="py-24 relative overflow-hidden bg-industrialLight dark:bg-industrialGray content-auto"
     >
-      <BackgroundPattern isDark={isDark} />
+      <BackgroundPattern />
       <div className="absolute top-0 left-0 w-32 h-32 bg-weldingRed/10 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
       <div className="container mx-auto px-6 relative">
         <SectionHeader
           title="Czym się zajmujemy?"
           subtitle="NASZE USŁUGI"
-          isDark={isDark}
         >
           Oferujemy kompleksowe usługi spawalnicze i ślusarskie dla klientów
           indywidualnych i firm. Każdy projekt traktujemy z najwyższą
@@ -39,7 +30,6 @@ export default function Services() {
               description={service.description}
               Icon={service.Icon}
               index={index}
-              isDark={isDark}
             />
           ))}
         </div>

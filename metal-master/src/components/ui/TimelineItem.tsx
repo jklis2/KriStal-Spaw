@@ -6,7 +6,6 @@ interface TimelineItemProps {
   description: string;
   Icon: ComponentType<{ className?: string }>;
   index: number;
-  isDark: boolean;
   isInView: boolean;
 }
 
@@ -16,16 +15,11 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   description,
   Icon,
   index,
-  isDark,
   isInView
 }) => {
   return (
     <div 
-      className={`relative pl-12 group p-6 rounded-lg border border-transparent transition-all duration-500 ${
-        isDark 
-          ? "hover:bg-gray-900/30 hover:border-weldingRed/20" 
-          : "hover:bg-white/70 hover:border-weldingRed/20"
-      } ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`}
+      className={`relative pl-12 group p-6 rounded-lg border border-transparent transition-all duration-500 hover:bg-white/70 dark:hover:bg-gray-900/30 hover:border-weldingRed/20 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Timeline node */}
@@ -38,12 +32,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
 
       <div className="relative">
         <span className="text-ctaOrange font-oswald text-3xl block mb-2 group-hover:text-weldingRed transition-colors duration-300">{year}</span>
-        <h3 className={`font-oswald text-xl mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>{title}</h3>
-        <p className={`font-roboto leading-relaxed transition-colors duration-300 ${
-          isDark 
-            ? "text-gray-400 group-hover:text-gray-300" 
-            : "text-gray-600 group-hover:text-gray-800"
-        }`}>
+        <h3 className="font-oswald text-xl mb-2 text-steelBlue-dark dark:text-white">{title}</h3>
+        <p className="font-roboto leading-relaxed transition-colors duration-300 text-gray-600 group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-300">
           {description}
         </p>
         

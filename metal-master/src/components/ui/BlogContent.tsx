@@ -1,6 +1,3 @@
-"use client";
-
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaNewspaper, FaSearch } from 'react-icons/fa';
 import PostCard from "@/components/ui/PostCard";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
@@ -21,12 +18,9 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ blogPosts }: BlogContentProps) {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-
   return (
     <section className="py-24 relative overflow-hidden">
-      <BackgroundPattern isDark={isDark} />
+      <BackgroundPattern />
       <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -35,10 +29,10 @@ export default function BlogContent({ blogPosts }: BlogContentProps) {
             <FaNewspaper className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">BLOG TECHNICZNY</span>
           </div>
-          <h2 className={`text-3xl md:text-4xl font-oswald mb-4 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-steelBlue-dark dark:text-white">
             Najnowsze artykuły i poradniki
           </h2>
-          <p className={`max-w-2xl mx-auto mb-8 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+          <p className="max-w-2xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
             Poszerzaj swoją wiedzę o spawalnictwie dzięki profesjonalnym artykułom
             przygotowanym przez naszych ekspertów
           </p>
@@ -48,11 +42,7 @@ export default function BlogContent({ blogPosts }: BlogContentProps) {
               <input 
                 type="text" 
                 placeholder="Szukaj artykułów..." 
-                className={`w-full py-3 px-5 pl-12 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-weldingRed/50 transition-all ${
-                  isDark 
-                    ? "bg-gray-900/50 border-gray-700 text-white placeholder-gray-500" 
-                    : "bg-white border-gray-200 text-gray-800 placeholder-gray-400"
-                }`}
+                className="w-full py-3 px-5 pl-12 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-weldingRed/50 transition-all bg-white border-gray-200 text-gray-800 placeholder-gray-400 dark:bg-gray-900/50 dark:border-gray-700 dark:text-white dark:placeholder-gray-500"
               />
               <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-weldingRed" />
             </div>

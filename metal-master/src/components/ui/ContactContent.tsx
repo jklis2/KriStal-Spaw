@@ -1,15 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
 import ContactForm from "@/containers/ContactForm";
 import ContactInfo from "@/containers/ContactInfo";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 export default function ContactContent() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
   const [shouldLoadMap, setShouldLoadMap] = useState(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +31,7 @@ export default function ContactContent() {
   return (
     <>
       <section className="py-24 relative overflow-hidden">
-        <BackgroundPattern isDark={isDark} />
+        <BackgroundPattern />
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
         
@@ -43,26 +40,20 @@ export default function ContactContent() {
             <FaEnvelope className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">SKONTAKTUJ SIĘ Z NAMI</span>
           </div>
-          <h2 className={`text-3xl md:text-4xl font-oswald mb-4 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-steelBlue-dark dark:text-white">
             Jesteśmy do Twojej dyspozycji
           </h2>
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div 
-              className={`backdrop-blur-sm p-8 rounded-lg border border-transparent animate-fade-left delay-200 ${
-                isDark 
-                  ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
-                  : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
-              } transition-all duration-300`}
+              className="p-8 rounded-lg border animate-fade-left delay-200 transition-all duration-300 bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10 dark:bg-gray-900/50 dark:border-gray-800 dark:hover:border-weldingRed/20 dark:shadow-none"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
                   <FaEnvelope className="text-weldingRed" />
                 </div>
-                <h2 className={`text-3xl font-oswald relative ${
-                  isDark ? "text-white" : "text-steelBlue-dark"
-                }`}>
+                <h2 className="text-3xl font-oswald relative text-steelBlue-dark dark:text-white">
                   Napisz do nas
                 </h2>
               </div>
@@ -81,18 +72,14 @@ export default function ContactContent() {
             <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
               <FaMapMarkedAlt className="text-weldingRed" />
             </div>
-            <h2 className={`text-3xl font-oswald ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+            <h2 className="text-3xl font-oswald text-steelBlue-dark dark:text-white">
               Gdzie nas znaleźć
             </h2>
           </div>
           
           <div 
             ref={mapContainerRef}
-            className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent ${
-              isDark 
-                ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
-                : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
-            } transition-all duration-300`}
+            className="rounded-lg overflow-hidden border transition-all duration-300 bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10 dark:bg-gray-900/50 dark:border-gray-800 dark:hover:border-weldingRed/20 dark:shadow-none"
           >
             <div className="aspect-[21/9] relative">
               {shouldLoadMap ? (
@@ -107,9 +94,7 @@ export default function ContactContent() {
                   className="absolute inset-0"
                 ></iframe>
               ) : (
-                <div className={`absolute inset-0 flex items-center justify-center ${
-                  isDark ? "bg-gray-800/50" : "bg-gray-100"
-                }`}>
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800/50">
                   <FaMapMarkedAlt className="text-weldingRed text-4xl animate-pulse" />
                 </div>
               )}

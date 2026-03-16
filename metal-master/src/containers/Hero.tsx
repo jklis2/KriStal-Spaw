@@ -1,36 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight, FaShieldAlt, FaTools, FaCertificate } from "react-icons/fa";
 
 export default function Hero() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-  
   return (
-    <section className={`relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden ${
-      isDark ? "bg-industrialGray" : "bg-industrialLight"
-    }`}>
+    <section className="relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden bg-industrialLight dark:bg-industrialGray">
       {/* Background with parallax effect */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
           <Image
-            src="/images/weldingHero.jpg"
+            src="/images/weldingHero.webp"
             alt="Profesjonalne spawalnictwo - KRISTAL-SPAW"
             fill
             priority
             sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 100vw"
-            quality={75}
-            className="object-cover w-full h-full brightness-50 scale-105 transform transition-transform duration-10000 animate-slow-zoom"
+            quality={65}
+            className="object-cover w-full h-full brightness-50 scale-105 transform md:animate-slow-zoom"
           />
           {/* Overlay with animated gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-b ${
-            isDark 
-              ? "from-black/80 via-black/70 to-industrialGray/95" 
-              : "from-black/70 via-black/60 to-industrialLight/90"
-          }`}></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-industrialLight/90 dark:from-black/80 dark:via-black/70 dark:to-industrialGray/95"></div>
         </div>
       </div>
       
@@ -84,9 +72,7 @@ export default function Hero() {
           ].map((feature, index) => (
             <div 
               key={index}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg backdrop-blur-sm ${
-                isDark ? 'bg-gray-900/30' : 'bg-gray-800/30'
-              }`}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-800/30 dark:bg-gray-900/30"
             >
               <div className="p-2 rounded-full bg-weldingRed/20">
                 <feature.icon className="text-weldingRed" />
@@ -98,12 +84,7 @@ export default function Hero() {
       </div>
       
       {/* Bottom gradient */}
-      <div className={`absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t ${
-        isDark 
-          ? "from-industrialGray to-transparent" 
-          : "from-industrialLight to-transparent"
-      }`}></div>
-      
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-industrialLight to-transparent dark:from-industrialGray dark:to-transparent"></div>
 
     </section>
   );

@@ -1,8 +1,4 @@
-"use client";
-
-import React from "react";
 import { whyUsItems } from "@/consts/whyUsItems";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight } from "react-icons/fa";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CTAButton from "@/components/ui/CTAButton";
@@ -11,22 +7,23 @@ import TestimonialCard from "@/components/ui/TestimonialCard";
 import { SVG_PATTERNS } from "@/consts/svgPatterns";
 
 export default function WhyUs() {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-
   return (
     <section
-      className={`py-24 relative overflow-hidden ${
-        isDark ? "bg-industrialGray" : "bg-industrialLight"
-      }`}
+      className="py-24 relative overflow-hidden bg-industrialLight dark:bg-industrialGray content-auto"
     >
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-weldingRed/5 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-ctaOrange/5 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute inset-0 opacity-5">
         <div
-          className="absolute inset-0 bg-repeat"
+          className="absolute inset-0 bg-repeat block dark:hidden"
           style={{
-            backgroundImage: isDark ? SVG_PATTERNS.dots.dark : SVG_PATTERNS.dots.light,
+            backgroundImage: SVG_PATTERNS.dots.light,
+          }}
+        ></div>
+        <div
+          className="absolute inset-0 bg-repeat hidden dark:block"
+          style={{
+            backgroundImage: SVG_PATTERNS.dots.dark,
           }}
         ></div>
       </div>
@@ -34,7 +31,6 @@ export default function WhyUs() {
         <SectionHeader
           title="Dlaczego Warto Nam Zaufać?"
           subtitle="NASZE ATUTY"
-          isDark={isDark}
         >
           Od lat dostarczamy najwyższej jakości usługi spawalnicze i ślusarskie.
           Poznaj powody, dla których klienci wybierają właśnie nas.
@@ -47,7 +43,6 @@ export default function WhyUs() {
               description={benefit.description}
               Icon={benefit.Icon}
               index={index}
-              isDark={isDark}
             />
           ))}
         </div>
@@ -58,7 +53,6 @@ export default function WhyUs() {
           testimonial="Współpraca z firmą KRISTAL-SPAW to czysta przyjemność. Profesjonalne podejście, terminowość i najwyższa jakość wykonania. Konstrukcje, które dla nas wykonali, są nie tylko funkcjonalne, ale również estetyczne. Polecam każdemu, kto szuka solidnego partnera w branży metalowej."
           rating={5}
           imageSrc="/images/photoPlaceholder.webp"
-          isDark={isDark}
         />
         <div className="text-center mt-16">
           <CTAButton href="/o-nas" icon={<FaArrowRight />}>

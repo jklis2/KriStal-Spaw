@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useTheme } from "@/components/providers/ThemeProvider";
 
 interface HeroSectionProps {
   title: string;
@@ -12,14 +9,8 @@ interface HeroSectionProps {
 export default function SmallHeroSection({
   title,
   description,
-  imageSrc = "/images/weldingHero.jpg" // Domyślne zdjęcie tła
+  imageSrc = "/images/weldingHero.webp" // Domyślne zdjęcie tła
 }: HeroSectionProps) {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-  
-  // Fallback image jeśli podany obraz nie istnieje
-  const fallbackImage = "/images/photoPlaceholder.webp";
-  
   return (
     <section className="relative h-[60vh] overflow-hidden">
       {/* Background image with parallax effect */}
@@ -30,19 +21,12 @@ export default function SmallHeroSection({
           fill
           priority
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 100vw"
-          quality={75}
-          className="object-cover brightness-75 transform transition-transform duration-10000 animate-slow-zoom"
-          onError={(e) => {
-            e.currentTarget.src = fallbackImage;
-          }}
+          quality={65}
+          className="object-cover brightness-75 transform md:animate-slow-zoom"
         />
         
         {/* Overlay with animated gradient */}
-        <div className={`absolute inset-0 bg-gradient-to-b ${
-          isDark 
-            ? "from-black/80 via-black/60 to-industrialGray/95" 
-            : "from-black/70 via-black/50 to-industrialLight/95"
-        }`}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-industrialLight/95 dark:from-black/80 dark:via-black/60 dark:to-industrialGray/95"></div>
       </div>
       
       {/* Content */}
@@ -51,7 +35,7 @@ export default function SmallHeroSection({
           <div className="max-w-3xl mx-auto text-center">
             {/* Mobile: KRISTAL-SPAW above title */}
             <div className="block md:hidden mb-3">
-              <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm whitespace-nowrap">
+              <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed whitespace-nowrap">
                 KRISTAL-SPAW
               </span>
             </div>
@@ -59,7 +43,7 @@ export default function SmallHeroSection({
             <div className="relative inline-block">
               {/* Desktop: KRISTAL-SPAW to the left of title */}
               <div className="hidden md:block absolute right-full top-1/2 -translate-y-1/2 mr-4">
-                <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed backdrop-blur-sm whitespace-nowrap">
+                <span className="px-4 py-1 rounded-full text-sm font-medium bg-weldingRed/20 text-weldingRed whitespace-nowrap">
                   KRISTAL-SPAW
                 </span>
               </div>
@@ -80,11 +64,7 @@ export default function SmallHeroSection({
       </div>
       
       {/* Bottom gradient */}
-      <div className={`absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t ${
-        isDark 
-          ? "from-industrialGray to-transparent" 
-          : "from-industrialLight to-transparent"
-      }`}></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialLight to-transparent dark:from-industrialGray dark:to-transparent"></div>
     </section>
   );
 }
