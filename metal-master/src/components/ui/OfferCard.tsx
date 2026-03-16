@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaCheck } from "react-icons/fa";
@@ -12,7 +13,7 @@ interface OfferCardProps {
   features: string[];
 }
 
-export default function OfferCard({
+function OfferCard({
   title,
   description,
   image,
@@ -92,3 +93,5 @@ export default function OfferCard({
     </div>
   );
 }
+
+export default React.memo(OfferCard);

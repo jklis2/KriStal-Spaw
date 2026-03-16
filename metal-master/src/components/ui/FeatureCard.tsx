@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react';
+import React, { ComponentType, useMemo } from 'react';
 
 interface FeatureCardProps {
   title: string;
@@ -15,6 +15,48 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   index,
   isDark
 }) => {
+  const iconContent = useMemo(() => {
+    const iconIndex = index % 5;
+    switch (iconIndex) {
+      case 0:
+        return (
+          <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L4 9V21H20V9L12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M16 13C16 15.2091 14.2091 17 12 17C9.79086 17 8 15.2091 8 13C8 10.7909 9.79086 9 12 9C14.2091 9 16 10.7909 16 13Z" stroke="currentColor" strokeWidth="2" fill="none" />
+          </svg>
+        );
+      case 1:
+        return (
+          <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" />
+            <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" strokeWidth="2" />
+            <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="currentColor" />
+          </svg>
+        );
+      case 2:
+        return (
+          <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.7519 11.1679L11.5547 9.03647C11.0921 8.72159 10.4336 9.04541 10.4336 9.60533V13.8681C10.4336 14.428 11.0921 14.7518 11.5547 14.437L14.7519 12.3055C15.1895 12.0075 15.1895 11.4659 14.7519 11.1679Z" fill="currentColor" />
+            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        );
+      case 3:
+        return (
+          <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 8H19M5 12H19M5 16H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 4:
+        return (
+          <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15 9H21L16 14L18 21L12 17L6 21L8 14L3 9H9L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          </svg>
+        );
+      default:
+        return null;
+    }
+  }, [index]);
+
   return (
     <div 
       className={`backdrop-blur-sm rounded-xl p-8 group transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-weldingRed shadow-lg ${
@@ -47,35 +89,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
               
               {/* Symbol spawalniczy w środku */}
               <div className="z-10 flex items-center justify-center w-full h-full transform group-hover:scale-110 transition-transform duration-300">
-                {index % 5 === 0 && (
-                  <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 3L4 9V21H20V9L12 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <path d="M16 13C16 15.2091 14.2091 17 12 17C9.79086 17 8 15.2091 8 13C8 10.7909 9.79086 9 12 9C14.2091 9 16 10.7909 16 13Z" stroke="currentColor" strokeWidth="2" fill="none" />
-                  </svg>
-                )}
-                {index % 5 === 1 && (
-                  <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" />
-                    <path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="currentColor" strokeWidth="2" />
-                    <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" fill="currentColor" />
-                  </svg>
-                )}
-                {index % 5 === 2 && (
-                  <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.7519 11.1679L11.5547 9.03647C11.0921 8.72159 10.4336 9.04541 10.4336 9.60533V13.8681C10.4336 14.428 11.0921 14.7518 11.5547 14.437L14.7519 12.3055C15.1895 12.0075 15.1895 11.4659 14.7519 11.1679Z" fill="currentColor" />
-                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                )}
-                {index % 5 === 3 && (
-                  <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 8H19M5 12H19M5 16H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                )}
-                {index % 5 === 4 && (
-                  <svg className="w-8 h-8 text-weldingRed" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L15 9H21L16 14L18 21L12 17L6 21L8 14L3 9H9L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                  </svg>
-                )}
+                {iconContent}
               </div>
             </div>
             
@@ -107,4 +121,4 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   );
 };
 
-export default FeatureCard;
+export default React.memo(FeatureCard);

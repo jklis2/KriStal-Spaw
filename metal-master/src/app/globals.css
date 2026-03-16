@@ -32,16 +32,19 @@
   /* Slow zoom animation for hero background */
   .animate-slow-zoom {
     animation: slow-zoom 30s ease-in-out infinite alternate;
+    will-change: transform;
+    transform: translateZ(0);
   }
   
   @keyframes slow-zoom {
-    from { transform: scale(1.05); }
-    to { transform: scale(1.15); }
+    from { transform: scale(1.05) translateZ(0); }
+    to { transform: scale(1.15) translateZ(0); }
   }
   
   /* Slow pulse animation for badges */
   .animate-pulse-slow {
     animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: opacity;
   }
   
   @keyframes pulse-slow {
@@ -62,22 +65,24 @@
   /* Slow bounce animation for scroll indicator */
   .animate-bounce-slow {
     animation: bounce-slow 2s infinite;
+    will-change: transform;
   }
   
   @keyframes bounce-slow {
-    0%, 100% { transform: translateY(0) translateX(-50%); }
-    50% { transform: translateY(-10px) translateX(-50%); }
+    0%, 100% { transform: translateY(0) translateX(-50%) translateZ(0); }
+    50% { transform: translateY(-10px) translateX(-50%) translateZ(0); }
   }
   
   /* Scroll animation for the scroll indicator dot */
   .animate-scroll {
     animation: scroll 1.5s ease-in-out infinite;
+    will-change: transform;
   }
   
   @keyframes scroll {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-    100% { transform: translateY(0); }
+    0% { transform: translateY(0) translateZ(0); }
+    50% { transform: translateY(6px) translateZ(0); }
+    100% { transform: translateY(0) translateZ(0); }
   }
   
   /* Fade-in animation */

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { BlogPost } from "@/consts/blogPosts";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ interface PostCardProps {
   post: BlogPost;
 }
 
-export default function PostCard({ post }: PostCardProps) {
+function PostCard({ post }: PostCardProps) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
@@ -75,3 +76,5 @@ export default function PostCard({ post }: PostCardProps) {
     </Link>
   );
 }
+
+export default React.memo(PostCard);

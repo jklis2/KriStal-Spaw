@@ -81,4 +81,4 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   );
 };
 
-export default TestimonialCard;
+export default React.memo(TestimonialCard);

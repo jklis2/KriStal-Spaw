@@ -61,4 +61,4 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
   );
 };
 
-export default CertificateCard;
+export default React.memo(CertificateCard);

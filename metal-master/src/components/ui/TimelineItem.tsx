@@ -57,4 +57,4 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   );
 };
 
-export default TimelineItem;
+export default React.memo(TimelineItem);

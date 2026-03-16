@@ -72,4 +72,4 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
   );
 };
 
-export default GalleryCard;
+export default React.memo(GalleryCard);

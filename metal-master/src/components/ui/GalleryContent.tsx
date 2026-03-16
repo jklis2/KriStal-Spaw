@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCamera, FaFilter, FaSearch } from 'react-icons/fa';
@@ -22,21 +22,16 @@ interface GalleryContentProps {
 
 export default function GalleryContent({ galleryItems, categories }: GalleryContentProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
-  const [isFiltering, setIsFiltering] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  
-  useEffect(() => {
-    setIsFiltering(true);
-    const timer = setTimeout(() => {
-      setIsFiltering(false);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, [selectedCategory]);
 
-  const filteredItems = galleryItems.filter(
-    (item) =>
-      selectedCategory === "Wszystkie" || item.category === selectedCategory
+  const filteredItems = useMemo(
+    () =>
+      galleryItems.filter(
+        (item) =>
+          selectedCategory === "Wszystkie" || item.category === selectedCategory
+      ),
+    [galleryItems, selectedCategory]
   );
 
   return (
@@ -94,28 +89,11 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
             </div>
           </motion.div>
         </motion.div>
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={selectedCategory}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {isFiltering && (
-              <motion.div 
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <div className="p-8 rounded-lg bg-weldingRed/20 backdrop-blur-md">
-                  <div className="animate-spin w-12 h-12 border-4 border-weldingRed border-t-transparent rounded-full"></div>
-                </div>
-              </motion.div>
-            )}
-            
+        <motion.div 
+          layout
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
               <GalleryCard
                 key={item.id}
@@ -127,26 +105,26 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
                 index={index}
               />
             ))}
-            
-            {filteredItems.length === 0 && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="col-span-3 text-center py-16"
-              >
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-weldingRed/10 flex items-center justify-center">
-                  <FaSearch className="text-weldingRed text-2xl" />
-                </div>
-                <h3 className={`text-2xl font-oswald mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
-                  Brak projektów w tej kategorii
-                </h3>
-                <p className={isDark ? "text-gray-400" : "text-gray-600"}>
-                  Spróbuj wybrać inną kategorię lub sprawdź później
-                </p>
-              </motion.div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+          </AnimatePresence>
+          
+          {filteredItems.length === 0 && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="col-span-3 text-center py-16"
+            >
+              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-weldingRed/10 flex items-center justify-center">
+                <FaSearch className="text-weldingRed text-2xl" />
+              </div>
+              <h3 className={`text-2xl font-oswald mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
+                Brak projektów w tej kategorii
+              </h3>
+              <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+                Spróbuj wybrać inną kategorię lub sprawdź później
+              </p>
+            </motion.div>
+          )}
+        </motion.div>
       </div>
     </section>
   );
