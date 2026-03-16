@@ -24,15 +24,29 @@ export default function Navbar() {
   useEffect(() => {
     // Only add scroll listener if menu is closed
     if (!isOpen) {
+      let ticking = false;
+      
       const handleScroll = () => {
-        if (window.scrollY > 50) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const shouldBeScrolled = window.scrollY > 50;
+            setScrolled((prev) => {
+              // Only update state if value actually changes
+              if (prev !== shouldBeScrolled) {
+                return shouldBeScrolled;
+              }
+              return prev;
+            });
+            ticking = false;
+          });
+          ticking = true;
         }
       };
 
-      window.addEventListener('scroll', handleScroll);
+      // Set initial state
+      handleScroll();
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, [isOpen]);

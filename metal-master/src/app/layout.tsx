@@ -11,12 +11,18 @@ const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-roboto",
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const oswald = Oswald({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-oswald",
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
