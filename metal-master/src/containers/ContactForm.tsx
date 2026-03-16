@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { FaPaperPlane, FaUser, FaEnvelope, FaPhone, FaComment } from 'react-icons/fa';
 import { useTheme } from '@/components/providers/ThemeProvider';
 
@@ -14,25 +14,26 @@ export default function ContactForm() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-  };
+  }, [formData]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }, []);
 
-  const inputClasses = `w-full px-4 py-3 rounded-lg font-roboto
+  const inputClasses = useMemo(() => `w-full px-4 py-3 rounded-lg font-roboto
                      focus:outline-none focus:border-weldingRed focus:ring-2 focus:ring-weldingRed/30
                      transition-all duration-300 ${
                        isDark 
                          ? "bg-gray-900/50 border border-gray-800 text-white placeholder-gray-400 hover:border-gray-700" 
                          : "bg-white/80 border border-gray-200 text-steelBlue-dark placeholder-gray-500 hover:border-gray-300"
-                     }`;
+                     }`, [isDark]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">

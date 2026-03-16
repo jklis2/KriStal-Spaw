@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
@@ -10,6 +11,26 @@ import BackgroundPattern from "@/components/ui/BackgroundPattern";
 export default function ContactContent() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (mapContainerRef.current) {
+      observer.observe(mapContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -83,22 +104,33 @@ export default function ContactContent() {
             </h2>
           </div>
           
-          <div className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent ${
-            isDark 
-              ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
-              : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
-          } transition-all duration-300`}>
+          <div 
+            ref={mapContainerRef}
+            className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent ${
+              isDark 
+                ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
+                : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
+            } transition-all duration-300`}
+          >
             <div className="aspect-[21/9] relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12643.756924484244!2d21.0122281!3d52.2296756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669d3f99a5%3A0x52b81c9f2707694d!2sWarszawa!5e0!3m2!1spl!2spl!4v1615997602232!5m2!1spl!2spl"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0"
-              ></iframe>
+              {shouldLoadMap ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12643.756924484244!2d21.0122281!3d52.2296756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669d3f99a5%3A0x52b81c9f2707694d!2sWarszawa!5e0!3m2!1spl!2spl!4v1615997602232!5m2!1spl!2spl"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                ></iframe>
+              ) : (
+                <div className={`absolute inset-0 flex items-center justify-center ${
+                  isDark ? "bg-gray-800/50" : "bg-gray-100"
+                }`}>
+                  <FaMapMarkedAlt className="text-weldingRed text-4xl animate-pulse" />
+                </div>
+              )}
             </div>
           </div>
         </motion.div>
