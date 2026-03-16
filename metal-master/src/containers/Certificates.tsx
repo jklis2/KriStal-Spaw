@@ -16,7 +16,7 @@ export default function Certificates() {
         isDark ? "bg-industrialGray" : "bg-industrialLight"
       }`}
     >
-      <BackgroundPattern />
+      <BackgroundPattern isDark={isDark} />
       <div className="max-w-6xl mx-auto px-6 relative">
         <SectionHeader
           title="Nasze Certyfikaty"

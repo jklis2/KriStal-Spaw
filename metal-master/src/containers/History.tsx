@@ -4,7 +4,7 @@ import Image from "next/image";
 import { historyItems } from "@/consts/historyItems";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useInView } from "@/hooks/useInView";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TimelineItem from "@/components/ui/TimelineItem";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
@@ -21,7 +21,7 @@ export default function History() {
   
   return (
     <section className={`py-24 relative overflow-hidden ${isDark ? "bg-industrialGray" : "bg-industrialLight"}`}>
-      <BackgroundPattern />
+      <BackgroundPattern isDark={isDark} />
       <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
       <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
       <div className="max-w-6xl mx-auto px-6 relative">

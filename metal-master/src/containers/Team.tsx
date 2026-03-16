@@ -21,7 +21,7 @@ export default function Team() {
     >
       <div className="absolute top-20 right-0 w-64 h-64 bg-weldingRed/5 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-48 h-48 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
-      <BackgroundPattern />
+      <BackgroundPattern isDark={isDark} />
       <div className="container mx-auto px-6 relative">
         <SectionHeader
           title="Nasz Zespół"

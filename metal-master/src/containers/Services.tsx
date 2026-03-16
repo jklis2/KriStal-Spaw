@@ -18,7 +18,7 @@ export default function Services() {
         isDark ? "bg-industrialGray" : "bg-industrialLight"
       }`}
     >
-      <BackgroundPattern />
+      <BackgroundPattern isDark={isDark} />
       <div className="absolute top-0 left-0 w-32 h-32 bg-weldingRed/10 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
       <div className="container mx-auto px-6 relative">

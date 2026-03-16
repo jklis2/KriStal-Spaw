@@ -26,7 +26,7 @@ export default function OfferContent({ offers }: OfferContentProps) {
   return (
     <>
       <section className="py-24 relative">
-        <BackgroundPattern />
+        <BackgroundPattern isDark={isDark} />
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
         <div className="max-w-7xl mx-auto px-6">

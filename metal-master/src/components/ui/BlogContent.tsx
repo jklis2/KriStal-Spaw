@@ -27,7 +27,7 @@ export default function BlogContent({ blogPosts }: BlogContentProps) {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <BackgroundPattern />
+      <BackgroundPattern isDark={isDark} />
       <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
       <div className="max-w-7xl mx-auto px-6 relative">

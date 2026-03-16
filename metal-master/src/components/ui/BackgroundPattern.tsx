@@ -1,11 +1,8 @@
-"use client";
+interface BackgroundPatternProps {
+  isDark?: boolean;
+}
 
-import { useTheme } from "@/components/providers/ThemeProvider";
-
-export default function BackgroundPattern() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
+export default function BackgroundPattern({ isDark = false }: BackgroundPatternProps) {
   return (
     <div className="absolute inset-0 opacity-5">
       <div
