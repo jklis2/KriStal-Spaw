@@ -5,7 +5,6 @@ import { BlogPost } from "@/consts/blogPosts";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaUser, FaArrowRight } from 'react-icons/fa';
 
 interface PostCardProps {
@@ -18,9 +17,8 @@ function PostCard({ post }: PostCardProps) {
   
   return (
     <Link href={`/blog/${post.slug}`} className="group block h-full">
-      <motion.div 
-        whileHover={{ y: -5 }}
-        className={`overflow-hidden rounded-lg border border-transparent h-full transition-all duration-300 hover:shadow-xl ${
+      <div 
+        className={`overflow-hidden rounded-lg border border-transparent h-full transition-all duration-300 hover:-translate-y-[5px] hover:shadow-xl ${
           isDark 
             ? "bg-zinc-900/80 backdrop-blur-sm hover:border-weldingRed/20 hover:shadow-weldingRed/10" 
             : "bg-white hover:border-weldingRed/10 hover:shadow-weldingRed/5"
@@ -31,6 +29,8 @@ function PostCard({ post }: PostCardProps) {
             src={post.image}
             alt={post.title}
             fill
+            loading="lazy"
+            quality={70}
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -72,7 +72,7 @@ function PostCard({ post }: PostCardProps) {
             <FaArrowRight className="ml-2 text-weldingRed group-hover:translate-x-1 transition-transform duration-300" />
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }

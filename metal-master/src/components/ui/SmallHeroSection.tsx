@@ -29,7 +29,8 @@ export default function SmallHeroSection({
           alt={title}
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 100vw"
+          quality={75}
           className="object-cover brightness-75 transform transition-transform duration-10000 animate-slow-zoom"
           onError={(e) => {
             e.currentTarget.src = fallbackImage;

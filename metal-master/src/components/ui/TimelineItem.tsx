@@ -1,5 +1,4 @@
 import React, { ComponentType } from 'react';
-import { motion } from 'framer-motion';
 
 interface TimelineItemProps {
   year: string;
@@ -21,15 +20,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   isInView
 }) => {
   return (
-    <motion.div 
-      className={`relative pl-12 group p-6 rounded-lg border border-transparent transition-all duration-300 ${
+    <div 
+      className={`relative pl-12 group p-6 rounded-lg border border-transparent transition-all duration-500 ${
         isDark 
           ? "hover:bg-gray-900/30 hover:border-weldingRed/20" 
           : "hover:bg-white/70 hover:border-weldingRed/20"
-      }`}
-      initial={{ opacity: 0, x: 30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-      transition={{ duration: 0.5, delay: 0.1 * index }}
+      } ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* Timeline node */}
       <div
@@ -53,7 +50,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
         {/* Hover indicator */}
         <div className="w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-weldingRed to-ctaOrange mt-4 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

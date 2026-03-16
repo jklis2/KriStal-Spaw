@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { historyItems } from "@/consts/historyItems";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TimelineItem from "@/components/ui/TimelineItem";
@@ -25,11 +24,7 @@ export default function History() {
       <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
       <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
       <div className="max-w-6xl mx-auto px-6 relative">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="animate-fade-up">
           <SectionHeader
             title="Nasza Historia"
             subtitle="NASZA DROGA"
@@ -38,14 +33,9 @@ export default function History() {
             Metal Master to firma z ponad 20-letnim doświadczeniem w tworzeniu bram, ogrodzeń i dekoracji
             metalowych. Nasze produkty cechuje precyzja wykonania i dbałość o detale.
           </SectionHeader>
-        </motion.div>
+        </div>
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <motion.div 
-            className="space-y-8"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
+          <div className="space-y-8 animate-fade-left delay-200">
             <div className="relative group">
               <div className="absolute -inset-4 bg-weldingRed/20 rounded-lg transform -rotate-2 group-hover:rotate-0 transition-transform duration-300"></div>
               <div className="relative overflow-hidden rounded-lg">
@@ -54,6 +44,8 @@ export default function History() {
                   alt="Warsztat Metal Master"
                   width={800}
                   height={500}
+                  loading="lazy"
+                  quality={75}
                   className="w-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
@@ -77,7 +69,7 @@ export default function History() {
                 <div className="absolute -bottom-4 -right-4 text-4xl text-weldingRed opacity-30">❞</div>
               </blockquote>
             </div>
-          </motion.div>
+          </div>
           <div 
             className="space-y-8 relative" 
             ref={timelineRef}

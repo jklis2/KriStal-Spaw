@@ -30,7 +30,7 @@ export default function Footer() {
                 width={130}
                 height={130}
                 className="w-full h-full p-1 drop-shadow-md"
-                priority
+                loading="lazy"
               />
             </div>
             

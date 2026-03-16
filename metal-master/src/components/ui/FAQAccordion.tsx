@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { FaChevronDown, FaQuestionCircle, FaRegLightbulb } from 'react-icons/fa';
 import { useTheme } from '@/components/providers/ThemeProvider';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface FAQItem {
   question: string;
@@ -23,45 +22,17 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // Warianty animacji dla akordeonów
-  const accordionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.4
-      }
-    })
-  };
-  
-  const contentVariants = {
-    hidden: { opacity: 0, height: 0 },
-    visible: { 
-      opacity: 1, 
-      height: 'auto',
-      transition: { 
-        duration: 0.3,
-        ease: 'easeInOut'
-      } 
-    }
-  };
-
   return (
     <div className="space-y-6 w-full max-w-3xl mx-auto">
       {items.map((item, index) => (
-        <motion.div
+        <div
           key={index}
-          custom={index}
-          initial="hidden"
-          animate="visible"
-          variants={accordionVariants}
-          className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent transition-all duration-300 ${
+          className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent transition-all duration-300 animate-fade-up ${
             isDark 
               ? "bg-gray-900/50 hover:bg-gray-900/60 hover:border-weldingRed/20" 
               : "bg-white/70 hover:bg-white/80 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
           }`}
+          style={{ animationDelay: `${index * 100}ms` }}
         >
           <button
             onClick={() => toggleAccordion(index)}
@@ -90,31 +61,22 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             </div>
           </button>
           
-          <AnimatePresence>
-            {openIndex === index && (
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                variants={contentVariants}
-                className="overflow-hidden"
-              >
-                <div className="px-6 pb-6">
-                  <div className="pt-3 border-t border-weldingRed/20 mt-1">
-                    <motion.p 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.1 }}
-                      className={`font-roboto mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
-                    >
-                      {item.answer}
-                    </motion.p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+          <div
+            className="overflow-hidden transition-all duration-300 ease-in-out"
+            style={{
+              maxHeight: openIndex === index ? '500px' : '0',
+              opacity: openIndex === index ? 1 : 0,
+            }}
+          >
+            <div className="px-6 pb-6">
+              <div className="pt-3 border-t border-weldingRed/20 mt-1">
+                <p className={`font-roboto mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                  {item.answer}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   );

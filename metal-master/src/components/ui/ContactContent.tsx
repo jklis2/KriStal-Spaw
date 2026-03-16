@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
 import ContactForm from "@/containers/ContactForm";
 import ContactInfo from "@/containers/ContactInfo";
@@ -39,12 +38,7 @@ export default function ContactContent() {
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 max-w-3xl mx-auto px-6"
-        >
+        <div className="text-center mb-12 max-w-3xl mx-auto px-6 animate-fade-up">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-weldingRed/10 mb-4">
             <FaEnvelope className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">SKONTAKTUJ SIĘ Z NAMI</span>
@@ -52,14 +46,11 @@ export default function ContactContent() {
           <h2 className={`text-3xl md:text-4xl font-oswald mb-4 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
             Jesteśmy do Twojej dyspozycji
           </h2>
-        </motion.div>
+        </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className={`backdrop-blur-sm p-8 rounded-lg border border-transparent ${
+            <div 
+              className={`backdrop-blur-sm p-8 rounded-lg border border-transparent animate-fade-left delay-200 ${
                 isDark 
                   ? "bg-gray-900/50 border-gray-800 hover:border-weldingRed/20" 
                   : "bg-white/70 border-gray-200 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
@@ -77,24 +68,15 @@ export default function ContactContent() {
               </div>
               <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange mb-8"></div>
               <ContactForm />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            </div>
+            <div className="animate-fade-right delay-300">
               <ContactInfo />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
       <section className="pb-24 relative overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="max-w-7xl mx-auto px-6"
-        >
+        <div className="max-w-7xl mx-auto px-6 animate-fade-up delay-400">
           <div className="flex items-center justify-center gap-3 mb-8">
             <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
               <FaMapMarkedAlt className="text-weldingRed" />
@@ -133,7 +115,7 @@ export default function ContactContent() {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
     </>
   );

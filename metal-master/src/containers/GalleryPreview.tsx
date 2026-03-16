@@ -41,6 +41,8 @@ export default function GalleryPreview() {
               alt={galleryItems[0].alt}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
+              quality={70}
+              loading="lazy"
               className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
             />
             <div className="absolute inset-x-0 bottom-0 z-20 p-8 transform transition-transform duration-500">
@@ -87,6 +89,8 @@ export default function GalleryPreview() {
                   alt={img.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={65}
+                  loading="lazy"
                   className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-x-0 bottom-0 z-20 p-4">

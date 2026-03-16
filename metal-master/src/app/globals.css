@@ -100,4 +100,73 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+  /* Remove will-change on mobile to reduce GPU memory pressure */
+  @media (max-width: 768px) {
+    .animate-slow-zoom {
+      will-change: auto;
+    }
+    .animate-pulse-slow {
+      will-change: auto;
+    }
+    .animate-bounce-slow {
+      will-change: auto;
+    }
+    .animate-scroll {
+      will-change: auto;
+    }
+  }
+
+  /* Content visibility optimization for below-fold sections */
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+
+  /* Lightweight CSS animations to replace framer-motion */
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease-out both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-down {
+    animation: fadeDown 0.5s ease-out both;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-left {
+    animation: fadeLeft 0.5s ease-out both;
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-fade-right {
+    animation: fadeRight 0.5s ease-out both;
+  }
+  @keyframes fadeRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-fade-in-only {
+    animation: fadeInOnly 0.8s ease-out both;
+  }
+  @keyframes fadeInOnly {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
 }

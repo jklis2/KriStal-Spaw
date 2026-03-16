@@ -40,6 +40,8 @@ export default function Team() {
                 alt={teamItems.name}
                 width={500}
                 height={600}
+                quality={75}
+                loading="lazy"
                 className="w-full h-[400px] sm:h-[450px] md:h-[500px] object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
                 onError={(e) => {
                   e.currentTarget.src = fallbackImage;
