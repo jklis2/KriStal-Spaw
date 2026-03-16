@@ -16,8 +16,8 @@ interface FAQAccordionProps {
 
 export default function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

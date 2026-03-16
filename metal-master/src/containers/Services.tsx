@@ -9,8 +9,8 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function Services() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <section

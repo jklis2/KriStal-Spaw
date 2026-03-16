@@ -6,8 +6,8 @@ import { HiOutlineFire } from "react-icons/hi";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, toggleTheme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <button

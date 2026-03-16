@@ -13,8 +13,8 @@ interface PostCardProps {
 }
 
 function PostCard({ post }: PostCardProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   return (
     <Link href={`/blog/${post.slug}`} className="group block h-full">

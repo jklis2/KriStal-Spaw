@@ -6,8 +6,8 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaArrowRight, FaShieldAlt, FaTools, FaCertificate } from "react-icons/fa";
 
 export default function Hero() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   return (
     <section className={`relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden ${

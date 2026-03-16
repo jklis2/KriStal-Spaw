@@ -11,8 +11,8 @@ import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 
 export default function History() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   const [timelineRef, timelineInView] = useInView({
     triggerOnce: true,

@@ -22,8 +22,8 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ blogPosts }: BlogContentProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <section className="py-24 relative overflow-hidden">

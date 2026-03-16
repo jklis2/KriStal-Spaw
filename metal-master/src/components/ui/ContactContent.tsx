@@ -9,8 +9,8 @@ import ContactInfo from "@/containers/ContactInfo";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 export default function ContactContent() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   const [shouldLoadMap, setShouldLoadMap] = useState(false);
   const mapContainerRef = useRef<HTMLDivElement>(null);
 

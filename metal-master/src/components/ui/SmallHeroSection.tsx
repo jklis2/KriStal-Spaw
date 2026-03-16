@@ -14,8 +14,8 @@ export default function SmallHeroSection({
   description,
   imageSrc = "/images/weldingHero.jpg" // Domyślne zdjęcie tła
 }: HeroSectionProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   // Fallback image jeśli podany obraz nie istnieje
   const fallbackImage = "/images/photoPlaceholder.webp";

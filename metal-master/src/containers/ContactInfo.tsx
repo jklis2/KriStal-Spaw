@@ -5,8 +5,8 @@ import { useTheme } from '@/components/providers/ThemeProvider';
 import { motion } from 'framer-motion';
 
 export default function ContactInfo() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   const contactItems = [
     {

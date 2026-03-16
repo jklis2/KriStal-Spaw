@@ -9,8 +9,8 @@ import CTAButton from "@/components/ui/CTAButton";
 import { galleryItems, fallbackImages } from "@/consts/galleryPreviewItems";
 
 export default function GalleryPreview() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <section

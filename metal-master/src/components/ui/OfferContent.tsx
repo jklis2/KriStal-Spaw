@@ -20,8 +20,8 @@ interface OfferContentProps {
 }
 
 export default function OfferContent({ offers }: OfferContentProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <>

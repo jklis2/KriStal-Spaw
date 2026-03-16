@@ -7,8 +7,8 @@ import CertificateCard from "@/components/ui/CertificateCard";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 export default function Certificates() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <section

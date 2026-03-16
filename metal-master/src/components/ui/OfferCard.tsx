@@ -19,8 +19,8 @@ function OfferCard({
   image,
   features,
 }: OfferCardProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   return (
     <div

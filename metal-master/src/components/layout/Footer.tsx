@@ -6,8 +6,8 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelop
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function Footer() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   return (
     <footer className={`relative border-t-2 border-weldingRed ${

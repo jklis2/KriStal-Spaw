@@ -8,8 +8,8 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 export default function Team() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   const fallbackImage = "/images/photoPlaceholder.webp";
 

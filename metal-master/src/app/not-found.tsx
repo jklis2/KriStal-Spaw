@@ -7,8 +7,8 @@ import { FaHome, FaTools, FaImages, FaEnvelope, FaExclamationTriangle, FaArrowRi
 import { SVG_PATTERNS } from '@/consts/svgPatterns';
 
 export default function NotFound() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
   
   // Warianty animacji
   const containerVariants = {

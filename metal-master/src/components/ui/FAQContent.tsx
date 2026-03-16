@@ -16,8 +16,8 @@ interface FAQContentProps {
 }
 
 export default function FAQContent({ faqItems }: FAQContentProps) {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <section className="py-24 relative overflow-hidden">

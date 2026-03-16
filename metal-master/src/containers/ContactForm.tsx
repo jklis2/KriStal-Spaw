@@ -11,8 +11,8 @@ export default function ContactForm() {
     phone: '',
     message: ''
   });
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : true;
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
