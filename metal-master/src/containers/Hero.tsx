@@ -30,9 +30,6 @@ export default function Hero() {
               ? "from-black/80 via-black/70 to-industrialGray/95" 
               : "from-black/70 via-black/60 to-industrialLight/90"
           }`}></div>
-          
-          {/* Animated welding sparks overlay */}
-          <div className="absolute inset-0 bg-[url('/sparks-overlay.png')] bg-repeat-y opacity-10 animate-sparkle pointer-events-none"></div>
         </div>
       </div>
       
