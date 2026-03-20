@@ -8,7 +8,6 @@ interface OfferItem {
   title: string;
   description: string;
   image: string;
-  features: string[];
 }
 
 interface OfferContentProps {
