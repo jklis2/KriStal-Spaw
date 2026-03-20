@@ -2,14 +2,14 @@
 export const galleryItems = [
   {
     src: "/gallery/ogrodzenie-przemyslowe.jpg", // Placeholder - replace with actual image path
-    alt: "Ogrodzenie przemysłowe",
-    category: "Ogrodzenia",
+    alt: "Brama wjazdowa z automatyką",
+    category: "Bramy",
     featured: true
   },
   {
     src: "/gallery/brama-wjazdowa.jpg", // Placeholder - replace with actual image path
-    alt: "Brama wjazdowa",
-    category: "Bramy"
+    alt: "Ogrodzenia systemowe",
+    category: "Ogrodzenia"
   },
   {
     src: "/gallery/balustrada-schodowa.jpg", // Placeholder - replace with actual image path
@@ -18,8 +18,8 @@ export const galleryItems = [
   },
   {
     src: "/gallery/konstrukcja-stalowa.jpg", // Placeholder - replace with actual image path
-    alt: "Konstrukcja stalowa",
-    category: "Konstrukcje"
+    alt: "Balustrada balkonowa",
+    category: "Balustrady"
   }
 ];
 

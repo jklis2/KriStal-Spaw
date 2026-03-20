@@ -29,15 +29,15 @@ export default function Hero() {
         <div className="text-center mb-8">
           <h1 className="text-5xl md:text-7xl font-bold font-oswald mb-4 tracking-tight text-white leading-tight">
             <span className="inline-block relative">
-              Mistrzostwo
+              Trwałość
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-weldingRed transform -skew-x-12"></span>
             </span>
             {" "}
-            <span className="text-weldingRed">w Metalu</span>
+            <span className="text-weldingRed">na lata</span>
           </h1>
           <p className="mt-6 text-xl md:text-2xl font-roboto text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Profesjonalne konstrukcje metalowe, bramy i ogrodzenia
-            <span className="block mt-2 text-white font-medium">od 2005 roku</span>
+            Bramy • Balustrady • Ogrodzenia • Automatyka
+            <span className="block mt-2 text-white font-medium">Kompleksowe realizacje dla Ciebie</span>
           </p>
         </div>
         
@@ -67,8 +67,8 @@ export default function Hero() {
         <div className="flex flex-col md:grid md:grid-cols-3 gap-3 mt-4 max-w-4xl w-full px-4 md:px-0 mb-8 md:mb-0">
           {[
             { icon: FaShieldAlt, text: "Gwarancja jakości" },
-            { icon: FaTools, text: "Profesjonalny sprzęt" },
-            { icon: FaCertificate, text: "Certyfikowani spawacze" }
+            { icon: FaCertificate, text: "Terminowa realizacja" },
+            { icon: FaTools, text: "Profesjonalne doradztwo oraz komunikacja" }
           ].map((feature, index) => (
             <div 
               key={index}

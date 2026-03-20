@@ -11,18 +11,18 @@ export interface ServiceItem {
 
 export const servicesItems: ServiceItem[] = [
   {
-    title: "Bramy",
-    description: "Solidne bramy kute, garażowe i automatyczne.",
+    title: "Bramy i automatyka",
+    description: "Solidne bramy przesuwne i skrzydłowe z automatyką, dopasowane do Twojej posesji.",
     Icon: FaDoorOpen,
   },
   {
     title: "Ogrodzenia",
-    description: "Trwałe ogrodzenia panelowe, kute i betonowe.",
+    description: "Trwałe ogrodzenia frontowe i nowoczesne systemy ogrodzeniowe.",
     Icon: FaBorderAll,
   },
   {
-    title: "Dekoracje",
-    description: "Metalowe balustrady, meble ogrodowe i ozdoby.",
+    title: "Balustrady",
+    description: "Szklane, francuskie oraz metalowe z poręczą drewnianą, dopasowane do wnętrz i przestrzeni zewnętrznych.",
     Icon: FaTree,
   },
 ];

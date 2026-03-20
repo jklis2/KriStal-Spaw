@@ -11,18 +11,18 @@ export interface BenefitItem {
 
 export const whyUsItems: BenefitItem[] = [
   { 
-    title: "20 lat doświadczenia",
-    description: "Dwie dekady praktyki w obróbce metalu i realizacji projektów",
-    Icon: FaHistory,
-  },
-  { 
     title: "Gwarancja jakości",
-    description: "Najwyższe standardy wykonania i materiałów",
+    description: "Nasze realizacje potwierdzają jakość wykonania oraz zadowolenie klientów.",
     Icon: FaAward,
   },
   { 
     title: "Projekty na wymiar",
     description: "Indywidualne podejście do każdego zlecenia",
     Icon: FaRuler,
+  },
+    { 
+    title: "Indywidualne podejście",
+    description: "Słuchamy, doradzamy i dopasowujemy rozwiązania do Twoich potrzeb.",
+    Icon: FaHistory,
   },
 ];

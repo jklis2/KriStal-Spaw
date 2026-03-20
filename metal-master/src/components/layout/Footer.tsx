@@ -41,10 +41,10 @@ export default function Footer() {
           
           <div className="flex flex-col items-center md:items-start">
             <h2 className={`font-oswald text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-steelBlue-dark"}`}>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KRISTAL</span>-SPAW
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
             </h2>
             <p className={`text-sm max-w-md text-center md:text-left mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-              Profesjonalne usługi spawalnicze, produkcja ogrodzeń i konstrukcji metalowych najwyższej jakości od 2005 roku.
+              Profesjonalizm połączony z doświadczeniem.
             </p>
             <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange rounded-full mb-4"></div>
           </div>
@@ -67,7 +67,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className={`font-medium mb-1 ${isDark ? "text-gray-300" : "text-gray-700"}`}>Adres</h4>
-                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>ul. Przemysłowa 10, 00-001 Warszawa</p>
+                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>ul. Pogodna 8, 34-311 Tresna</p>
                 </div>
               </div>
               
@@ -79,7 +79,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className={`font-medium mb-1 ${isDark ? "text-gray-300" : "text-gray-700"}`}>Telefon</h4>
-                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>+48 123 456 789</p>
+                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>+48 513 485 664</p>
                 </div>
               </div>
               
@@ -91,7 +91,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className={`font-medium mb-1 ${isDark ? "text-gray-300" : "text-gray-700"}`}>Email</h4>
-                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>kontakt@metalmaster.pl</p>
+                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>krzysiek02.16@o2.pl</p>
                 </div>
               </div>
               
@@ -103,7 +103,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className={`font-medium mb-1 ${isDark ? "text-gray-300" : "text-gray-700"}`}>Godziny pracy</h4>
-                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>Pon-Pt: 8:00 - 17:00</p>
+                  <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>Pon-Pt: 8:00 - 16:00</p>
                   <p className={`${isDark ? "text-gray-400" : "text-gray-600"}`}>Sobota: 9:00 - 14:00</p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function Footer() {
             <p className={`text-center md:text-left font-roboto text-sm mb-4 md:mb-0 ${
               isDark ? "text-gray-400" : "text-gray-500"
             }`}>
-              &copy; {new Date().getFullYear()} Metal Master. Wszelkie prawa zastrzeżone.
+              &copy; {new Date().getFullYear()} KriStal-Spaw. Wszelkie prawa zastrzeżone.
             </p>
             <div className="flex space-x-6">
               <Link 

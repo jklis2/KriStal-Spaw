@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaCheck } from "react-icons/fa";
+import { FaArrowRight} from "react-icons/fa";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 interface OfferCardProps {
@@ -17,7 +17,6 @@ function OfferCard({
   title,
   description,
   image,
-  features,
 }: OfferCardProps) {
   const { theme, mounted } = useTheme();
   const isDark = mounted ? theme === "dark" : true;
@@ -61,25 +60,6 @@ function OfferCard({
         <p className={`font-roboto mb-6 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
           {description}
         </p>
-
-        <div className="bg-gradient-to-br from-transparent to-weldingRed/5 p-4 rounded-lg border border-weldingRed/10 mb-8">
-          <h4 className={`font-oswald font-bold mb-3 ${isDark ? "text-gray-200" : "text-steelBlue-dark"}`}>
-            Co oferujemy:
-          </h4>
-          <ul className="space-y-3">
-            {features.map((feature, idx) => (
-              <li
-                key={idx}
-                className={`flex items-start font-roboto group/item ${isDark ? "text-gray-300" : "text-gray-600"}`}
-              >
-                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-weldingRed/10 flex items-center justify-center mr-3 mt-0.5 group-hover/item:bg-weldingRed/20 transition-colors duration-300">
-                  <FaCheck className="text-weldingRed text-xs" />
-                </span>
-                <span className="group-hover/item:text-weldingRed transition-colors duration-300">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
         <Link href="/kontakt" className={`w-full py-4 px-8 font-oswald text-lg rounded-lg
                transition-all duration-300 flex items-center justify-center group/btn ${
                  isDark 

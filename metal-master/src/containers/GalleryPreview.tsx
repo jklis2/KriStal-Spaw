@@ -41,17 +41,12 @@ export default function GalleryPreview() {
                 <span className="bg-weldingRed/80 text-white text-xs font-bold px-3 py-1 rounded-full">
                   {galleryItems[0].category}
                 </span>
-                <span className="bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full">
-                  FEATURED
-                </span>
               </div>
               <h3 className="text-white text-2xl font-oswald font-bold mb-2">
                 {galleryItems[0].alt}
               </h3>
               <p className="text-gray-200 mb-4 max-w-md">
-                Profesjonalne ogrodzenie przemysłowe wykonane z najwyższej
-                jakości stali ocynkowanej, zapewniające bezpieczeństwo i
-                trwałość.
+                Wykonanie bramy wjazdowej na najwyższym poziomie. Przeprowadzimy Cię przez cały proces – od pomiaru i oględzin, przez szczegółowe ustalenia, aż po montaż.
               </p>
               <div className="flex gap-4">
                 <Link
@@ -98,8 +93,7 @@ export default function GalleryPreview() {
         </div>
         <div className="mt-16 flex flex-col items-center">
           <p className="text-lg mb-6 max-w-2xl text-center text-gray-700 dark:text-gray-300">
-            Zapraszamy do zapoznania się z pełną galerią naszych realizacji.
-            Każdy projekt jest wyjątkowy i dopasowany do potrzeb klienta.
+            Każdą bramę realizujemy na wymiar, dopasowując projekt do potrzeb klienta. Konstrukcja wykonywana jest ze stali poddawanej ocynkowaniu ogniowemu. Każda brama posiada otwory technologiczne, co daje pewność, że elementy zostały prawidłowo ocynkowane i zapewniają pełną ochronę antykorozyjną oraz wysoką jakość wykonania. Całość wykańczamy lakierowaniem proszkowym oraz uzupełniamy o automatykę i precyzyjny montaż.
           </p>
           <CTAButton href="/galeria" icon={<FaArrowRight />}>
             Zobacz więcej projektów

@@ -25,11 +25,10 @@ export default function OfferContent({ offers }: OfferContentProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="animate-fade-up">
             <SectionHeader
-              title="Profesjonalne Usługi Spawalnicze"
+              title="Zakres naszych usług"
               subtitle="NASZA OFERTA"
             >
-              Oferujemy kompleksowe usługi spawalnicze dla klientów indywidualnych i firm.
-              Nasze wieloletnie doświadczenie gwarantuje najwyższą jakość wykonania.
+              Nasze główne obszary działania i zakres realizacji.
             </SectionHeader>
           </div>
           <div className="grid md:grid-cols-2 gap-12">

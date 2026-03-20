@@ -4,22 +4,22 @@ const contactItems = [
   {
     icon: FaPhone,
     title: "Telefon",
-    content: "+48 123 456 789"
+    content: "+48 513 485 664"
   },
   {
     icon: FaEnvelope,
     title: "Email",
-    content: "kontakt@metalmaster.pl"
+    content: "krzysiek02.16@o2.pl"
   },
   {
     icon: FaMapMarkerAlt,
     title: "Adres",
-    content: "ul. Metalowa 123\n00-001 Warszawa"
+    content: "ul. Pogodna 8\n34-311 Tresna"
   },
   {
     icon: FaClock,
     title: "Godziny Otwarcia",
-    content: "Poniedziałek - Piątek: 8:00 - 16:00\nSobota - Niedziela: Zamknięte"
+    content: "Poniedziałek - Piątek: 8:00 - 16:00\nSobota: 9:00 - 14:00"
   }
 ];
 

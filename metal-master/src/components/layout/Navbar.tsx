@@ -101,14 +101,14 @@ export default function Navbar() {
                   ? "text-white group-hover:text-weldingRed drop-shadow-md" 
                   : "text-steelBlue-dark group-hover:text-weldingRed drop-shadow-sm"
               }`}>
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KRISTAL</span>-SPAW
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
               </span>
               <span className={`text-xs font-medium tracking-wider ${
                 isDark 
                   ? 'text-gray-300 group-hover:text-gray-200' 
                   : 'text-gray-600 group-hover:text-gray-800'
               } transition-colors duration-300`}>
-                PROFESJONALNE SPAWALNICTWO
+                Dopasujemy każdy projekt do Twoich potrzeb
               </span>
             </div>
           </div>

@@ -3,7 +3,6 @@ import { FaArrowRight } from "react-icons/fa";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CTAButton from "@/components/ui/CTAButton";
 import FeatureCard from "@/components/ui/FeatureCard";
-import TestimonialCard from "@/components/ui/TestimonialCard";
 import { SVG_PATTERNS } from "@/consts/svgPatterns";
 
 export default function WhyUs() {
@@ -32,8 +31,7 @@ export default function WhyUs() {
           title="Dlaczego Warto Nam Zaufać?"
           subtitle="NASZE ATUTY"
         >
-          Od lat dostarczamy najwyższej jakości usługi spawalnicze i ślusarskie.
-          Poznaj powody, dla których klienci wybierają właśnie nas.
+          Tworzymy trwałe i dopracowane konstrukcje stalowe. Sprawdź, dlaczego klienci wybierają właśnie nas.
         </SectionHeader>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {whyUsItems.map((benefit, index) => (
@@ -46,14 +44,6 @@ export default function WhyUs() {
             />
           ))}
         </div>
-        <TestimonialCard
-          name="Jan Kowalski"
-          company="Firma budowlana"
-          location="Warszawa"
-          testimonial="Współpraca z firmą KRISTAL-SPAW to czysta przyjemność. Profesjonalne podejście, terminowość i najwyższa jakość wykonania. Konstrukcje, które dla nas wykonali, są nie tylko funkcjonalne, ale również estetyczne. Polecam każdemu, kto szuka solidnego partnera w branży metalowej."
-          rating={5}
-          imageSrc="/images/photoPlaceholder.webp"
-        />
         <div className="text-center mt-16">
           <CTAButton href="/o-nas" icon={<FaArrowRight />}>
             Poznaj nas lepiej
