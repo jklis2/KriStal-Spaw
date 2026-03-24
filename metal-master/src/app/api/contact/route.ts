@@ -12,6 +12,7 @@ interface ContactBody {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[\d\s+\-().]+$/;
 const MIN_SUBMIT_TIME_MS = 3000;
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
@@ -100,8 +101,13 @@ function validateBody(body: ContactBody): string | null {
     return 'Podaj poprawny adres email.';
   }
 
-  if (phone && typeof phone === 'string' && phone.trim().length > MAX_PHONE_LENGTH) {
-    return `Numer telefonu nie może przekraczać ${MAX_PHONE_LENGTH} znaków.`;
+  if (phone && typeof phone === 'string') {
+    if (phone.trim().length > MAX_PHONE_LENGTH) {
+      return `Numer telefonu nie może przekraczać ${MAX_PHONE_LENGTH} znaków.`;
+    }
+    if (phone.trim().length > 0 && !PHONE_REGEX.test(phone.trim())) {
+      return 'Numer telefonu zawiera niedozwolone znaki.';
+    }
   }
 
   if (!message || typeof message !== 'string' || message.trim().length === 0) {
@@ -157,6 +163,18 @@ function escapeHtml(text: string): string {
     .replace(/'/g, '&#039;');
 }
 
+function methodNotAllowed() {
+  return NextResponse.json(
+    { success: false, error: 'Metoda niedozwolona.' },
+    { status: 405, headers: { Allow: 'POST' } }
+  );
+}
+
+export async function GET() { return methodNotAllowed(); }
+export async function PUT() { return methodNotAllowed(); }
+export async function DELETE() { return methodNotAllowed(); }
+export async function PATCH() { return methodNotAllowed(); }
+
 export async function POST(request: Request) {
   try {
     // --- Header validation ---
@@ -195,15 +213,32 @@ export async function POST(request: Request) {
       );
     }
 
-    let body: ContactBody;
+    let parsed: Record<string, unknown>;
     try {
-      body = JSON.parse(rawBody);
+      parsed = JSON.parse(rawBody);
     } catch {
       return NextResponse.json(
         { success: false, error: 'Nieprawidłowy format danych.' },
         { status: 400 }
       );
     }
+
+    if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
+      return NextResponse.json(
+        { success: false, error: 'Nieprawidłowy format danych.' },
+        { status: 400 }
+      );
+    }
+
+    // Strip unexpected keys to prevent prototype pollution
+    const body: ContactBody = {
+      name: String(parsed.name ?? ''),
+      email: String(parsed.email ?? ''),
+      phone: String(parsed.phone ?? ''),
+      message: String(parsed.message ?? ''),
+      _honey: parsed._honey ? String(parsed._honey) : undefined,
+      _timestamp: typeof parsed._timestamp === 'number' ? parsed._timestamp : undefined,
+    };
 
     const error = validateBody(body);
     if (error === 'spam') {

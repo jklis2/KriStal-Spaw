@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaUser, FaEnvelope, FaPhone, FaComment, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 
-type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
 
 const INITIAL_FORM_DATA = { name: '', email: '', phone: '', message: '' };
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +22,22 @@ export default function ContactForm() {
   const [statusMessage, setStatusMessage] = useState('');
   const honeypotRef = useRef<HTMLInputElement>(null);
   const timestampRef = useRef(Date.now());
+  const [cooldown, setCooldown] = useState(0);
+
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const timer = setInterval(() => {
+      setCooldown(prev => {
+        if (prev <= 1) {
+          setStatus('idle');
+          setStatusMessage('');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldown]);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +70,10 @@ export default function ContactForm() {
         setStatusMessage('Wiadomość została wysłana. Dziękujemy za kontakt!');
         setFormData(INITIAL_FORM_DATA);
         timestampRef.current = Date.now();
+      } else if (res.status === 429) {
+        setStatus('rate_limited');
+        setCooldown(60);
+        setStatusMessage(data.error || 'Zbyt wiele wiadomości. Spróbuj ponownie za chwilę.');
       } else {
         setStatus('error');
         setStatusMessage(data.error || 'Nie udało się wysłać wiadomości. Spróbuj ponownie.');
@@ -78,6 +98,7 @@ export default function ContactForm() {
                      transition-all duration-300 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 hover:border-gray-400`;
 
   const isLoading = status === 'loading';
+  const isDisabled = isLoading || status === 'rate_limited';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -102,7 +123,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              disabled={isLoading}
+              disabled={isDisabled}
               className={`${inputClasses} pl-10`}
               placeholder="Jan Kowalski"
             />
@@ -124,7 +145,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              disabled={isLoading}
+              disabled={isDisabled}
               className={`${inputClasses} pl-10`}
               placeholder="jan@example.com"
             />
@@ -146,7 +167,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            disabled={isLoading}
+            disabled={isDisabled}
             className={`${inputClasses} pl-10`}
             placeholder="+48 123 456 789"
           />
@@ -167,7 +188,7 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             required
-            disabled={isLoading}
+            disabled={isDisabled}
             rows={6}
             className={`${inputClasses} pl-10 resize-none`}
             placeholder="Opisz swój projekt..."
@@ -179,34 +200,36 @@ export default function ContactForm() {
         <div className={`flex items-center gap-2 p-3 rounded-lg text-sm font-roboto ${
           status === 'success'
             ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+            : status === 'rate_limited'
+            ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
             : 'bg-red-500/10 text-red-400 border border-red-500/20'
         }`}>
           {status === 'success' ? <FaCheckCircle className="flex-shrink-0" /> : <FaExclamationCircle className="flex-shrink-0" />}
-          <span>{statusMessage}</span>
+          <span>{statusMessage}{cooldown > 0 && ` (${cooldown}s)`}</span>
         </div>
       )}
 
       <button
         type="submit"
-        disabled={isLoading}
+        disabled={isDisabled}
         className={`w-full bg-weldingRed text-white font-oswald
                  py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center
                  group relative overflow-hidden ${
-                   isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-ctaOrange'
+                   isDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-ctaOrange'
                  }`}
       >
         <span className="relative z-10 mr-2">
-          {isLoading ? 'Wysyłanie...' : 'Wyślij Wiadomość'}
+          {isLoading ? 'Wysyłanie...' : cooldown > 0 ? `Zablokowano (${cooldown}s)` : 'Wyślij Wiadomość'}
         </span>
         {isLoading ? (
           <svg className="relative z-10 w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
-        ) : (
+        ) : cooldown <= 0 ? (
           <FaPaperPlane className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" />
-        )}
-        {!isLoading && (
+        ) : null}
+        {!isDisabled && (
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-ctaOrange to-weldingRed opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         )}
       </button>
