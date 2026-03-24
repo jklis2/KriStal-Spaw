@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { FaPaperPlane, FaUser, FaEnvelope, FaPhone, FaComment, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
-import { useTheme } from '@/components/providers/ThemeProvider';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -23,8 +22,6 @@ export default function ContactForm() {
   const [statusMessage, setStatusMessage] = useState('');
   const honeypotRef = useRef<HTMLInputElement>(null);
   const timestampRef = useRef(Date.now());
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,13 +73,9 @@ export default function ContactForm() {
     }
   }, [status]);
 
-  const inputClasses = useMemo(() => `w-full px-4 py-3 rounded-lg font-roboto
+  const inputClasses = `w-full px-4 py-3 rounded-lg font-roboto
                      focus:outline-none focus:border-weldingRed focus:ring-2 focus:ring-weldingRed/30
-                     transition-all duration-300 ${
-                       isDark 
-                         ? "bg-gray-900/50 border border-gray-800 text-white placeholder-gray-400 hover:border-gray-700" 
-                         : "bg-white/80 border border-gray-200 text-steelBlue-dark placeholder-gray-500 hover:border-gray-300"
-                     }`, [isDark]);
+                     transition-all duration-300 bg-gray-900/50 border border-gray-800 text-white placeholder-gray-400 hover:border-gray-700`;
 
   const isLoading = status === 'loading';
 
@@ -95,7 +88,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="group">
-          <label htmlFor="name" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+          <label htmlFor="name" className="block font-oswald mb-2 text-gray-300">
             Imię i Nazwisko
           </label>
           <div className="relative">
@@ -117,7 +110,7 @@ export default function ContactForm() {
         </div>
 
         <div className="group">
-          <label htmlFor="email" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+          <label htmlFor="email" className="block font-oswald mb-2 text-gray-300">
             Email
           </label>
           <div className="relative">
@@ -140,7 +133,7 @@ export default function ContactForm() {
       </div>
 
       <div className="group">
-        <label htmlFor="phone" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+        <label htmlFor="phone" className="block font-oswald mb-2 text-gray-300">
           Telefon
         </label>
         <div className="relative">
@@ -161,7 +154,7 @@ export default function ContactForm() {
       </div>
 
       <div className="group">
-        <label htmlFor="message" className={`block font-oswald mb-2 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+        <label htmlFor="message" className="block font-oswald mb-2 text-gray-300">
           Wiadomość
         </label>
         <div className="relative">
@@ -185,8 +178,8 @@ export default function ContactForm() {
       {statusMessage && (
         <div className={`flex items-center gap-2 p-3 rounded-lg text-sm font-roboto ${
           status === 'success'
-            ? 'bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20'
-            : 'bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20'
+            ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+            : 'bg-red-500/10 text-red-400 border border-red-500/20'
         }`}>
           {status === 'success' ? <FaCheckCircle className="flex-shrink-0" /> : <FaExclamationCircle className="flex-shrink-0" />}
           <span>{statusMessage}</span>

@@ -4,15 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX, FiHome, FiUsers, FiTool, FiImage, FiFileText, FiHelpCircle, FiPhone } from "react-icons/fi";
-import ThemeToggle from "@/components/ui/ThemeToggle";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
   const pathname = usePathname();
 
   // Close mobile menu when navigating to a different page
@@ -70,16 +66,12 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'} ${scrolled ? 'shadow-xl' : 'shadow-md'} border-b-2 border-weldingRed ${
-      isDark
-        ? `${scrolled ? 'bg-industrialGray/95 backdrop-blur-md' : 'bg-industrialGray'} text-white`
-        : `${scrolled ? 'bg-industrialLight/95 backdrop-blur-md' : 'bg-industrialLight'} text-steelBlue-dark`
-    }`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'} ${scrolled ? 'shadow-xl' : 'shadow-md'} border-b-2 border-weldingRed ${scrolled ? 'bg-industrialGray/95 backdrop-blur-md' : 'bg-industrialGray'} text-white`}>
       <div className="container mx-auto flex items-center justify-between px-6 overflow-visible">
         <Link href="/">
           <div className="flex items-center gap-4 cursor-pointer group overflow-visible">
             <div className="relative overflow-visible rounded-xl bg-gradient-to-br from-weldingRed to-ctaOrange p-0.5 shadow-xl transition-all duration-300 group-hover:shadow-weldingRed/50 group-hover:scale-105">
-              <div className={`rounded-xl ${isDark ? 'bg-zinc-900' : 'bg-white'} flex items-center justify-center`} style={{width: scrolled ? '64px' : '74px', height: scrolled ? '64px' : '74px'}}>
+              <div className="rounded-xl bg-zinc-900 flex items-center justify-center" style={{width: scrolled ? '64px' : '74px', height: scrolled ? '64px' : '74px'}}>
                 <Image 
                   src="/logo.svg" 
                   alt="KRISTAL-SPAW Logo" 
@@ -96,18 +88,10 @@ export default function Navbar() {
             </div>
             
             <div className="flex flex-col">
-              <span className={`font-oswald text-xl lg:text-2xl font-bold transition-colors duration-300 ${
-                isDark 
-                  ? "text-white group-hover:text-weldingRed drop-shadow-md" 
-                  : "text-steelBlue-dark group-hover:text-weldingRed drop-shadow-sm"
-              }`}>
+              <span className="font-oswald text-xl lg:text-2xl font-bold transition-colors duration-300 text-white group-hover:text-weldingRed drop-shadow-md">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
               </span>
-              <span className={`text-xs font-medium tracking-wider ${
-                isDark 
-                  ? 'text-gray-300 group-hover:text-gray-200' 
-                  : 'text-gray-600 group-hover:text-gray-800'
-              } transition-colors duration-300`}>
+              <span className="text-xs font-medium tracking-wider text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
                 Dopasujemy każdy projekt do Twoich potrzeb
               </span>
             </div>
@@ -134,17 +118,10 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="pl-4 border-l border-weldingRed/30">
-            <ThemeToggle />
-          </div>
         </div>
 
         <button 
-          className={`md:hidden text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg ${
-            isDark
-              ? "hover:bg-weldingRed/10"
-              : "hover:bg-weldingRed/5"
-          }`} 
+          className="md:hidden text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg hover:bg-weldingRed/10" 
           onClick={() => {
             setIsOpen(!isOpen);
           }}
@@ -167,25 +144,15 @@ export default function Navbar() {
       <div 
         className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-auto transition-all duration-300 ${
           isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
-        } ${
-          isDark
-            ? "bg-industrialGray/95 backdrop-blur-md"
-            : "bg-industrialLight/95 backdrop-blur-md"
-        }`}
+        } bg-industrialGray/95 backdrop-blur-md`}
         style={{ height: '100vh' }}
       >
-        <div className={`fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 border-b border-weldingRed/30 ${
-          isDark ? 'bg-industrialGray/95' : 'bg-industrialLight/95'
-        } backdrop-blur-md`}>
-          <p className={`text-xl font-bold ${isDark ? 'text-white' : 'text-steelBlue-dark'}`}>
+        <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 border-b border-weldingRed/30 bg-industrialGray/95 backdrop-blur-md">
+          <p className="text-xl font-bold text-white">
             Menu główne
           </p>
           <button 
-            className={`text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg ${
-              isDark
-                ? "hover:bg-weldingRed/10"
-                : "hover:bg-weldingRed/5"
-            }`} 
+            className="text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg hover:bg-weldingRed/10" 
             onClick={() => setIsOpen(false)}
             aria-label="Close Menu"
           >
@@ -195,11 +162,7 @@ export default function Navbar() {
         <nav className="flex flex-col h-full max-w-4xl mx-auto px-6 pt-20 pb-20">
           <Link 
             href="/" 
-            className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${
-              isDark
-                ? `${pathname === '/' ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`
-                : `${pathname === '/' ? 'bg-gray-100 text-ctaOrange' : 'hover:bg-gray-100 hover:text-ctaOrange'}`
-            }`} 
+            className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${pathname === '/' ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`} 
 
           >
             <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
@@ -214,11 +177,7 @@ export default function Navbar() {
               <Link
                 key={item}
                 href={itemPath}
-                className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${
-                  isDark
-                    ? `${isActive ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`
-                    : `${isActive ? 'bg-gray-100 text-ctaOrange' : 'hover:bg-gray-100 hover:text-ctaOrange'}`
-                }`}
+                className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${isActive ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`}
 
               >
                 <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
@@ -228,12 +187,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="mt-auto p-6 border-t border-weldingRed/30 flex justify-between items-center">
-            <span className="text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}">
-              Przełącz motyw
-            </span>
-            <ThemeToggle />
-          </div>
         </nav>
       </div>
     </header>

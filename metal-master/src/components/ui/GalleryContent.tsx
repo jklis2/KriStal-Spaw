@@ -41,10 +41,10 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
             <FaCamera className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">NASZE REALIZACJE</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-steelBlue-dark dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
             Przeglądaj nasze najlepsze projekty
           </h2>
-          <p className="max-w-2xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto mb-8 text-gray-300">
             Filtruj według kategorii, aby zobaczyć projekty, które Cię interesują
           </p>
           <div className="flex flex-wrap justify-center gap-3 relative z-10 mb-12 animate-fade-in-only delay-200">
@@ -58,7 +58,7 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
                     ${
                       category === selectedCategory
                         ? "bg-weldingRed text-white shadow-md shadow-weldingRed/20"
-                        : "bg-white/70 text-steelBlue hover:bg-weldingRed/10 hover:text-steelBlue-dark shadow-sm dark:bg-gray-900/50 dark:text-gray-300 dark:hover:bg-weldingRed/20 dark:hover:text-white dark:shadow-none"
+                        : "bg-gray-900/50 text-gray-300 hover:bg-weldingRed/20 hover:text-white"
                     }`}
                   style={{ animationDelay: `${100 + index * 50}ms` }}
                 >
@@ -86,10 +86,10 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-weldingRed/10 flex items-center justify-center">
                 <FaSearch className="text-weldingRed text-2xl" />
               </div>
-              <h3 className="text-2xl font-oswald mb-2 text-steelBlue-dark dark:text-white">
+              <h3 className="text-2xl font-oswald mb-2 text-white">
                 Brak projektów w tej kategorii
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-400">
                 Spróbuj wybrać inną kategorię lub sprawdź później
               </p>
             </div>

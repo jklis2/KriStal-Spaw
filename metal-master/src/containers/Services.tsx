@@ -8,7 +8,7 @@ import { FaArrowRight } from "react-icons/fa";
 export default function Services() {
   return (
     <section
-      className="py-24 relative overflow-hidden bg-industrialLight dark:bg-industrialGray content-auto"
+      className="py-24 relative overflow-hidden bg-industrialGray content-auto"
     >
       <BackgroundPattern />
       <div className="absolute top-0 left-0 w-32 h-32 bg-weldingRed/10 rounded-full filter blur-3xl"></div>

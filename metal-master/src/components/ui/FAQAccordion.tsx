@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FaChevronDown, FaQuestionCircle, FaRegLightbulb } from 'react-icons/fa';
-import { useTheme } from '@/components/providers/ThemeProvider';
 
 interface FAQItem {
   question: string;
@@ -15,8 +14,6 @@ interface FAQAccordionProps {
 
 export default function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -27,11 +24,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className={`backdrop-blur-sm rounded-lg overflow-hidden border border-transparent transition-all duration-300 animate-fade-up ${
-            isDark 
-              ? "bg-gray-900/50 hover:bg-gray-900/60 hover:border-weldingRed/20" 
-              : "bg-white/70 hover:bg-white/80 shadow-md hover:shadow-lg hover:shadow-weldingRed/10"
-          }`}
+          className="backdrop-blur-sm rounded-lg overflow-hidden border border-transparent transition-all duration-300 animate-fade-up bg-gray-900/50 hover:bg-gray-900/60 hover:border-weldingRed/20"
           style={{ animationDelay: `${index * 100}ms` }}
         >
           <button
@@ -42,20 +35,20 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
                 openIndex === index
                   ? "bg-weldingRed text-white"
-                  : `${isDark ? "bg-gray-800/70" : "bg-gray-100"} text-weldingRed group-hover:bg-weldingRed/10`
+                  : "bg-gray-800/70 text-weldingRed group-hover:bg-weldingRed/10"
               }`}>
                 {openIndex === index ? <FaRegLightbulb /> : <FaQuestionCircle />}
               </div>
               <h3 className={`text-xl font-oswald transition-colors duration-300 ${
                 openIndex === index
                   ? "text-weldingRed"
-                  : `${isDark ? "text-white" : "text-steelBlue-dark"} group-hover:text-weldingRed`
+                  : "text-white group-hover:text-weldingRed"
               }`}>{item.question}</h3>
             </div>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
               openIndex === index
                 ? "bg-weldingRed text-white rotate-180"
-                : `${isDark ? "bg-gray-800/70" : "bg-gray-100"} text-weldingRed group-hover:bg-weldingRed/10`
+                : "bg-gray-800/70 text-weldingRed group-hover:bg-weldingRed/10"
             }`}>
               <FaChevronDown className="text-sm" />
             </div>
@@ -70,7 +63,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
           >
             <div className="px-6 pb-6">
               <div className="pt-3 border-t border-weldingRed/20 mt-1">
-                <p className={`font-roboto mt-3 leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                <p className="font-roboto mt-3 leading-relaxed text-gray-300">
                   {item.answer}
                 </p>
               </div>

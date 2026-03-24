@@ -26,7 +26,7 @@ export default function SmallHeroSection({
         />
         
         {/* Overlay with animated gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-industrialLight/95 dark:from-black/80 dark:via-black/60 dark:to-industrialGray/95"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-industrialGray/95"></div>
       </div>
       
       {/* Content */}
@@ -64,7 +64,7 @@ export default function SmallHeroSection({
       </div>
       
       {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialLight to-transparent dark:from-industrialGray dark:to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-industrialGray to-transparent"></div>
     </section>
   );
 }

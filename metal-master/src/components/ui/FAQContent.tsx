@@ -23,10 +23,10 @@ export default function FAQContent({ faqItems }: FAQContentProps) {
             <FaQuestionCircle className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">CZĘSTO ZADAWANE PYTANIA</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-steelBlue-dark dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
             Masz pytania? My mamy odpowiedzi!
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto text-gray-300">
             Poniżej znajdziesz odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług i produktów.
             Jeśli nie znajdziesz odpowiedzi na swoje pytanie, skontaktuj się z nami bezpośrednio.
           </p>

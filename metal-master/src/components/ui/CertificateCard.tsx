@@ -18,7 +18,7 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
   return (
     <div
       className="group relative rounded-lg overflow-hidden
-               transform hover:-translate-y-2 transition-all duration-300 bg-white/70 shadow-md dark:bg-gray-900/50 dark:shadow-none"
+               transform hover:-translate-y-2 transition-all duration-300 bg-gray-900/50"
     >
       <div className="aspect-square relative">
         <Image
@@ -43,7 +43,7 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
               {year}
             </span>
           </div>
-          <p className="font-roboto text-sm leading-relaxed transition-colors duration-300 text-gray-200 group-hover:text-white dark:text-gray-300 dark:group-hover:text-white">
+          <p className="font-roboto text-sm leading-relaxed transition-colors duration-300 text-gray-300 group-hover:text-white">
             {description}
           </p>
         </div>

@@ -7,7 +7,6 @@ export default {
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       animation: {
@@ -15,28 +14,21 @@ export default {
         'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       colors: {
-        // Base colors that change with theme
+        // Base colors
         background: {
           DEFAULT: "var(--background)",
           light: "var(--background-light)"
         },
         foreground: "var(--foreground)",
         
-        // Dark theme (current) colors
+        // Primary dark colors
         industrialGray: {
           DEFAULT: "#1f2530",
           light: "#2a3241",
           lighter: "#3a4455"
         },
         
-        // Light theme colors
-        industrialLight: {
-          DEFAULT: "#f5f7fa",
-          dark: "#e2e8f0",
-          darker: "#cbd5e1"
-        },
-        
-        // Accent colors that work in both themes
+        // Accent colors
         weldingRed: {
           DEFAULT: "#E53E3E",
           light: "#FC8181",

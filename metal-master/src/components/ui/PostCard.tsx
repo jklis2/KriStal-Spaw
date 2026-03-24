@@ -4,7 +4,6 @@ import React from "react";
 import { BlogPost } from "@/consts/blogPosts";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { FaCalendarAlt, FaUser, FaArrowRight } from 'react-icons/fa';
 
 interface PostCardProps {
@@ -12,17 +11,10 @@ interface PostCardProps {
 }
 
 function PostCard({ post }: PostCardProps) {
-  const { theme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : true;
-  
   return (
     <Link href={`/blog/${post.slug}`} className="group block h-full">
       <div 
-        className={`overflow-hidden rounded-lg border border-transparent h-full transition-all duration-300 hover:-translate-y-[5px] hover:shadow-xl ${
-          isDark 
-            ? "bg-zinc-900/80 backdrop-blur-sm hover:border-weldingRed/20 hover:shadow-weldingRed/10" 
-            : "bg-white hover:border-weldingRed/10 hover:shadow-weldingRed/5"
-        }`}
+        className="overflow-hidden rounded-lg border border-transparent h-full transition-all duration-300 hover:-translate-y-[5px] hover:shadow-xl bg-zinc-900/80 backdrop-blur-sm hover:border-weldingRed/20 hover:shadow-weldingRed/10"
       >
         <div className="relative h-48 w-full overflow-hidden">
           <Image
@@ -42,20 +34,14 @@ function PostCard({ post }: PostCardProps) {
           {/* Czerwona linia dekoracyjna */}
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-weldingRed to-ctaOrange transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
           
-          <h3 className={`mb-3 text-xl font-bold font-oswald transition-colors duration-300 group-hover:text-weldingRed ${
-            isDark ? "text-white" : "text-steelBlue-dark"
-          }`}>
+          <h3 className="mb-3 text-xl font-bold font-oswald transition-colors duration-300 group-hover:text-weldingRed text-white">
             {post.title}
           </h3>
-          <p className={`mb-4 text-sm ${
-            isDark ? "text-zinc-400" : "text-gray-600"
-          }`}>
+          <p className="mb-4 text-sm text-zinc-400">
             {post.description}
           </p>
           <div className="border-t border-gray-700/20 pt-4 mt-4">
-            <div className={`flex items-center justify-between text-sm ${
-              isDark ? "text-zinc-500" : "text-gray-500"
-            }`}>
+            <div className="flex items-center justify-between text-sm text-zinc-500">
               <div className="flex items-center gap-2">
                 <FaUser className="text-weldingRed/70" />
                 <span>{post.author}</span>
@@ -68,7 +54,7 @@ function PostCard({ post }: PostCardProps) {
           </div>
           
           <div className="mt-4 flex items-center text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <span className={isDark ? "text-weldingRed" : "text-weldingRed"}>Czytaj więcej</span>
+            <span className="text-weldingRed">Czytaj więcej</span>
             <FaArrowRight className="ml-2 text-weldingRed group-hover:translate-x-1 transition-transform duration-300" />
           </div>
         </div>

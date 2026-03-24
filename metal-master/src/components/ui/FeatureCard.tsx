@@ -39,17 +39,17 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
   return (
     <div 
-      className="rounded-xl p-8 group transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-weldingRed shadow-lg bg-white/90 hover:bg-white shadow-gray-200/70 dark:bg-gray-900/50 dark:hover:bg-gray-800/70 dark:shadow-black/20"
+      className="rounded-xl p-8 group transform hover:-translate-y-2 transition-all duration-300 border-t-4 border-weldingRed shadow-lg bg-gray-900/50 hover:bg-gray-800/70 shadow-black/20"
     >
       <div className="flex justify-between items-start mb-6">
-        <div className="w-16 h-16 rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-all duration-300 bg-weldingRed/5 group-hover:bg-weldingRed/10 dark:bg-weldingRed/10 dark:group-hover:bg-weldingRed/20">
+        <div className="w-16 h-16 rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-all duration-300 bg-weldingRed/10 group-hover:bg-weldingRed/20">
           <Icon 
             size={32} 
             className="text-weldingRed group-hover:text-ctaOrange transition-colors duration-300" 
           />
         </div>
         <div className="relative">
-          <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden relative group-hover:shadow-lg group-hover:shadow-weldingRed/30 transition-all duration-500">
+          <div className="w-16 h-16 bg-gray-800 rounded-full overflow-hidden relative group-hover:shadow-lg group-hover:shadow-weldingRed/30 transition-all duration-500">
             {/* Animowany efekt iskier spawalniczych */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               <div className="absolute w-full h-full">
@@ -76,11 +76,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         </div>
       </div>
       
-      <h3 className="text-2xl font-oswald font-bold mb-3 group-hover:text-weldingRed transition-colors duration-300 text-steelBlue-dark dark:text-white">
+      <h3 className="text-2xl font-oswald font-bold mb-3 group-hover:text-weldingRed transition-colors duration-300 text-white">
         {title}
       </h3>
       
-      <p className="font-roboto leading-relaxed transition-colors duration-300 text-gray-600 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
+      <p className="font-roboto leading-relaxed transition-colors duration-300 text-gray-400 group-hover:text-gray-300">
         {description}
       </p>
     </div>

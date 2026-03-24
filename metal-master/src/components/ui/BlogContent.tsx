@@ -29,10 +29,10 @@ export default function BlogContent({ blogPosts }: BlogContentProps) {
             <FaNewspaper className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">BLOG TECHNICZNY</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-steelBlue-dark dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
             Najnowsze artykuły i poradniki
           </h2>
-          <p className="max-w-2xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
+          <p className="max-w-2xl mx-auto mb-8 text-gray-300">
             Poszerzaj swoją wiedzę o spawalnictwie dzięki profesjonalnym artykułom
             przygotowanym przez naszych ekspertów
           </p>
@@ -42,7 +42,7 @@ export default function BlogContent({ blogPosts }: BlogContentProps) {
               <input 
                 type="text" 
                 placeholder="Szukaj artykułów..." 
-                className="w-full py-3 px-5 pl-12 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-weldingRed/50 transition-all bg-white border-gray-200 text-gray-800 placeholder-gray-400 dark:bg-gray-900/50 dark:border-gray-700 dark:text-white dark:placeholder-gray-500"
+                className="w-full py-3 px-5 pl-12 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-weldingRed/50 transition-all bg-gray-900/50 border-gray-700 text-white placeholder-gray-500"
               />
               <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-weldingRed" />
             </div>
