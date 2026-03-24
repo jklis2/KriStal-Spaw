@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { headers } from 'next/headers';
 import nodemailer from 'nodemailer';
 
 interface ContactBody {
@@ -16,6 +17,60 @@ const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_PHONE_LENGTH = 30;
 const MAX_MESSAGE_LENGTH = 5000;
+const MAX_BODY_SIZE = 10_000;
+
+// --- Rate Limiting ---
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const RATE_LIMIT_MAX_REQUESTS = 5; // max 5 emails per window per IP
+
+interface RateLimitEntry {
+  count: number;
+  firstRequest: number;
+}
+
+const rateLimitMap = new Map<string, RateLimitEntry>();
+
+function cleanupRateLimitMap() {
+  const now = Date.now();
+  for (const [key, entry] of rateLimitMap) {
+    if (now - entry.firstRequest > RATE_LIMIT_WINDOW_MS) {
+      rateLimitMap.delete(key);
+    }
+  }
+}
+
+function isRateLimited(ip: string): boolean {
+  cleanupRateLimitMap();
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry) {
+    rateLimitMap.set(ip, { count: 1, firstRequest: now });
+    return false;
+  }
+
+  if (now - entry.firstRequest > RATE_LIMIT_WINDOW_MS) {
+    rateLimitMap.set(ip, { count: 1, firstRequest: now });
+    return false;
+  }
+
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX_REQUESTS;
+}
+
+function getClientIp(headersList: Headers): string {
+  return (
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    headersList.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+const ALLOWED_ORIGINS = [
+  process.env.NEXT_PUBLIC_SITE_URL,
+  'http://localhost:3000',
+  'http://localhost:3001',
+].filter(Boolean) as string[];
 
 function validateBody(body: ContactBody): string | null {
   const { name, email, phone, message, _honey, _timestamp } = body;
@@ -104,7 +159,51 @@ function escapeHtml(text: string): string {
 
 export async function POST(request: Request) {
   try {
-    const body: ContactBody = await request.json();
+    // --- Header validation ---
+    const headersList = await headers();
+    const contentType = headersList.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      return NextResponse.json(
+        { success: false, error: 'Nieprawidłowy typ zawartości.' },
+        { status: 415 }
+      );
+    }
+
+    const origin = headersList.get('origin');
+    if (origin && ALLOWED_ORIGINS.length > 0 && !ALLOWED_ORIGINS.includes(origin)) {
+      return NextResponse.json(
+        { success: false, error: 'Niedozwolone źródło żądania.' },
+        { status: 403 }
+      );
+    }
+
+    // --- Rate limiting ---
+    const clientIp = getClientIp(headersList);
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        { success: false, error: 'Zbyt wiele wiadomości. Spróbuj ponownie za 15 minut.' },
+        { status: 429 }
+      );
+    }
+
+    // --- Body size check ---
+    const rawBody = await request.text();
+    if (rawBody.length > MAX_BODY_SIZE) {
+      return NextResponse.json(
+        { success: false, error: 'Żądanie jest zbyt duże.' },
+        { status: 413 }
+      );
+    }
+
+    let body: ContactBody;
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      return NextResponse.json(
+        { success: false, error: 'Nieprawidłowy format danych.' },
+        { status: 400 }
+      );
+    }
 
     const error = validateBody(body);
     if (error === 'spam') {
