@@ -18,8 +18,8 @@ function OfferCard({
 }: OfferCardProps) {
   return (
     <div
-      className="group relative rounded-lg overflow-hidden backdrop-blur-sm border border-transparent
-                 transform hover:-translate-y-2 transition-all duration-300 bg-gray-900/50 hover:border-weldingRed/20"
+      className="group relative rounded-lg overflow-hidden border
+                 transform hover:-translate-y-2 transition-all duration-300 bg-white border-gray-200 hover:border-weldingRed/30 shadow-sm"
     >
       {/* Decorative corner accent */}
       <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
@@ -44,11 +44,11 @@ function OfferCard({
       </div>
 
       <div className="p-8 relative">
-        <h3 className="text-3xl font-bold font-oswald mb-2 group-hover:text-weldingRed transition-colors duration-300 text-white">
+        <h3 className="text-3xl font-bold font-oswald mb-2 group-hover:text-weldingRed transition-colors duration-300 text-gray-900">
           {title}
         </h3>
         <div className="w-16 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange mb-4 transform group-hover:scale-x-110 transition-transform duration-300 origin-left"></div>
-        <p className="font-roboto mb-6 leading-relaxed text-gray-300">
+        <p className="font-roboto mb-6 leading-relaxed text-gray-600">
           {description}
         </p>
         <Link href="/kontakt" className="w-full py-4 px-8 font-oswald text-lg rounded-lg

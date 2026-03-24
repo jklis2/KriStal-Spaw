@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelop
 
 export default function Footer() {
   return (
-    <footer className="relative border-t-2 border-weldingRed bg-industrialGray text-white">
+    <footer className="relative border-t-2 border-weldingRed bg-white text-gray-900">
       {/* Decorative element */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-weldingRed via-ctaOrange to-weldingRed"></div>
       
@@ -32,10 +32,10 @@ export default function Footer() {
           </div>
           
           <div className="flex flex-col items-center md:items-start">
-            <h2 className="font-oswald text-3xl font-bold mb-2 text-white">
+            <h2 className="font-oswald text-3xl font-bold mb-2 text-gray-900">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
             </h2>
-            <p className="text-sm max-w-md text-center md:text-left mb-4 text-gray-300">
+            <p className="text-sm max-w-md text-center md:text-left mb-4 text-gray-600">
               Profesjonalizm połączony z doświadczeniem.
             </p>
             <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange rounded-full mb-4"></div>
@@ -52,43 +52,43 @@ export default function Footer() {
             </h3>
             <div className="font-roboto space-y-5">
               <div className={`flex items-start gap-4 group hover:translate-x-1 transition-all duration-300`}>
-                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-gray-800">
+                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-industrialGray">
                   <FaMapMarkerAlt className="text-weldingRed group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1 text-gray-300">Adres</h4>
-                  <p className="text-gray-400">ul. Pogodna 8, 34-311 Tresna</p>
+                  <h4 className="font-medium mb-1 text-gray-900">Adres</h4>
+                  <p className="text-gray-600">ul. Pogodna 8, 34-311 Tresna</p>
                 </div>
               </div>
               
               <div className={`flex items-start gap-4 group hover:translate-x-1 transition-all duration-300`}>
-                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-gray-800">
+                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-industrialGray">
                   <FaPhone className="text-weldingRed group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1 text-gray-300">Telefon</h4>
-                  <p className="text-gray-400">+48 513 485 664</p>
+                  <h4 className="font-medium mb-1 text-gray-900">Telefon</h4>
+                  <p className="text-gray-600">+48 513 485 664</p>
                 </div>
               </div>
               
               <div className={`flex items-start gap-4 group hover:translate-x-1 transition-all duration-300`}>
-                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-gray-800">
+                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-industrialGray">
                   <FaEnvelope className="text-weldingRed group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1 text-gray-300">Email</h4>
-                  <p className="text-gray-400">krzysiek02.16@o2.pl</p>
+                  <h4 className="font-medium mb-1 text-gray-900">Email</h4>
+                  <p className="text-gray-600">krzysiek02.16@o2.pl</p>
                 </div>
               </div>
               
               <div className={`flex items-start gap-4 group hover:translate-x-1 transition-all duration-300`}>
-                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-gray-800">
+                <div className="p-3 rounded-lg flex-shrink-0 group-hover:bg-weldingRed group-hover:text-white transition-all duration-300 bg-industrialGray">
                   <FaClock className="text-weldingRed group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1 text-gray-300">Godziny pracy</h4>
-                  <p className="text-gray-400">Pon-Pt: 8:00 - 16:00</p>
-                  <p className="text-gray-400">Sobota: 9:00 - 14:00</p>
+                  <h4 className="font-medium mb-1 text-gray-900">Godziny pracy</h4>
+                  <p className="text-gray-600">Pon-Pt: 8:00 - 16:00</p>
+                  <p className="text-gray-600">Sobota: 9:00 - 14:00</p>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function Footer() {
             <nav className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <Link 
                 href="/" 
-                className="font-roboto inline-flex items-center hover:translate-x-2 hover:text-ctaOrange transition-all duration-300 text-gray-300"
+                className="font-roboto inline-flex items-center hover:translate-x-2 hover:text-ctaOrange transition-all duration-300 text-gray-700"
               >
                 <span className="mr-2 text-weldingRed">→</span>
                 Home
@@ -112,7 +112,7 @@ export default function Footer() {
                 <Link
                   key={item}
                   href={`/${item.toLowerCase().replace(" ", "-")}`}
-                  className="font-roboto inline-flex items-center hover:translate-x-2 hover:text-ctaOrange transition-all duration-300 text-gray-300"
+                  className="font-roboto inline-flex items-center hover:translate-x-2 hover:text-ctaOrange transition-all duration-300 text-gray-700"
                 >
                   <span className="mr-2 text-weldingRed">→</span>
                   {item}
@@ -120,9 +120,9 @@ export default function Footer() {
               ))}
             </nav>
             
-            <div className="mt-8 p-4 rounded-lg bg-gray-800">
-              <h4 className="font-oswald text-lg font-bold mb-2">Potrzebujesz wyceny?</h4>
-              <p className="text-sm mb-4 text-gray-400">
+            <div className="mt-8 p-4 rounded-lg bg-industrialGray">
+              <h4 className="font-oswald text-lg font-bold mb-2 text-gray-900">Potrzebujesz wyceny?</h4>
+              <p className="text-sm mb-4 text-gray-600">
                 Skontaktuj się z nami, aby otrzymać bezpłatną wycenę Twojego projektu.
               </p>
               <Link href="/kontakt" legacyBehavior>
@@ -145,7 +145,7 @@ export default function Footer() {
               <Link 
                 href="https://facebook.com" 
                 target="_blank" 
-                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-gray-800"
+                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
                 aria-label="Facebook"
               >
                 <FaFacebook className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
@@ -153,7 +153,7 @@ export default function Footer() {
               <Link 
                 href="https://instagram.com" 
                 target="_blank"
-                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-gray-800"
+                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
                 aria-label="Instagram"
               >
                 <FaInstagram className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
@@ -161,7 +161,7 @@ export default function Footer() {
               <Link 
                 href="https://linkedin.com" 
                 target="_blank"
-                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-gray-800"
+                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
@@ -169,16 +169,16 @@ export default function Footer() {
             </div>
             
             {/* Newsletter */}
-            <div className="p-6 rounded-lg bg-gray-800">
-              <h4 className="font-oswald text-lg font-bold mb-2">Newsletter</h4>
-              <p className="text-sm mb-4 text-gray-400">
+            <div className="p-6 rounded-lg bg-industrialGray">
+              <h4 className="font-oswald text-lg font-bold mb-2 text-gray-900">Newsletter</h4>
+              <p className="text-sm mb-4 text-gray-600">
                 Zapisz się, aby otrzymywać najnowsze informacje i promocje.
               </p>
               <form className="flex flex-col space-y-3">
                 <input 
                   type="email" 
                   placeholder="Twój adres email" 
-                  className="px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-weldingRed bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                  className="px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-weldingRed bg-white border-gray-300 text-gray-900 placeholder-gray-400"
                 />
                 <button 
                   type="submit" 
@@ -193,22 +193,22 @@ export default function Footer() {
       </div>
       
       {/* Footer bottom */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-gray-200">
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-center md:text-left font-roboto text-sm mb-4 md:mb-0 text-gray-400">
+            <p className="text-center md:text-left font-roboto text-sm mb-4 md:mb-0 text-gray-600">
               &copy; {new Date().getFullYear()} KriStal-Spaw. Wszelkie prawa zastrzeżone.
             </p>
             <div className="flex space-x-6">
               <Link 
                 href="/polityka-prywatnosci" 
-                className="text-sm hover:text-ctaOrange transition-colors duration-300 text-gray-400"
+                className="text-sm hover:text-ctaOrange transition-colors duration-300 text-gray-600"
               >
                 Polityka prywatności
               </Link>
               <Link 
                 href="/regulamin" 
-                className="text-sm hover:text-ctaOrange transition-colors duration-300 text-gray-400"
+                className="text-sm hover:text-ctaOrange transition-colors duration-300 text-gray-600"
               >
                 Regulamin
               </Link>

@@ -21,33 +21,33 @@ export default {
         },
         foreground: "var(--foreground)",
         
-        // Primary dark colors
+        // Premium light grays
         industrialGray: {
-          DEFAULT: "#1f2530",
-          light: "#2a3241",
-          lighter: "#3a4455"
+          DEFAULT: "#F5F5F5",
+          light: "#FAFAFA",
+          lighter: "#FFFFFF"
         },
         
-        // Accent colors
+        // Premium gold accents
         weldingRed: {
-          DEFAULT: "#E53E3E",
-          light: "#FC8181",
-          dark: "#C53030"
+          DEFAULT: "#D4AF37",
+          light: "#E8D4A0",
+          dark: "#B8941F"
         },
         ctaOrange: {
-          DEFAULT: "#DD6B20",
-          light: "#F6AD55",
-          dark: "#C05621"
+          DEFAULT: "#C9A961",
+          light: "#E0C98A",
+          dark: "#A88B3D"
         },
         metalSilver: {
-          DEFAULT: "#A0AEC0",
-          light: "#CBD5E0",
-          dark: "#718096"
+          DEFAULT: "#E8E8E8",
+          light: "#F2F2F2",
+          dark: "#D1D1D1"
         },
         steelBlue: {
-          DEFAULT: "#4A5568",
-          light: "#718096",
-          dark: "#2D3748"
+          DEFAULT: "#A0A0A0",
+          light: "#C0C0C0",
+          dark: "#808080"
         }
       },
     },

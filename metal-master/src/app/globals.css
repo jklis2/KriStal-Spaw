@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --background: #1f2530;
-    --background-light: #2a3241;
-    --foreground: #f5f7fa;
+    --background: #FAFAFA;
+    --background-light: #FFFFFF;
+    --foreground: #2D2D2D;
   }
 }
 

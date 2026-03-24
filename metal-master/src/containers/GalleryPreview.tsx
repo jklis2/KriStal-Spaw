@@ -8,7 +8,7 @@ import { galleryItems, fallbackImages } from "@/consts/galleryPreviewItems";
 export default function GalleryPreview() {
   return (
     <section
-      className="py-24 relative bg-industrialGray content-auto"
+      className="py-24 relative bg-industrialGray-light content-auto"
     >
       <div className="absolute top-20 right-0 w-64 h-64 bg-weldingRed/5 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-48 h-48 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
@@ -92,7 +92,7 @@ export default function GalleryPreview() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center">
-          <p className="text-lg mb-6 max-w-2xl text-center text-gray-300">
+          <p className="text-lg mb-6 max-w-2xl text-center text-gray-700">
             Każdą bramę realizujemy na wymiar, dopasowując projekt do potrzeb klienta. Konstrukcja wykonywana jest ze stali poddawanej ocynkowaniu ogniowemu. Każda brama posiada otwory technologiczne, co daje pewność, że elementy zostały prawidłowo ocynkowane i zapewniają pełną ochronę antykorozyjną oraz wysoką jakość wykonania. Całość wykańczamy lakierowaniem proszkowym oraz uzupełniamy o automatykę i precyzyjny montaż.
           </p>
           <CTAButton href="/galeria" icon={<FaArrowRight />}>

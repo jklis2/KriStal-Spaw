@@ -3,23 +3,15 @@ import { FaArrowRight } from "react-icons/fa";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CTAButton from "@/components/ui/CTAButton";
 import FeatureCard from "@/components/ui/FeatureCard";
-import { SVG_PATTERNS } from "@/consts/svgPatterns";
+
 
 export default function WhyUs() {
   return (
     <section
-      className="py-24 relative overflow-hidden bg-industrialGray content-auto"
+      className="py-24 relative overflow-hidden bg-white content-auto"
     >
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-weldingRed/5 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-ctaOrange/5 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0 bg-repeat"
-          style={{
-            backgroundImage: SVG_PATTERNS.dots.dark,
-          }}
-        ></div>
-      </div>
       <div className="container mx-auto px-6 relative">
         <SectionHeader
           title="Dlaczego Warto Nam Zaufać?"

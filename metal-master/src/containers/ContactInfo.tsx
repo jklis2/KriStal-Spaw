@@ -31,12 +31,12 @@ export default function ContactInfo() {
           <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
             <FaEnvelope className="text-weldingRed" />
           </div>
-          <h2 className="text-3xl font-oswald relative text-white">
+          <h2 className="text-3xl font-oswald relative text-gray-900">
             Informacje Kontaktowe
           </h2>
         </div>
         <div className="w-32 h-1 bg-gradient-to-r from-weldingRed to-ctaOrange mb-6"></div>
-        <p className="font-roboto mb-8 text-gray-300">
+        <p className="font-roboto mb-8 text-gray-600">
           Skontaktuj się z nami, aby omówić Twój projekt. Jesteśmy dostępni od poniedziałku do piątku
           w godzinach 8:00-16:00.
         </p>
@@ -53,25 +53,25 @@ export default function ContactInfo() {
               <item.icon className="text-weldingRed text-xl" />
             </div>
             <div className="flex-1">
-              <h3 className="font-oswald text-xl mb-1 transition-colors duration-300 group-hover:text-weldingRed text-white">{item.title}</h3>
-              <p className="whitespace-pre-line font-roboto text-gray-300">{item.content}</p>
+              <h3 className="font-oswald text-xl mb-1 transition-colors duration-300 group-hover:text-weldingRed text-gray-900">{item.title}</h3>
+              <p className="whitespace-pre-line font-roboto text-gray-600">{item.content}</p>
             </div>
           </div>
         ))}
       </div>
 
       <div 
-        className="mt-12 p-6 rounded-lg border animate-fade-up delay-500 transition-all duration-300 bg-gray-900/50 border-gray-800 hover:border-weldingRed/20"
+        className="mt-12 p-6 rounded-lg border animate-fade-up delay-500 transition-all duration-300 bg-white border-gray-200 hover:border-weldingRed/30 shadow-sm"
       >
         <div className="flex items-center gap-3 mb-4">
           <div className="w-8 h-8 rounded-full bg-weldingRed/10 flex items-center justify-center">
             <FaPhone className="text-weldingRed text-sm" />
           </div>
-          <h3 className="text-xl font-oswald text-white">
+          <h3 className="text-xl font-oswald text-gray-900">
             Umów się na konsultację
           </h3>
         </div>
-        <p className="font-roboto mb-4 text-gray-300">
+        <p className="font-roboto mb-4 text-gray-600">
           Chętnie pomożemy w realizacji Twojego projektu. Zadzwoń lub napisz do nas,
           aby umówić się na bezpłatną konsultację.
         </p>

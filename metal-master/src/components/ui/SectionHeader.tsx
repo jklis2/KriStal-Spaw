@@ -32,7 +32,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
               </span>
             </div>
           )}
-          <h2 className="text-5xl font-bold font-oswald relative inline-block text-white">
+          <h2 className="text-5xl font-bold font-oswald relative inline-block text-gray-900">
             {title}
             <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform -skew-x-12"></div>
           </h2>
@@ -40,7 +40,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       </div>
       {children && (
         <div className="text-center">
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-700">
             {children}
           </p>
         </div>

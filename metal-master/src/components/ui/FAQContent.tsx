@@ -1,6 +1,5 @@
 import { FaQuestionCircle } from 'react-icons/fa';
 import FAQAccordion from "@/components/ui/FAQAccordion";
-import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 interface FAQItem {
   question: string;
@@ -14,7 +13,6 @@ interface FAQContentProps {
 export default function FAQContent({ faqItems }: FAQContentProps) {
   return (
     <section className="py-24 relative overflow-hidden">
-      <BackgroundPattern />
       <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -23,10 +21,10 @@ export default function FAQContent({ faqItems }: FAQContentProps) {
             <FaQuestionCircle className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">CZĘSTO ZADAWANE PYTANIA</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-gray-900">
             Masz pytania? My mamy odpowiedzi!
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-300">
+          <p className="max-w-2xl mx-auto text-gray-600">
             Poniżej znajdziesz odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług i produktów.
             Jeśli nie znajdziesz odpowiedzi na swoje pytanie, skontaktuj się z nami bezpośrednio.
           </p>

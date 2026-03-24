@@ -66,7 +66,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'} ${scrolled ? 'shadow-xl' : 'shadow-md'} border-b-2 border-weldingRed ${scrolled ? 'bg-industrialGray/95 backdrop-blur-md' : 'bg-industrialGray'} text-white`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'} ${scrolled ? 'shadow-xl' : 'shadow-md'} border-b-2 border-weldingRed ${scrolled ? 'bg-white/95 backdrop-blur-md' : 'bg-white'} text-gray-900`}>
       <div className="container mx-auto flex items-center justify-between px-6 overflow-visible">
         <Link href="/">
           <div className="flex items-center gap-4 cursor-pointer group overflow-visible">
@@ -88,10 +88,10 @@ export default function Navbar() {
             </div>
             
             <div className="flex flex-col">
-              <span className="font-oswald text-xl lg:text-2xl font-bold transition-colors duration-300 text-white group-hover:text-weldingRed drop-shadow-md">
+              <span className="font-oswald text-xl lg:text-2xl font-bold transition-colors duration-300 text-gray-900 group-hover:text-weldingRed drop-shadow-md">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
               </span>
-              <span className="text-xs font-medium tracking-wider text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+              <span className="text-xs font-medium tracking-wider text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                 Dopasujemy każdy projekt do Twoich potrzeb
               </span>
             </div>
@@ -144,11 +144,11 @@ export default function Navbar() {
       <div 
         className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-auto transition-all duration-300 ${
           isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
-        } bg-industrialGray/95 backdrop-blur-md`}
+        } bg-white/95 backdrop-blur-md`}
         style={{ height: '100vh' }}
       >
-        <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 border-b border-weldingRed/30 bg-industrialGray/95 backdrop-blur-md">
-          <p className="text-xl font-bold text-white">
+        <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-6 py-4 border-b border-weldingRed/30 bg-white/95 backdrop-blur-md">
+          <p className="text-xl font-bold text-gray-900">
             Menu główne
           </p>
           <button 
@@ -162,7 +162,7 @@ export default function Navbar() {
         <nav className="flex flex-col h-full max-w-4xl mx-auto px-6 pt-20 pb-20">
           <Link 
             href="/" 
-            className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${pathname === '/' ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`} 
+            className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${pathname === '/' ? 'bg-industrialGray text-ctaOrange' : 'text-gray-900 hover:bg-industrialGray hover:text-ctaOrange'}`} 
 
           >
             <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">
@@ -177,7 +177,7 @@ export default function Navbar() {
               <Link
                 key={item}
                 href={itemPath}
-                className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${isActive ? 'bg-gray-800 text-ctaOrange' : 'hover:bg-gray-800 hover:text-ctaOrange'}`}
+                className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${isActive ? 'bg-industrialGray text-ctaOrange' : 'text-gray-900 hover:bg-industrialGray hover:text-ctaOrange'}`}
 
               >
                 <span className="w-8 h-8 flex items-center justify-center rounded-full bg-weldingRed/10 text-weldingRed">

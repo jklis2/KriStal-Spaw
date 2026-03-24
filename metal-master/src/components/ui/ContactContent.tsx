@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
 import ContactForm from "@/containers/ContactForm";
 import ContactInfo from "@/containers/ContactInfo";
-import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 export default function ContactContent() {
   const [shouldLoadMap, setShouldLoadMap] = useState(false);
@@ -31,7 +30,6 @@ export default function ContactContent() {
   return (
     <>
       <section className="py-24 relative overflow-hidden">
-        <BackgroundPattern />
         <div className="absolute top-20 left-10 w-24 h-24 rounded-full bg-weldingRed/10 blur-2xl"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-ctaOrange/10 blur-3xl"></div>
         
@@ -40,20 +38,20 @@ export default function ContactContent() {
             <FaEnvelope className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">SKONTAKTUJ SIĘ Z NAMI</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-gray-900">
             Jesteśmy do Twojej dyspozycji
           </h2>
         </div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             <div 
-              className="p-8 rounded-lg border animate-fade-left delay-200 transition-all duration-300 bg-gray-900/50 border-gray-800 hover:border-weldingRed/20"
+              className="p-8 rounded-lg border animate-fade-left delay-200 transition-all duration-300 bg-white border-gray-200 hover:border-weldingRed/30 shadow-sm"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
                   <FaEnvelope className="text-weldingRed" />
                 </div>
-                <h2 className="text-3xl font-oswald relative text-white">
+                <h2 className="text-3xl font-oswald relative text-gray-900">
                   Napisz do nas
                 </h2>
               </div>
@@ -72,14 +70,14 @@ export default function ContactContent() {
             <div className="w-10 h-10 rounded-full bg-weldingRed/10 flex items-center justify-center">
               <FaMapMarkedAlt className="text-weldingRed" />
             </div>
-            <h2 className="text-3xl font-oswald text-white">
+            <h2 className="text-3xl font-oswald text-gray-900">
               Gdzie nas znaleźć
             </h2>
           </div>
           
           <div 
             ref={mapContainerRef}
-            className="rounded-lg overflow-hidden border transition-all duration-300 bg-gray-900/50 border-gray-800 hover:border-weldingRed/20"
+            className="rounded-lg overflow-hidden border transition-all duration-300 bg-white border-gray-200 hover:border-weldingRed/30 shadow-sm"
           >
             <div className="aspect-[21/9] relative">
               {shouldLoadMap ? (
@@ -94,7 +92,7 @@ export default function ContactContent() {
                   className="absolute inset-0"
                 ></iframe>
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-800/50">
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
                   <FaMapMarkedAlt className="text-weldingRed text-4xl animate-pulse" />
                 </div>
               )}

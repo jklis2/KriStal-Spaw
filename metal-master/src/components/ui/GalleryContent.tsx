@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { FaCamera, FaFilter, FaSearch } from 'react-icons/fa';
 import GalleryCard from "@/components/ui/GalleryCard";
-import BackgroundPattern from "@/components/ui/BackgroundPattern";
 
 interface GalleryItem {
   id: number;
@@ -32,7 +31,6 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <BackgroundPattern />
       <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -41,10 +39,10 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
             <FaCamera className="text-weldingRed" />
             <span className="text-sm font-medium uppercase text-weldingRed">NASZE REALIZACJE</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-white">
+          <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-gray-900">
             Przeglądaj nasze najlepsze projekty
           </h2>
-          <p className="max-w-2xl mx-auto mb-8 text-gray-300">
+          <p className="max-w-2xl mx-auto mb-8 text-gray-600">
             Filtruj według kategorii, aby zobaczyć projekty, które Cię interesują
           </p>
           <div className="flex flex-wrap justify-center gap-3 relative z-10 mb-12 animate-fade-in-only delay-200">
@@ -58,7 +56,7 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
                     ${
                       category === selectedCategory
                         ? "bg-weldingRed text-white shadow-md shadow-weldingRed/20"
-                        : "bg-gray-900/50 text-gray-300 hover:bg-weldingRed/20 hover:text-white"
+                        : "bg-white text-gray-700 border border-gray-200 hover:bg-weldingRed/10 hover:text-weldingRed"
                     }`}
                   style={{ animationDelay: `${100 + index * 50}ms` }}
                 >
@@ -86,10 +84,10 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-weldingRed/10 flex items-center justify-center">
                 <FaSearch className="text-weldingRed text-2xl" />
               </div>
-              <h3 className="text-2xl font-oswald mb-2 text-white">
+              <h3 className="text-2xl font-oswald mb-2 text-gray-900">
                 Brak projektów w tej kategorii
               </h3>
-              <p className="text-gray-400">
+              <p className="text-gray-600">
                 Spróbuj wybrać inną kategorię lub sprawdź później
               </p>
             </div>

@@ -1,7 +1,6 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import ServiceCard from "@/components/ui/ServiceCard";
 import CTAButton from "@/components/ui/CTAButton";
-import BackgroundPattern from "@/components/ui/BackgroundPattern";
 import { servicesItems } from "@/consts/servicesItems";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -10,7 +9,6 @@ export default function Services() {
     <section
       className="py-24 relative overflow-hidden bg-industrialGray content-auto"
     >
-      <BackgroundPattern />
       <div className="absolute top-0 left-0 w-32 h-32 bg-weldingRed/10 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-ctaOrange/5 rounded-full filter blur-3xl"></div>
       <div className="container mx-auto px-6 relative">

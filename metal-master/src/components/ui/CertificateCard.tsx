@@ -18,7 +18,7 @@ const CertificateCard: React.FC<CertificateCardProps> = ({
   return (
     <div
       className="group relative rounded-lg overflow-hidden
-               transform hover:-translate-y-2 transition-all duration-300 bg-gray-900/50"
+               transform hover:-translate-y-2 transition-all duration-300 bg-white shadow-md"
     >
       <div className="aspect-square relative">
         <Image

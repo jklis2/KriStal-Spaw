@@ -75,7 +75,7 @@ export default function ContactForm() {
 
   const inputClasses = `w-full px-4 py-3 rounded-lg font-roboto
                      focus:outline-none focus:border-weldingRed focus:ring-2 focus:ring-weldingRed/30
-                     transition-all duration-300 bg-gray-900/50 border border-gray-800 text-white placeholder-gray-400 hover:border-gray-700`;
+                     transition-all duration-300 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 hover:border-gray-400`;
 
   const isLoading = status === 'loading';
 
@@ -88,7 +88,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="group">
-          <label htmlFor="name" className="block font-oswald mb-2 text-gray-300">
+          <label htmlFor="name" className="block font-oswald mb-2 text-gray-700">
             Imię i Nazwisko
           </label>
           <div className="relative">
@@ -110,7 +110,7 @@ export default function ContactForm() {
         </div>
 
         <div className="group">
-          <label htmlFor="email" className="block font-oswald mb-2 text-gray-300">
+          <label htmlFor="email" className="block font-oswald mb-2 text-gray-700">
             Email
           </label>
           <div className="relative">
@@ -133,7 +133,7 @@ export default function ContactForm() {
       </div>
 
       <div className="group">
-        <label htmlFor="phone" className="block font-oswald mb-2 text-gray-300">
+        <label htmlFor="phone" className="block font-oswald mb-2 text-gray-700">
           Telefon
         </label>
         <div className="relative">
@@ -154,7 +154,7 @@ export default function ContactForm() {
       </div>
 
       <div className="group">
-        <label htmlFor="message" className="block font-oswald mb-2 text-gray-300">
+        <label htmlFor="message" className="block font-oswald mb-2 text-gray-700">
           Wiadomość
         </label>
         <div className="relative">

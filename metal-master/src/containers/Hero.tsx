@@ -4,7 +4,7 @@ import { FaArrowRight, FaShieldAlt, FaTools, FaCertificate } from "react-icons/f
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden bg-industrialGray">
+    <section className="relative w-full min-h-screen flex items-center justify-center m-0 pt-16 pb-16 md:pt-0 md:pb-0 p-0 overflow-hidden">
       {/* Background with parallax effect */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
@@ -15,10 +15,10 @@ export default function Hero() {
             priority
             sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 100vw"
             quality={65}
-            className="object-cover w-full h-full brightness-50 scale-105 transform md:animate-slow-zoom"
+            className="object-cover w-full h-full brightness-75 scale-105 transform md:animate-slow-zoom"
           />
           {/* Overlay with animated gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-industrialGray/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
       </div>
       
@@ -72,7 +72,7 @@ export default function Hero() {
           ].map((feature, index) => (
             <div 
               key={index}
-              className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-900/30"
+              className="flex items-center gap-3 px-4 py-3 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10"
             >
               <div className="p-2 rounded-full bg-weldingRed/20">
                 <feature.icon className="text-weldingRed" />
@@ -84,7 +84,7 @@ export default function Hero() {
       </div>
       
       {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-industrialGray to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent"></div>
 
     </section>
   );

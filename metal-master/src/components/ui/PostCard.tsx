@@ -14,7 +14,7 @@ function PostCard({ post }: PostCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="group block h-full">
       <div 
-        className="overflow-hidden rounded-lg border border-transparent h-full transition-all duration-300 hover:-translate-y-[5px] hover:shadow-xl bg-zinc-900/80 backdrop-blur-sm hover:border-weldingRed/20 hover:shadow-weldingRed/10"
+        className="overflow-hidden rounded-lg border h-full transition-all duration-300 hover:-translate-y-[5px] hover:shadow-xl bg-white border-gray-200 hover:border-weldingRed/30 hover:shadow-weldingRed/10 shadow-sm"
       >
         <div className="relative h-48 w-full overflow-hidden">
           <Image
@@ -34,14 +34,14 @@ function PostCard({ post }: PostCardProps) {
           {/* Czerwona linia dekoracyjna */}
           <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-weldingRed to-ctaOrange transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
           
-          <h3 className="mb-3 text-xl font-bold font-oswald transition-colors duration-300 group-hover:text-weldingRed text-white">
+          <h3 className="mb-3 text-xl font-bold font-oswald transition-colors duration-300 group-hover:text-weldingRed text-gray-900">
             {post.title}
           </h3>
-          <p className="mb-4 text-sm text-zinc-400">
+          <p className="mb-4 text-sm text-gray-600">
             {post.description}
           </p>
-          <div className="border-t border-gray-700/20 pt-4 mt-4">
-            <div className="flex items-center justify-between text-sm text-zinc-500">
+          <div className="border-t border-gray-200 pt-4 mt-4">
+            <div className="flex items-center justify-between text-sm text-gray-500">
               <div className="flex items-center gap-2">
                 <FaUser className="text-weldingRed/70" />
                 <span>{post.author}</span>

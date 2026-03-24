@@ -19,7 +19,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   imageSrc,
 }) => {
   return (
-    <div className="rounded-2xl overflow-hidden shadow-xl bg-gray-900/50 shadow-black/20">
+    <div className="rounded-2xl overflow-hidden shadow-xl bg-white shadow-gray-200/80 border border-gray-200">
       <div className="grid md:grid-cols-5">
         {/* Image column */}
         <div className="md:col-span-2 relative h-64 md:h-auto">
@@ -49,7 +49,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             </svg>
           </div>
           <blockquote className="relative">
-            <p className="text-xl font-medium mb-8 text-white">
+            <p className="text-xl font-medium mb-8 text-gray-900">
               {testimonial}
             </p>
             <div className="flex items-center gap-4">
@@ -65,7 +65,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                   </svg>
                 ))}
               </div>
-              <span className="text-sm text-gray-400">
+              <span className="text-sm text-gray-500">
                 {rating}.0 / 5.0
               </span>
             </div>

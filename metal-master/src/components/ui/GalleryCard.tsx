@@ -19,7 +19,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
   return (
     <div
       className="group relative overflow-hidden rounded-lg
-               hover:shadow-xl hover:shadow-weldingRed/10 transition-all duration-300 animate-fade-up bg-gray-900/50"
+               hover:shadow-xl hover:shadow-weldingRed/10 transition-all duration-300 animate-fade-up bg-white shadow-md"
       style={{ animationDelay: `${index * 50}ms` }}
     >
       <div className="aspect-square relative">
