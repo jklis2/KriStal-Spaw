@@ -29,8 +29,8 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "Metal Master",
-  description: "Professional metalworking solutions",
+  title: "KriStal-Spaw",
+  description: "Profesjonalne Spawalnictwo",
 };
 
 export default function RootLayout({
