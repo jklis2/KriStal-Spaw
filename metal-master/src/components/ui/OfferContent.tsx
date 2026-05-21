@@ -25,7 +25,7 @@ export default function OfferContent({ offers }: OfferContentProps) {
               title="Zakres naszych usług"
               subtitle="NASZA OFERTA"
             >
-              Nasze główne obszary działania i zakres realizacji.
+              Konstrukcje stalowe, które łączą nowoczesny design z solidnym wykonaniem. Każdy projekt realizujemy z dbałością o detale, odpowiednią obróbkę materiału oraz estetyczne wykończenie. Oferujemy kompleksowe wykonanie bram, ogrodzeń, balustrad i elementów metalowych dopasowanych do charakteru posesji oraz oczekiwań klienta.
             </SectionHeader>
           </div>
           <div className="grid md:grid-cols-2 gap-12">

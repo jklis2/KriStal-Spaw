@@ -4,12 +4,14 @@ interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   children?: ReactNode;
+  useParagraphs?: boolean;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({ 
   title, 
   subtitle, 
-  children
+  children,
+  useParagraphs = false
 }) => {
   return (
     <div className="mb-16">
@@ -40,9 +42,15 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       </div>
       {children && (
         <div className="text-center">
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-700">
-            {children}
-          </p>
+          {useParagraphs ? (
+            <div className="mt-6 max-w-5xl mx-auto text-lg text-gray-700 text-left">
+              {children}
+            </div>
+          ) : (
+            <p className="mt-6 max-w-2xl mx-auto text-lg text-gray-700">
+              {children}
+            </p>
+          )}
         </div>
       )}
     </div>

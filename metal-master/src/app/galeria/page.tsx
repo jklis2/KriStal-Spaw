@@ -9,7 +9,7 @@ export default function Gallery() {
     <main>
       <SmallHeroSection
         title="Galeria Realizacji"
-        description="Zobacz nasze najlepsze projekty i realizacje. Każdy produkt to połączenie rzemieślniczej precyzji z nowoczesnym designem."
+        description="Każdy produkt to połączenie rzemieślniczej precyzji z nowoczesnym designem."
       />
       <GalleryContent galleryItems={galleryItems} categories={categories} />
     </main>

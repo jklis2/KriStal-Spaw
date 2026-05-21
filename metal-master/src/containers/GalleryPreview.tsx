@@ -26,8 +26,8 @@ export default function GalleryPreview() {
             <Image
               src={
                 galleryItems[0].src.startsWith("/")
-                  ? fallbackImages[0]
-                  : galleryItems[0].src
+                  ? galleryItems[0].src
+                  : fallbackImages[0]
               }
               alt={galleryItems[0].alt}
               fill
@@ -46,7 +46,7 @@ export default function GalleryPreview() {
                 {galleryItems[0].alt}
               </h3>
               <p className="text-gray-200 mb-4 max-w-md">
-                Wykonanie bramy wjazdowej na najwyższym poziomie. Przeprowadzimy Cię przez cały proces – od pomiaru i oględzin, przez szczegółowe ustalenia, aż po montaż.
+                Taras z metalową balustradą i lekkim zadaszeniem, zapewniający trwałość oraz estetyczne wykończenie przestrzeni przy domu.
               </p>
               <div className="flex gap-4">
                 <Link
@@ -69,8 +69,8 @@ export default function GalleryPreview() {
                 <Image
                   src={
                     img.src.startsWith("/")
-                      ? fallbackImages[index + 1]
-                      : img.src
+                      ? img.src
+                      : fallbackImages[index + 1]
                   }
                   alt={img.alt}
                   fill

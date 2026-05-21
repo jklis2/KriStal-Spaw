@@ -1,7 +1,7 @@
 export const faqItems = [
   {
     question: "Jakie są terminy realizacji zamówień?",
-    answer: "Standardowy czas realizacji zamówień wynosi od 2 do 4 tygodni, w zależności od złożoności projektu. Każde zamówienie traktujemy indywidualnie i dokładny termin ustalamy po konsultacji z klientem.",
+    answer: "Czas realizacji zależy od zakresu oraz stopnia złożoności projektu. Każde zamówienie wyceniamy i planujemy indywidualnie po konsultacji z klientem, aby dopasować termin do charakteru realizacji.",
   },
   {
     question: "Czy oferujecie darmową wycenę?",
@@ -17,10 +17,10 @@ export const faqItems = [
   },
   {
     question: "Jaki jest zasięg Waszych usług?",
-    answer: "Działamy na terenie całego województwa, a w przypadku większych projektów jesteśmy gotowi realizować zamówienia na terenie całego kraju.",
+    answer: "Działamy na terenie całego województwa śląskiego oraz małopolskiego, a w przypadku większych projektów jesteśmy gotowi realizować zamówienia na terenie całego kraju.",
   },
   {
     question: "Czy udzielacie gwarancji na swoje produkty?",
-    answer: "Tak, wszystkie nasze produkty objęte są gwarancją. Standardowy okres gwarancji wynosi 2 lata, z możliwością przedłużenia w zależności od produktu i warunków użytkowania.",
+    answer: "Realizacje wykonywane są zgodnie z obowiązującymi przepisami prawa cywilnego oraz prawami konsumenta. Klientowi przysługuje gwarancja oraz uprawnienia wynikające z odpowiedzialności za zgodność wykonanej usługi i produktu z umową, zgodnie z przepisami Kodeksu cywilnego, w szczególności art. 556–576 KC dotyczącymi odpowiedzialności za wady i rękojmi",
   },
 ];

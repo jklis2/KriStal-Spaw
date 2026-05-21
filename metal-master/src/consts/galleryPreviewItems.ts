@@ -1,25 +1,25 @@
 // Gallery preview items with descriptions
 export const galleryItems = [
   {
-    src: "/gallery/ogrodzenie-przemyslowe.jpg", // Placeholder - replace with actual image path
-    alt: "Brama wjazdowa z automatyką",
-    category: "Bramy",
+    src: "/galleryPreview/taras.webp", // Placeholder - replace with actual image path
+    alt: "Taras z balustradą oraz zadaszeniem",
+    category: "Tarasy",
     featured: true
   },
   {
-    src: "/gallery/brama-wjazdowa.jpg", // Placeholder - replace with actual image path
-    alt: "Ogrodzenia systemowe",
-    category: "Ogrodzenia"
+    src: "/galleryPreview/balustrada_szklana.webp", // Placeholder - replace with actual image path
+    alt: "Balustrady Szklane",
+    category: "Balustrady"
   },
   {
-    src: "/gallery/balustrada-schodowa.jpg", // Placeholder - replace with actual image path
+    src: "/galleryPreview/balustrada_schodowa.webp", // Placeholder - replace with actual image path
     alt: "Balustrada schodowa",
     category: "Balustrady"
   },
   {
-    src: "/gallery/konstrukcja-stalowa.jpg", // Placeholder - replace with actual image path
-    alt: "Balustrada balkonowa",
-    category: "Balustrady"
+    src: "/galleryPreview/brama_ogrodzenie.webp", // Placeholder - replace with actual image path
+    alt: "Brama dwuskrzydłowa z ogrodzeniem frontowym",
+    category: "Bramy"
   }
 ];
 

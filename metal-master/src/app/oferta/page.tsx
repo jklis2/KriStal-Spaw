@@ -9,7 +9,7 @@ export default function Offer() {
     <main>
       <SmallHeroSection
         title="Nasza Oferta"
-        description="Poznaj nasze rzemieślnicze produkty metalowe, tworzone z pasją i dbałością o najdrobniejsze detale"
+        description="Wykonujemy bramy, ogrodzenia, balustrady oraz niestandardowe konstrukcje stalowe z montażem"
       />
       <OfferContent offers={offers} />
     </main>

@@ -16,11 +16,6 @@ export const offers: OfferItem[] = [
   image: "/images/photoPlaceholder.webp",
 },
 {
-  title: "Automatyka do bram",
-  description: "Systemy automatyki do bram, zwiększające komfort, bezpieczeństwo i wygodę użytkowania.",
-  image: "/images/photoPlaceholder.webp",
-},
-{
   title: "Ogrodzenia systemowe",
   description: "Ogrodzenia systemowe, zapewniające estetykę, bezpieczeństwo i dopasowanie do każdej posesji.",
   image: "/images/photoPlaceholder.webp",

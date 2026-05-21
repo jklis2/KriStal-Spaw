@@ -11,8 +11,8 @@ export interface ServiceItem {
 
 export const servicesItems: ServiceItem[] = [
   {
-    title: "Bramy i automatyka",
-    description: "Solidne bramy przesuwne i skrzydłowe z automatyką, dopasowane do Twojej posesji.",
+    title: "Bramy",
+    description: "Solidne bramy przesuwne i skrzydłowe, dopasowane do Twojej posesji.",
     Icon: FaDoorOpen,
   },
   {

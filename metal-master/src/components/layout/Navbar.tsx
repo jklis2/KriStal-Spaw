@@ -105,7 +105,7 @@ export default function Navbar() {
           >
             Home
           </Link>
-          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => {
+          {["Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => {
             const itemPath = `/${item.toLowerCase().replace(" ", "-")}`;
             const isActive = pathname === itemPath;
             return (
@@ -170,7 +170,7 @@ export default function Navbar() {
             </span>
             Home
           </Link>
-          {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item, index) => {
+          {["Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item, index) => {
             const itemPath = `/${item.toLowerCase().replace(" ", "-")}`;
             const isActive = pathname === itemPath;
             return (

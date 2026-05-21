@@ -36,7 +36,7 @@ export default function Hero() {
             <span className="text-weldingRed">na lata</span>
           </h1>
           <p className="mt-6 text-xl md:text-2xl font-roboto text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Bramy • Balustrady • Ogrodzenia • Automatyka
+            Bramy • Balustrady • Ogrodzenia
             <span className="block mt-2 text-white font-medium">Kompleksowe realizacje dla Ciebie</span>
           </p>
         </div>
