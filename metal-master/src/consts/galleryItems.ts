@@ -1,74 +1,76 @@
 export interface GalleryItem {
   id: number;
-  title: string;
   category: string;
   image: string;
-  description: string;
 }
 
 export const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: "Brama Kuta Klasyczna",
-    category: "Bramy",
-    image: "/images/photoPlaceholder.webp",
-    description: "Ręcznie kuta brama w stylu klasycznym z elementami dekoracyjnymi",
+    category: "Balustrady",
+    image: "/galleryPreview/balustrada_schodowa.webp",
   },
   {
     id: 2,
-    title: "Ogrodzenie Nowoczesne",
-    category: "Ogrodzenia",
-    image: "/images/photoPlaceholder.webp",
-    description: "Minimalistyczne ogrodzenie z prostymi liniami i geometrycznymi wzorami",
+    category: "Balustrady",
+    image: "/galleryPreview/balustrada_szklana.webp",
   },
   {
     id: 3,
-    title: "Balustrada Spiralna",
-    category: "Balustrady",
-    image: "/images/photoPlaceholder.webp",
-    description: "Kręcone schody z kutą balustradą w stylu art nouveau",
+    category: "Bramy",
+    image: "/galleryPreview/brama_ogrodzenie.webp",
   },
   {
     id: 4,
-    title: "Stół Industrialny",
-    category: "Meble",
-    image: "/images/photoPlaceholder.webp",
-    description: "Stół z metalową podstawą i drewnianym blatem w stylu loft",
+    category: "Inne projekty",
+    image: "/galleryPreview/taras.webp",
   },
   {
     id: 5,
-    title: "Brama Wjazdowa Modern",
-    category: "Bramy",
-    image: "/images/photoPlaceholder.webp",
-    description: "Automatyczna brama przesuwna z elementami ze stali nierdzewnej",
+    category: "Balustrady",
+    image: "/offer/balustrada_balkonowa.webp",
   },
   {
     id: 6,
-    title: "Ogrodzenie Rezydencji",
-    category: "Ogrodzenia",
-    image: "/images/photoPlaceholder.webp",
-    description: "Ekskluzywne ogrodzenie posesji z kutymi elementami ozdobnymi",
+    category: "Balustrady",
+    image: "/offer/balustrada_francuska.webp",
   },
   {
     id: 7,
-    title: "Balustrada Tarasowa",
     category: "Balustrady",
-    image: "/images/photoPlaceholder.webp",
-    description: "Szklana balustrada ze stalowymi elementami konstrukcyjnymi",
+    image: "/offer/balustrada_szklana_2.webp",
   },
   {
     id: 8,
-    title: "Regał Metalowy",
-    category: "Meble",
-    image: "/images/photoPlaceholder.webp",
-    description: "Industrialny regał z metalu i drewna z regulowanymi półkami",
+    category: "Balustrady",
+    image: "/offer/balustrada_wewnetrzna.webp",
+  },
+  {
+    id: 9,
+    category: "Bramy",
+    image: "/offer/brama_dwuskrzydlowa.webp",
+  },
+  {
+    id: 10,
+    category: "Bramy",
+    image: "/offer/brama_przesuwna.webp",
+  },
+  {
+    id: 11,
+    category: "Ogrodzenia",
+    image: "/offer/ogrodzenie_systemowe.webp",
+  },
+  {
+    id: 12,
+    category: "Inne projekty",
+    image: "/offer/stol_inne_projekty.webp",
   },
 ];
 
 export const categories = [
   "Wszystkie",
   "Bramy",
-  "Ogrodzenia",
   "Balustrady",
-  "Meble",
+  "Ogrodzenia",
+  "Inne projekty",
 ];
