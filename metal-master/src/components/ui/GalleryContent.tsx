@@ -6,10 +6,8 @@ import GalleryCard from "@/components/ui/GalleryCard";
 
 interface GalleryItem {
   id: number;
-  title: string;
   category: string;
   image: string;
-  description: string;
 }
 
 interface GalleryContentProps {
@@ -71,10 +69,8 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
           {filteredItems.map((item, index) => (
             <GalleryCard
               key={item.id}
-              title={item.title}
               category={item.category}
               image={item.image}
-              description={item.description}
               index={index}
             />
           ))}
