@@ -3,6 +3,7 @@ import { Roboto, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import dynamic from "next/dynamic";
+import CookieBanner from "@/components/ui/CookieBanner";
 //import Clarity from "@/components/Clarity";
 //import Analytics from "@/components/Analytics";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

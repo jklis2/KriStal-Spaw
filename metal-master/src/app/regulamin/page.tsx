@@ -7,16 +7,16 @@ export default function Terms() {
         <h1 className="text-3xl font-bold text-center mb-8 font-oswald">Regulamin</h1>
         
         <p className="text-sm italic text-center opacity-70 mb-8">
-          Ostatnia aktualizacja: 8 kwietnia 2025
+          Ostatnia aktualizacja: 22 maja 2025
         </p>
 
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4 font-oswald">1. Postanowienia ogólne</h2>
           <p className="mb-4">
-            Niniejszy regulamin określa zasady korzystania z serwisu internetowego Kristal-Spaw, dostępnego pod adresem [adres strony internetowej], zwanego dalej &quot;Serwisem&quot;.
+            Niniejszy regulamin określa zasady korzystania z serwisu internetowego KriStal-Spaw, dostępnego pod adresem www.kristal-spaw.pl, zwanego dalej &quot;Serwisem&quot;.
           </p>
           <p className="mb-4">
-            Właścicielem i administratorem Serwisu jest Kristal-Spaw z siedzibą w [adres siedziby], NIP: [numer NIP], REGON: [numer REGON], wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS: [numer KRS], zwana dalej &quot;Usługodawcą&quot;.
+            Właścicielem i administratorem Serwisu jest KriStal-Spaw Krzysztof Rączka z siedzibą przy ul. Pogodna 8, 34-311 Tresna, NIP: 5532462086, REGON: 544619907, wpisana do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG), zwana dalej &quot;Usługodawcą&quot;.
           </p>
           <p className="mb-4">
             Każdy Użytkownik z chwilą podjęcia czynności zmierzających do korzystania z Serwisu zobowiązany jest do przestrzegania postanowień niniejszego Regulaminu.
@@ -32,10 +32,10 @@ export default function Terms() {
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>
-              <span className="font-semibold">Serwis</span> - strona internetowa dostępna pod adresem [adres strony internetowej].
+              <span className="font-semibold">Serwis</span> - strona internetowa dostępna pod adresem kristal-spaw.pl.
             </li>
             <li>
-              <span className="font-semibold">Usługodawca</span> - Kristal-Spaw z siedzibą w [adres siedziby].
+              <span className="font-semibold">Usługodawca</span> - KriStal-Spaw Krzysztof Rączka z siedzibą przy ul. Pogodna 8, 34-311 Tresna.
             </li>
             <li>
               <span className="font-semibold">Użytkownik</span> - każda osoba fizyczna, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej, korzystająca z Serwisu.
@@ -60,10 +60,9 @@ export default function Terms() {
             Usługodawca świadczy za pośrednictwem Serwisu następujące usługi:
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
-            <li>Prezentacja oferty usług Kristal-Spaw</li>
+            <li>Prezentacja oferty usług KriStal-Spaw</li>
             <li>Możliwość kontaktu z Usługodawcą poprzez formularz kontaktowy</li>
-            <li>Możliwość rezerwacji terminów wizyt</li>
-            <li>Informowanie o aktualnościach i promocjach</li>
+            <li>Prezentacja galerii zrealizowanych projektów</li>
             <li>Udostępnianie informacji o Usługodawcy i świadczonych przez niego usługach</li>
           </ul>
           <p className="mb-4">
@@ -81,7 +80,7 @@ export default function Terms() {
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>Urządzeniem z dostępem do sieci Internet</li>
             <li>Przeglądarką internetową obsługującą JavaScript i pliki cookies</li>
-            <li>Aktywnym adresem e-mail (w przypadku korzystania z formularza kontaktowego lub rezerwacji)</li>
+            <li>Aktywnym adresem e-mail (w przypadku korzystania z formularza kontaktowego)</li>
           </ul>
           <p className="mb-4">
             Usługodawca dokłada wszelkich starań, aby zapewnić prawidłowe funkcjonowanie Serwisu. Użytkownik zobowiązany jest do korzystania z Serwisu w sposób zgodny z prawem, dobrymi obyczajami oraz postanowieniami niniejszego Regulaminu.
@@ -91,69 +90,7 @@ export default function Terms() {
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">5. Rezerwacja usług</h2>
-          <p className="mb-4">
-            Rezerwacja usług oferowanych przez Usługodawcę może odbywać się za pośrednictwem:
-          </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2">
-            <li>Formularza rezerwacji dostępnego w Serwisie</li>
-            <li>Telefonicznie pod numerem telefonu podanym w Serwisie</li>
-            <li>Osobiście w siedzibie Usługodawcy</li>
-          </ul>
-          <p className="mb-4">
-            W celu dokonania rezerwacji za pośrednictwem formularza rezerwacji, Użytkownik powinien podać następujące dane:
-          </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2">
-            <li>Imię i nazwisko</li>
-            <li>Adres e-mail</li>
-            <li>Numer telefonu</li>
-            <li>Rodzaj wybranej usługi</li>
-            <li>Preferowaną datę i godzinę wizyty</li>
-          </ul>
-          <p className="mb-4">
-            Po dokonaniu rezerwacji Użytkownik otrzyma potwierdzenie na podany adres e-mail. Rezerwacja jest ważna po otrzymaniu potwierdzenia od Usługodawcy.
-          </p>
-        </div>
-
-        <hr className="my-8 border-opacity-20" />
-
-        <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">6. Płatności</h2>
-          <p className="mb-4">
-            Ceny usług oferowanych przez Usługodawcę są cenami brutto (zawierają podatek VAT) i są wyrażone w złotych polskich (PLN).
-          </p>
-          <p className="mb-4">
-            Usługodawca zastrzega sobie prawo do zmiany cen usług prezentowanych w Serwisie, wprowadzania nowych usług, przeprowadzania i odwoływania akcji promocyjnych, bądź wprowadzania w nich zmian.
-          </p>
-          <p className="mb-4">
-            Płatność za usługi może być dokonana:
-          </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2">
-            <li>Gotówką w siedzibie Usługodawcy</li>
-            <li>Kartą płatniczą w siedzibie Usługodawcy</li>
-            <li>Przelewem bankowym na konto Usługodawcy (w przypadku wybranych usług)</li>
-          </ul>
-        </div>
-
-        <hr className="my-8 border-opacity-20" />
-
-        <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">7. Odwołanie lub zmiana terminu rezerwacji</h2>
-          <p className="mb-4">
-            Klient ma prawo do odwołania lub zmiany terminu zarezerwowanej usługi. W celu odwołania lub zmiany terminu rezerwacji, Klient powinien skontaktować się z Usługodawcą telefonicznie lub za pośrednictwem poczty elektronicznej.
-          </p>
-          <p className="mb-4">
-            Usługodawca zastrzega sobie prawo do pobierania opłaty za odwołanie rezerwacji w terminie krótszym niż 24 godziny przed planowaną wizytą. Wysokość opłaty wynosi 30% wartości zarezerwowanej usługi.
-          </p>
-          <p className="mb-4">
-            W przypadku niestawienia się Klienta na zarezerwowany termin bez wcześniejszego odwołania, Usługodawca może obciążyć Klienta opłatą w wysokości 50% wartości zarezerwowanej usługi.
-          </p>
-        </div>
-
-        <hr className="my-8 border-opacity-20" />
-
-        <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">8. Reklamacje</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">5. Reklamacje</h2>
           <p className="mb-4">
             Klient ma prawo do złożenia reklamacji dotyczącej świadczonych usług. Reklamacja powinna zawierać:
           </p>
@@ -164,7 +101,7 @@ export default function Terms() {
             <li>Oczekiwania Klienta dotyczące sposobu rozpatrzenia reklamacji</li>
           </ul>
           <p className="mb-4">
-            Reklamacje należy składać pisemnie na adres siedziby Usługodawcy lub drogą elektroniczną na adres e-mail: [adres e-mail].
+            Reklamacje należy składać pisemnie na adres siedziby Usługodawcy lub drogą elektroniczną na adres e-mail: krzysiekraczka08@gmail.com.
           </p>
           <p className="mb-4">
             Usługodawca rozpatrzy reklamację w terminie 14 dni od daty jej otrzymania i poinformuje Klienta o sposobie jej rozpatrzenia na adres e-mail podany w reklamacji lub pisemnie na adres korespondencyjny.
@@ -174,7 +111,7 @@ export default function Terms() {
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">9. Odpowiedzialność</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">6. Odpowiedzialność</h2>
           <p className="mb-4">
             Usługodawca nie ponosi odpowiedzialności za:
           </p>
@@ -189,7 +126,7 @@ export default function Terms() {
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">10. Ochrona danych osobowych</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">7. Ochrona danych osobowych</h2>
           <p className="mb-4">
             Administratorem danych osobowych Użytkowników Serwisu jest Usługodawca. Dane osobowe Użytkowników są przetwarzane zgodnie z obowiązującymi przepisami prawa, w szczególności zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).
           </p>
@@ -201,7 +138,7 @@ export default function Terms() {
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">11. Własność intelektualna</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">8. Własność intelektualna</h2>
           <p className="mb-4">
             Wszelkie prawa do Serwisu, w tym do jego nazwy, domeny internetowej, szaty graficznej, logotypów, treści, zdjęć, filmów, grafik, dźwięków oraz innych elementów Serwisu, należą do Usługodawcy lub podmiotów, z którymi Usługodawca zawarł stosowne umowy.
           </p>
@@ -213,7 +150,7 @@ export default function Terms() {
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">12. Postanowienia końcowe</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">9. Postanowienia końcowe</h2>
           <p className="mb-4">
             Usługodawca zastrzega sobie prawo do zmiany niniejszego Regulaminu. Zmiany wchodzą w życie z chwilą opublikowania zmienionego Regulaminu w Serwisie.
           </p>
@@ -224,27 +161,26 @@ export default function Terms() {
             Wszelkie spory wynikłe z korzystania z Serwisu będą rozstrzygane w pierwszej kolejności na drodze negocjacji, z intencją polubownego zakończenia sporu. Jeśli jednak nie byłoby to możliwe, lub też byłoby niesatysfakcjonujące dla którejkolwiek ze stron, spory będą rozstrzygane przez właściwy sąd powszechny, zgodnie z przepisami kodeksu postępowania cywilnego.
           </p>
           <p className="mb-4">
-            Regulamin obowiązuje od dnia 8 kwietnia 2025 roku.
+            Regulamin obowiązuje od dnia 22 maja 2025 roku.
           </p>
         </div>
 
         <hr className="my-8 border-opacity-20" />
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-4 font-oswald">13. Kontakt</h2>
+          <h2 className="text-xl font-bold mb-4 font-oswald">10. Kontakt</h2>
           <p className="mb-4">
             W przypadku jakichkolwiek pytań, uwag lub wniosków dotyczących niniejszego Regulaminu lub korzystania z Serwisu, prosimy o kontakt:
           </p>
           <div className="pl-6 mb-4">
-            <p className="font-bold">Kristal-Spaw</p>
-            <p>Adres: [adres siedziby]</p>
-            <p>E-mail: [adres e-mail]</p>
-            <p>Telefon: [numer telefonu]</p>
+            <p className="font-bold">KriStal-Spaw Krzysztof Rączka</p>
+            <p>Adres: ul. Pogodna 8, 34-311 Tresna</p>
+            <p>E-mail: krzysiekraczka08@gmail.com</p>
           </div>
         </div>
         
         <div className="mt-12 text-center text-sm opacity-70">
-          <p>&copy; {new Date().getFullYear()} Kristal-Spaw. Wszelkie prawa zastrzeżone.</p>
+          <p>&copy; {new Date().getFullYear()} KriStal-Spaw Krzysztof Rączka. Wszelkie prawa zastrzeżone.</p>
         </div>
       </div>
     </div>

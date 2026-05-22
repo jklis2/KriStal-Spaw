@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
         <h1 className="text-3xl font-bold text-center mb-8 font-oswald">Polityka Prywatności</h1>
         
         <p className="text-sm italic text-center opacity-70 mb-8">
-          Ostatnia aktualizacja: 8 kwietnia 2025
+          Ostatnia aktualizacja: 22 maja 2025
         </p>
 
         <div className="mb-8">
@@ -25,10 +25,10 @@ export default function PrivacyPolicy() {
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4 font-oswald">2. Administrator Danych</h2>
           <p className="mb-4">
-            Administratorem Państwa danych osobowych jest Kristal-Spaw z siedzibą w [adres siedziby], NIP: [numer NIP], REGON: [numer REGON], wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS: [numer KRS].
+            Administratorem Państwa danych osobowych jest KriStal-Spaw Krzysztof Rączka z siedzibą przy ul. Pogodna 8, 34-311 Tresna, NIP: 5532462086, REGON: 544619907, wpisana do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG).
           </p>
           <p className="mb-4">
-            We wszystkich sprawach związanych z przetwarzaniem danych osobowych mogą się Państwo kontaktować z nami pod adresem e-mail: [adres e-mail] lub telefonicznie pod numerem: [numer telefonu].
+            We wszystkich sprawach związanych z przetwarzaniem danych osobowych mogą się Państwo kontaktować z nami pod adresem e-mail: krzysiekraczka08@gmail.com.
           </p>
         </div>
 
@@ -45,9 +45,6 @@ export default function PrivacyPolicy() {
             </li>
             <li>
               <span className="font-semibold">Dane kontaktowe:</span> adres korespondencyjny, adres e-mail, numer telefonu.
-            </li>
-            <li>
-              <span className="font-semibold">Dane dotyczące rezerwacji:</span> daty rezerwacji, wybrane usługi, preferencje.
             </li>
             <li>
               <span className="font-semibold">Dane techniczne:</span> adres IP, rodzaj przeglądarki, system operacyjny, czas spędzony na stronie, odwiedzone podstrony.
@@ -113,7 +110,7 @@ export default function PrivacyPolicy() {
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
             <li>
-              Podmioty świadczące usługi na rzecz Kristal-Spaw, takie jak dostawcy usług IT, hostingowych, księgowych, płatniczych, marketingowych.
+              Podmioty świadczące usługi na rzecz KriStal-Spaw, takie jak dostawcy usług IT, hostingowych, księgowych, płatniczych, marketingowych.
             </li>
             <li>
               Partnerzy biznesowi, z którymi współpracujemy w celu świadczenia usług.
@@ -239,15 +236,14 @@ export default function PrivacyPolicy() {
             W przypadku jakichkolwiek pytań, uwag lub wniosków dotyczących niniejszej Polityki Prywatności lub sposobu, w jaki przetwarzamy Państwa dane osobowe, prosimy o kontakt:
           </p>
           <div className="pl-6 mb-4">
-            <p className="font-bold">Kristal-Spaw</p>
-            <p>Adres: [adres siedziby]</p>
-            <p>E-mail: [adres e-mail]</p>
-            <p>Telefon: [numer telefonu]</p>
+            <p className="font-bold">KriStal-Spaw Krzysztof Rączka</p>
+            <p>Adres: ul. Pogodna 8, 34-311 Tresna</p>
+            <p>E-mail: krzysiekraczka08@gmail.com</p>
           </div>
         </div>
         
         <div className="mt-12 text-center text-sm opacity-70">
-          <p>&copy; {new Date().getFullYear()} Kristal-Spaw. Wszelkie prawa zastrzeżone.</p>
+          <p>&copy; {new Date().getFullYear()} KriStal-Spaw Krzysztof Rączka. Wszelkie prawa zastrzeżone.</p>
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ export default function ContactContent() {
             <div className="aspect-[21/9] relative">
               {shouldLoadMap ? (
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12643.756924484244!2d21.0122281!3d52.2296756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669d3f99a5%3A0x52b81c9f2707694d!2sWarszawa!5e0!3m2!1spl!2spl!4v1615997602232!5m2!1spl!2spl"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5156.889898578675!2d19.212404945663295!3d49.740071191372664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47169d60ef992f79%3A0xe045b92dd3eda56b!2sKriStal-Spaw%20Krzysztof%20R%C4%85czka!5e0!3m2!1spl!2spl!4v1779439707769!5m2!1spl!2spl"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

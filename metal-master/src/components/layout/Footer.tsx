@@ -77,7 +77,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1 text-gray-900">Email</h4>
-                  <p className="text-gray-600">krzysiek02.16@o2.pl</p>
+                  <p className="text-gray-600">krzysiekraczka08@gmail.com</p>
                 </div>
               </div>
               

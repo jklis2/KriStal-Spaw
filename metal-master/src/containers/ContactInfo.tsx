@@ -9,7 +9,7 @@ const contactItems = [
   {
     icon: FaEnvelope,
     title: "Email",
-    content: "krzysiek02.16@o2.pl"
+    content: "krzysiekraczka08@gmail.com"
   },
   {
     icon: FaMapMarkerAlt,

@@ -43,7 +43,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       {children && (
         <div className="text-center">
           {useParagraphs ? (
-            <div className="mt-6 max-w-5xl mx-auto text-lg text-gray-700 text-left">
+            <div className="mt-6 max-w-5xl mx-auto text-lg text-gray-700 text-justify">
               {children}
             </div>
           ) : (

@@ -92,7 +92,7 @@ export default function GalleryPreview() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-center">
-          <p className="text-lg mb-6 max-w-2xl text-center text-gray-700">
+          <p className="text-lg mb-6 max-w-2xl text-justify text-gray-700">
             Każdą bramę realizujemy na wymiar, dopasowując projekt do potrzeb klienta. Konstrukcja wykonywana jest ze stali poddawanej ocynkowaniu ogniowemu. Każda brama posiada otwory technologiczne, co daje pewność, że elementy zostały prawidłowo ocynkowane i zapewniają pełną ochronę antykorozyjną oraz wysoką jakość wykonania. Całość wykańczamy lakierowaniem proszkowym oraz uzupełniamy o automatykę i precyzyjny montaż.
           </p>
           <CTAButton href="/galeria" icon={<FaArrowRight />}>
