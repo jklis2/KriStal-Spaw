@@ -67,11 +67,11 @@ function getClientIp(headersList: Headers): string {
   );
 }
 
-const ALLOWED_ORIGINS = [
+const ALLOWED_ORIGINS = ([
   process.env.NEXT_PUBLIC_SITE_URL,
   'http://localhost:3000',
   'http://localhost:3001',
-].filter(Boolean) as string[];
+].filter(Boolean) as string[]).map((url) => url.replace(/\/+$/, ''));
 
 function validateBody(body: ContactBody): string | null {
   const { name, email, phone, message, _honey, _timestamp } = body;
@@ -263,16 +263,24 @@ export async function POST(request: Request) {
       );
     }
 
+    console.warn('[Contact] Creating SMTP transporter...', { host: SMTP_HOST, port: SMTP_PORT });
+
+    const smtpPort = Number(SMTP_PORT);
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
-      port: Number(SMTP_PORT),
-      secure: Number(SMTP_PORT) === 465,
+      port: smtpPort,
+      secure: smtpPort === 465,
       auth: {
         user: SMTP_USER,
         pass: SMTP_PASS,
       },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+      ...(smtpPort === 587 && { requireTLS: true }),
     });
 
+    console.warn('[Contact] Sending email...');
     await transporter.sendMail({
       from: `"Metal Master - Formularz" <${SMTP_USER}>`,
       replyTo: email,
@@ -280,6 +288,7 @@ export async function POST(request: Request) {
       subject: `Nowa wiadomość z formularza kontaktowego — ${name}`,
       html: buildEmailHtml(name, email, phone, message),
     });
+    console.warn('[Contact] Email sent successfully');
 
     return NextResponse.json({ success: true });
   } catch (err) {
