@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -158,15 +158,7 @@ export default function Footer() {
               >
                 <FaInstagram className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
               </Link>
-              <Link 
-                href="https://linkedin.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
-                aria-label="Odwiedź nasz profil na LinkedIn"
-              >
-                <FaLinkedin className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
-              </Link>
+
             </div>
             
             {/* Newsletter */}
