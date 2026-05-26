@@ -176,6 +176,7 @@ export async function DELETE() { return methodNotAllowed(); }
 export async function PATCH() { return methodNotAllowed(); }
 
 export async function POST(request: Request) {
+  console.warn('[Contact] POST request received');
   try {
     // --- Header validation ---
     const headersList = await headers();
