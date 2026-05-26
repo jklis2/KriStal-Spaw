@@ -1,110 +1,165 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from 'react';
-import { FaPaperPlane, FaUser, FaEnvelope, FaPhone, FaComment, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  FaCheckCircle,
+  FaComment,
+  FaEnvelope,
+  FaExclamationCircle,
+  FaPaperPlane,
+  FaPhone,
+  FaUser,
+} from "react-icons/fa";
 
-type FormStatus = 'idle' | 'loading' | 'success' | 'error' | 'rate_limited';
+type FormStatus = "idle" | "loading" | "success" | "error" | "rate_limited";
 
-const INITIAL_FORM_DATA = { name: '', email: '', phone: '', message: '' };
+const INITIAL_FORM_DATA = { name: "", email: "", phone: "", message: "" };
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validateClientSide(data: typeof INITIAL_FORM_DATA): string | null {
-  if (!data.name.trim()) return 'Imię i nazwisko jest wymagane.';
-  if (!data.email.trim()) return 'Email jest wymagany.';
-  if (!EMAIL_REGEX.test(data.email.trim())) return 'Podaj poprawny adres email.';
-  if (!data.message.trim()) return 'Wiadomość jest wymagana.';
+  if (!data.name.trim()) return "Imię i nazwisko jest wymagane.";
+  if (!data.email.trim()) return "Email jest wymagany.";
+  if (!EMAIL_REGEX.test(data.email.trim())) return "Podaj poprawny adres email.";
+  if (!data.message.trim()) return "Wiadomość jest wymagana.";
   return null;
 }
 
 export default function ContactForm() {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
-  const [status, setStatus] = useState<FormStatus>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [cooldown, setCooldown] = useState(0);
+
   const honeypotRef = useRef<HTMLInputElement>(null);
   const timestampRef = useRef(Date.now());
-  const [cooldown, setCooldown] = useState(0);
+
+  const trimmedName = formData.name.trim();
+  const trimmedEmail = formData.email.trim();
+  const trimmedMessage = formData.message.trim();
+
+  const isLoading = status === "loading";
+  const isDisabled = isLoading || status === "rate_limited";
+  const hasValidationError = status === "error" && Boolean(validateClientSide(formData));
+
+  const isNameInvalid = hasValidationError && !trimmedName;
+  const isEmailInvalid =
+    hasValidationError && (!trimmedEmail || !EMAIL_REGEX.test(trimmedEmail));
+  const isMessageInvalid = hasValidationError && !trimmedMessage;
 
   useEffect(() => {
     if (cooldown <= 0) return;
+
     const timer = setInterval(() => {
-      setCooldown(prev => {
+      setCooldown((prev) => {
         if (prev <= 1) {
-          setStatus('idle');
-          setStatusMessage('');
+          setStatus("idle");
+          setStatusMessage("");
           return 0;
         }
+
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(timer);
   }, [cooldown]);
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    const clientError = validateClientSide(formData);
-    if (clientError) {
-      setStatus('error');
-      setStatusMessage(clientError);
-      return;
-    }
+      const clientError = validateClientSide(formData);
 
-    setStatus('loading');
-    setStatusMessage('');
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          _honey: honeypotRef.current?.value || '',
-          _timestamp: timestampRef.current,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setStatus('success');
-        setStatusMessage('Wiadomość została wysłana. Dziękujemy za kontakt!');
-        setFormData(INITIAL_FORM_DATA);
-        timestampRef.current = Date.now();
-      } else if (res.status === 429) {
-        setStatus('rate_limited');
-        setCooldown(60);
-        setStatusMessage(data.error || 'Zbyt wiele wiadomości. Spróbuj ponownie za chwilę.');
-      } else {
-        setStatus('error');
-        setStatusMessage(data.error || 'Nie udało się wysłać wiadomości. Spróbuj ponownie.');
+      if (clientError) {
+        setStatus("error");
+        setStatusMessage(clientError);
+        return;
       }
-    } catch {
-      setStatus('error');
-      setStatusMessage('Błąd połączenia. Sprawdź internet i spróbuj ponownie.');
-    }
-  }, [formData]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (status === 'error' || status === 'success') {
-      setStatus('idle');
-      setStatusMessage('');
-    }
-  }, [status]);
+      setStatus("loading");
+      setStatusMessage("");
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            _honey: honeypotRef.current?.value || "",
+            _timestamp: timestampRef.current,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          setStatus("success");
+          setStatusMessage("Wiadomość została wysłana. Dziękujemy za kontakt!");
+          setFormData(INITIAL_FORM_DATA);
+          timestampRef.current = Date.now();
+        } else if (res.status === 429) {
+          setStatus("rate_limited");
+          setCooldown(60);
+          setStatusMessage(
+            data.error || "Zbyt wiele wiadomości. Spróbuj ponownie za chwilę."
+          );
+        } else {
+          setStatus("error");
+          setStatusMessage(
+            data.error || "Nie udało się wysłać wiadomości. Spróbuj ponownie."
+          );
+        }
+      } catch {
+        setStatus("error");
+        setStatusMessage("Błąd połączenia. Sprawdź internet i spróbuj ponownie.");
+      }
+    },
+    [formData]
+  );
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value } = e.target;
+
+      setFormData((prev) => ({ ...prev, [name]: value }));
+
+      if (status === "error" || status === "success") {
+        setStatus("idle");
+        setStatusMessage("");
+      }
+    },
+    [status]
+  );
 
   const inputClasses = `w-full px-4 py-3 rounded-lg font-roboto
                      focus:outline-none focus:border-weldingRed focus:ring-2 focus:ring-weldingRed/30
                      transition-all duration-300 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 hover:border-gray-400`;
 
-  const isLoading = status === 'loading';
-  const isDisabled = isLoading || status === 'rate_limited';
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Honeypot — hidden from users, visible to bots */}
-      <div className="absolute opacity-0 pointer-events-none" aria-hidden="true" style={{ position: 'absolute', left: '-9999px' }}>
-        <input type="text" name="_honey" tabIndex={-1} autoComplete="off" ref={honeypotRef} />
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6"
+      aria-label="Formularz kontaktowy"
+      aria-busy={isLoading}
+      aria-describedby={statusMessage ? "contact-form-status" : undefined}
+    >
+      {/* Honeypot - hidden from users, visible to bots */}
+      <div
+        className="absolute opacity-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px" }}
+      >
+        <label htmlFor="contact-company" className="sr-only">
+          Firma
+        </label>
+        <input
+          id="contact-company"
+          type="text"
+          name="_honey"
+          tabIndex={-1}
+          autoComplete="off"
+          ref={honeypotRef}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -112,10 +167,15 @@ export default function ContactForm() {
           <label htmlFor="name" className="block font-oswald mb-2 text-gray-700">
             Imię i Nazwisko
           </label>
+
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div
+              className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+              aria-hidden="true"
+            >
               <FaUser className="text-weldingRed/70 group-hover:text-weldingRed transition-colors duration-300" />
             </div>
+
             <input
               type="text"
               id="name"
@@ -124,6 +184,8 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               disabled={isDisabled}
+              autoComplete="name"
+              aria-invalid={isNameInvalid ? "true" : "false"}
               className={`${inputClasses} pl-10`}
               placeholder="Jan Kowalski"
             />
@@ -134,10 +196,15 @@ export default function ContactForm() {
           <label htmlFor="email" className="block font-oswald mb-2 text-gray-700">
             Email
           </label>
+
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <div
+              className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+              aria-hidden="true"
+            >
               <FaEnvelope className="text-weldingRed/70 group-hover:text-weldingRed transition-colors duration-300" />
             </div>
+
             <input
               type="email"
               id="email"
@@ -146,6 +213,9 @@ export default function ContactForm() {
               onChange={handleChange}
               required
               disabled={isDisabled}
+              autoComplete="email"
+              inputMode="email"
+              aria-invalid={isEmailInvalid ? "true" : "false"}
               className={`${inputClasses} pl-10`}
               placeholder="jan@example.com"
             />
@@ -157,10 +227,15 @@ export default function ContactForm() {
         <label htmlFor="phone" className="block font-oswald mb-2 text-gray-700">
           Telefon
         </label>
+
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div
+            className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            aria-hidden="true"
+          >
             <FaPhone className="text-weldingRed/70 group-hover:text-weldingRed transition-colors duration-300" />
           </div>
+
           <input
             type="tel"
             id="phone"
@@ -168,6 +243,8 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             disabled={isDisabled}
+            autoComplete="tel"
+            inputMode="tel"
             className={`${inputClasses} pl-10`}
             placeholder="+48 123 456 789"
           />
@@ -178,10 +255,15 @@ export default function ContactForm() {
         <label htmlFor="message" className="block font-oswald mb-2 text-gray-700">
           Wiadomość
         </label>
+
         <div className="relative">
-          <div className="absolute top-3 left-0 flex items-start pl-3 pointer-events-none">
+          <div
+            className="absolute top-3 left-0 flex items-start pl-3 pointer-events-none"
+            aria-hidden="true"
+          >
             <FaComment className="text-weldingRed/70 group-hover:text-weldingRed transition-colors duration-300" />
           </div>
+
           <textarea
             id="message"
             name="message"
@@ -190,6 +272,7 @@ export default function ContactForm() {
             required
             disabled={isDisabled}
             rows={6}
+            aria-invalid={isMessageInvalid ? "true" : "false"}
             className={`${inputClasses} pl-10 resize-none`}
             placeholder="Opisz swój projekt..."
           />
@@ -197,40 +280,84 @@ export default function ContactForm() {
       </div>
 
       {statusMessage && (
-        <div className={`flex items-center gap-2 p-3 rounded-lg text-sm font-roboto ${
-          status === 'success'
-            ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-            : status === 'rate_limited'
-            ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-            : 'bg-red-500/10 text-red-400 border border-red-500/20'
-        }`}>
-          {status === 'success' ? <FaCheckCircle className="flex-shrink-0" /> : <FaExclamationCircle className="flex-shrink-0" />}
-          <span>{statusMessage}{cooldown > 0 && ` (${cooldown}s)`}</span>
+        <div
+          id="contact-form-status"
+          role={status === "success" ? "status" : "alert"}
+          aria-live={status === "success" ? "polite" : "assertive"}
+          className={`flex items-center gap-2 p-3 rounded-lg text-sm font-roboto ${
+            status === "success"
+              ? "bg-green-500/10 text-green-400 border border-green-500/20"
+              : status === "rate_limited"
+              ? "bg-amber-500/10 text-amber-500 border border-amber-500/20"
+              : "bg-red-500/10 text-red-400 border border-red-500/20"
+          }`}
+        >
+          {status === "success" ? (
+            <FaCheckCircle className="flex-shrink-0" aria-hidden="true" />
+          ) : (
+            <FaExclamationCircle className="flex-shrink-0" aria-hidden="true" />
+          )}
+
+          <span>
+            {statusMessage}
+            {cooldown > 0 && ` (${cooldown}s)`}
+          </span>
         </div>
       )}
 
       <button
         type="submit"
         disabled={isDisabled}
+        aria-disabled={isDisabled}
         className={`w-full bg-weldingRed text-white font-oswald
                  py-4 px-8 rounded-lg transition-all duration-300 flex items-center justify-center
                  group relative overflow-hidden ${
-                   isDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-ctaOrange'
+                   isDisabled
+                     ? "opacity-70 cursor-not-allowed"
+                     : "hover:bg-ctaOrange"
                  }`}
       >
         <span className="relative z-10 mr-2">
-          {isLoading ? 'Wysyłanie...' : cooldown > 0 ? `Zablokowano (${cooldown}s)` : 'Wyślij Wiadomość'}
+          {isLoading
+            ? "Wysyłanie..."
+            : cooldown > 0
+            ? `Zablokowano (${cooldown}s)`
+            : "Wyślij Wiadomość"}
         </span>
+
         {isLoading ? (
-          <svg className="relative z-10 w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          <svg
+            className="relative z-10 w-5 h-5 animate-spin"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            />
           </svg>
         ) : cooldown <= 0 ? (
-          <FaPaperPlane className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-300" />
+          <FaPaperPlane
+            className="relative z-10 transform group-hover:translate-x-1 transition-transform duration-300"
+            aria-hidden="true"
+          />
         ) : null}
+
         {!isDisabled && (
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-ctaOrange to-weldingRed opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-ctaOrange to-weldingRed opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            aria-hidden="true"
+          />
         )}
       </button>
     </form>
