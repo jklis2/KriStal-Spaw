@@ -4,8 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import dynamic from "next/dynamic";
 import CookieBanner from "@/components/ui/CookieBanner";
-//import Clarity from "@/components/Clarity";
-//import Analytics from "@/components/Analytics";
+import Clarity from "@/components/Clarity";
+import Analytics from "@/components/Analytics";
 
 const Footer = dynamic(() => import("@/components/layout/Footer"), {
   loading: () => <footer className="min-h-[200px]" />,
@@ -40,12 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body
         className={`${roboto.variable} ${oswald.variable} font-roboto antialiased bg-background text-foreground`}
       >
-        {/* <Clarity /> */}
-        {/* <Analytics /> */}
+        <Clarity />
+        <Analytics />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
