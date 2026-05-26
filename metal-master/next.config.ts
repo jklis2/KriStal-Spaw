@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https:",
               "frame-src 'self' https://www.google.com",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.clarity.ms",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
