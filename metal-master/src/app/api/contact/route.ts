@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 interface ContactBody {
   name: string;
@@ -253,41 +253,35 @@ export async function POST(request: Request) {
     const phone = body.phone?.trim() || '';
     const message = body.message.trim();
 
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL } = process.env;
+    const { RESEND_API_KEY, CONTACT_EMAIL } = process.env;
 
-    if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
-      console.error('Missing SMTP environment variables');
+    if (!RESEND_API_KEY || !CONTACT_EMAIL) {
+      console.error('Missing email environment variables (RESEND_API_KEY or CONTACT_EMAIL)');
       return NextResponse.json(
         { success: false, error: 'Błąd konfiguracji serwera. Spróbuj później.' },
         { status: 500 }
       );
     }
 
-    console.warn('[Contact] Creating SMTP transporter...', { host: SMTP_HOST, port: SMTP_PORT });
+    console.warn('[Contact] Sending email via Resend...');
 
-    const smtpPort = Number(SMTP_PORT);
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
-      },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-      ...(smtpPort === 587 && { requireTLS: true }),
-    });
-
-    console.warn('[Contact] Sending email...');
-    await transporter.sendMail({
-      from: `"Metal Master - Formularz" <${SMTP_USER}>`,
+    const resend = new Resend(RESEND_API_KEY);
+    const { error: sendError } = await resend.emails.send({
+      from: 'Formularz kontaktowy <kontakt@kristal-spaw.pl>',
       replyTo: email,
-      to: CONTACT_EMAIL,
+      to: [CONTACT_EMAIL],
       subject: `Nowa wiadomość z formularza kontaktowego — ${name}`,
       html: buildEmailHtml(name, email, phone, message),
     });
+
+    if (sendError) {
+      console.error('[Contact] Resend error:', sendError);
+      return NextResponse.json(
+        { success: false, error: 'Nie udało się wysłać wiadomości. Spróbuj ponownie później.' },
+        { status: 500 }
+      );
+    }
+
     console.warn('[Contact] Email sent successfully');
 
     return NextResponse.json({ success: true });
