@@ -54,7 +54,7 @@ export default function GalleryPreview() {
                   className="inline-flex items-center gap-2 bg-weldingRed/90 hover:bg-weldingRed text-white px-4 py-2 rounded-lg transition-all duration-300"
                 >
                   <span>Więcej zdjęć</span>
-                  <FaArrowRight className="text-sm" />
+                  <FaArrowRight className="text-sm" aria-hidden="true" />
                 </Link>
               </div>
             </div>

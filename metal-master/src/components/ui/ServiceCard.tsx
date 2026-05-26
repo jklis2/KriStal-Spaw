@@ -62,9 +62,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <span className="text-sm font-medium text-gray-600">
           {linkText}
         </span>
-        <Link href={linkHref} className="group/arrow">
+        <Link href={linkHref} className="group/arrow" aria-label={`${linkText} - ${title}`}>
           <div className="p-2 rounded-full group-hover/arrow:bg-weldingRed transition-all duration-300 bg-industrialGray">
-            <FaArrowRight className="text-weldingRed group-hover/arrow:text-white transition-colors duration-300" />
+            <FaArrowRight className="text-weldingRed group-hover/arrow:text-white transition-colors duration-300" aria-hidden="true" />
           </div>
         </Link>
       </div>

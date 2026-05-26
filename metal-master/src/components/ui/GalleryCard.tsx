@@ -21,9 +21,10 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
       <div className="aspect-square relative">
         <Image
           src={image}
-          alt={category}
+          alt={`Realizacja KriStal-Spaw – ${category}`}
           fill
           loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           quality={70}
           className="object-cover transform group-hover:scale-105 transition-transform duration-500"
         />

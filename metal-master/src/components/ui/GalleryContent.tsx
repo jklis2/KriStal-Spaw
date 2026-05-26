@@ -34,7 +34,7 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12 animate-fade-down">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-weldingRed/10 mb-4">
-            <FaCamera className="text-weldingRed" />
+            <FaCamera className="text-weldingRed" aria-hidden="true" />
             <span className="text-sm font-medium uppercase text-weldingRed">NASZE REALIZACJE</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-gray-900">
@@ -58,7 +58,7 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
                     }`}
                   style={{ animationDelay: `${100 + index * 50}ms` }}
                 >
-                  {category === selectedCategory && <FaFilter className="text-sm" />}
+                  {category === selectedCategory && <FaFilter className="text-sm" aria-hidden="true" />}
                   {category}
                 </button>
               ))}
@@ -78,7 +78,7 @@ export default function GalleryContent({ galleryItems, categories }: GalleryCont
           {filteredItems.length === 0 && (
             <div className="col-span-3 text-center py-16 animate-fade-in-only">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-weldingRed/10 flex items-center justify-center">
-                <FaSearch className="text-weldingRed text-2xl" />
+                <FaSearch className="text-weldingRed text-2xl" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-oswald mb-2 text-gray-900">
                 Brak projektów w tej kategorii

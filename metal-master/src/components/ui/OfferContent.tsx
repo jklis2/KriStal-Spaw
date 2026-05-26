@@ -48,7 +48,7 @@ export default function OfferContent({ offers }: OfferContentProps) {
           className="max-w-4xl mx-auto px-6 text-center relative animate-fade-in-only"
         >
           <div className="inline-flex items-center justify-center p-3 bg-weldingRed/10 rounded-full mb-6">
-            <FaTools className="text-weldingRed text-xl" />
+            <FaTools className="text-weldingRed text-xl" aria-hidden="true" />
           </div>
           <SectionHeader
             title="Zrealizujemy Twój Projekt"

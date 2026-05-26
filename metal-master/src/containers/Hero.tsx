@@ -48,7 +48,7 @@ export default function Hero() {
                 rounded-lg transform hover:-translate-y-1 hover:shadow-lg hover:shadow-weldingRed/50 
                 transition-all duration-300 overflow-hidden">
               <span className="relative z-10">Zobacz nasze realizacje</span>
-              <FaArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              <FaArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
               <div className="absolute inset-0 bg-gradient-to-r from-ctaOrange to-weldingRed opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </Link>
@@ -58,7 +58,7 @@ export default function Hero() {
                 rounded-lg transform hover:-translate-y-1 hover:border-ctaOrange hover:text-ctaOrange
                 transition-all duration-300">
               <span>Bezpłatna wycena</span>
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+              <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
             </div>
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function Hero() {
               className="flex items-center gap-3 px-4 py-3 rounded-lg bg-black/40 backdrop-blur-sm border border-white/10"
             >
               <div className="p-2 rounded-full bg-weldingRed/20">
-                <feature.icon className="text-weldingRed" />
+                <feature.icon className="text-weldingRed" aria-hidden="true" />
               </div>
               <span className="text-white font-medium">{feature.text}</span>
             </div>

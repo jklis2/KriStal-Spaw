@@ -30,8 +30,51 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "KriStal-Spaw",
-  description: "Profesjonalne Spawalnictwo",
+  title: {
+    default: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie - Tresna",
+    template: "%s | KriStal-Spaw",
+  },
+  description:
+    "KriStal-Spaw – profesjonalne usługi spawalnicze i ślusarskie w Tresnej. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości.",
+  metadataBase: new URL("https://kristal-spaw.pl"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "pl_PL",
+    url: "https://kristal-spaw.pl",
+    siteName: "KriStal-Spaw",
+    title: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie",
+    description:
+      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości. Tresna i okolice.",
+    images: [
+      {
+        url: "/images/weldingHero.webp",
+        width: 1200,
+        height: 630,
+        alt: "KriStal-Spaw – profesjonalne spawalnictwo i ślusarstwo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie",
+    description:
+      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Tresna i okolice.",
+    images: ["/images/weldingHero.webp"],
+  },
 };
 
 export default function RootLayout({

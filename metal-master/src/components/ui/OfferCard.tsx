@@ -32,6 +32,7 @@ function OfferCard({
           alt={title}
           fill
           loading="lazy"
+          sizes="(max-width: 768px) 100vw, 50vw"
           quality={70}
           className="object-cover transform group-hover:scale-105 transition-transform duration-500"
         />
@@ -53,9 +54,10 @@ function OfferCard({
         </p>
         <Link href="/kontakt" className="w-full py-4 px-8 font-oswald text-lg rounded-lg
                transition-all duration-300 flex items-center justify-center group/btn bg-weldingRed hover:bg-ctaOrange text-white"
+          aria-label={`Dowiedz się więcej o: ${title}`}
         >
           <span>Dowiedz się więcej</span>
-          <FaArrowRight className="ml-2 transform group-hover/btn:translate-x-2 transition-transform duration-300" />
+          <FaArrowRight className="ml-2 transform group-hover/btn:translate-x-2 transition-transform duration-300" aria-hidden="true" />
         </Link>
       </div>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-weldingRed to-ctaOrange transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>

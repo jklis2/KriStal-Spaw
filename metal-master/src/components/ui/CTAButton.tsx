@@ -20,7 +20,7 @@ const CTAButton: React.FC<CTAButtonProps> = ({
       className={`inline-flex items-center gap-2 bg-weldingRed text-white px-8 py-4 rounded-lg font-medium hover:bg-ctaOrange transition-all duration-300 shadow-lg shadow-weldingRed/20 hover:shadow-ctaOrange/30 ${className}`}
     >
       <span>{children}</span>
-      {icon && icon}
+      {icon && <span aria-hidden="true">{icon}</span>}
     </Link>
   );
 };

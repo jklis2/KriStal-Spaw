@@ -32,9 +32,9 @@ export default function Footer() {
           </div>
           
           <div className="flex flex-col items-center md:items-start">
-            <h2 className="font-oswald text-3xl font-bold mb-2 text-gray-900">
+            <p className="font-oswald text-3xl font-bold mb-2 text-gray-900">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-weldingRed to-ctaOrange">KriStal</span>-Spaw
-            </h2>
+            </p>
             <p className="text-sm max-w-md text-center md:text-left mb-4 text-gray-600">
               Profesjonalizm połączony z doświadczeniem.
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1 text-gray-900">Telefon</h4>
-                  <p className="text-gray-600">+48 513 485 664</p>
+                  <p className="text-gray-600"><a href="tel:+48513485664" className="hover:text-ctaOrange transition-colors duration-300">+48 513 485 664</a></p>
                 </div>
               </div>
               
@@ -77,7 +77,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1 text-gray-900">Email</h4>
-                  <p className="text-gray-600">krzysiekraczka08@gmail.com</p>
+                  <p className="text-gray-600"><a href="mailto:krzysiekraczka08@gmail.com" className="hover:text-ctaOrange transition-colors duration-300">krzysiekraczka08@gmail.com</a></p>
                 </div>
               </div>
               
@@ -100,7 +100,7 @@ export default function Footer() {
               Szybkie linki
               <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-ctaOrange"></div>
             </h3>
-            <nav className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+            <nav aria-label="Linki w stopce" className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
               <Link 
                 href="/" 
                 className="font-roboto inline-flex items-center hover:translate-x-2 hover:text-ctaOrange transition-all duration-300 text-gray-700"
@@ -108,7 +108,7 @@ export default function Footer() {
                 <span className="mr-2 text-weldingRed">→</span>
                 Home
               </Link>
-              {["O nas", "Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
+              {["Oferta", "Galeria", "Blog", "FAQ", "Kontakt"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase().replace(" ", "-")}`}
@@ -125,10 +125,8 @@ export default function Footer() {
               <p className="text-sm mb-4 text-gray-600">
                 Skontaktuj się z nami, aby otrzymać bezpłatną wycenę Twojego projektu.
               </p>
-              <Link href="/kontakt" legacyBehavior>
-                <a className="inline-block bg-weldingRed text-white px-4 py-2 rounded font-medium hover:bg-ctaOrange transition-all duration-300">
+              <Link href="/kontakt" className="inline-block bg-weldingRed text-white px-4 py-2 rounded font-medium hover:bg-ctaOrange transition-all duration-300">
                   Zapytaj o wycenę
-                </a>
               </Link>
             </div>
           </div>
@@ -144,25 +142,28 @@ export default function Footer() {
             <div className="flex gap-4 mb-8">
               <Link 
                 href="https://facebook.com" 
-                target="_blank" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
-                aria-label="Facebook"
+                aria-label="Odwiedź nasz profil na Facebooku"
               >
                 <FaFacebook className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
               </Link>
               <Link 
                 href="https://instagram.com" 
                 target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
-                aria-label="Instagram"
+                aria-label="Odwiedź nasz profil na Instagramie"
               >
                 <FaInstagram className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
               </Link>
               <Link 
                 href="https://linkedin.com" 
                 target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-lg hover:bg-weldingRed hover:text-white hover:scale-110 transition-all duration-300 bg-industrialGray"
-                aria-label="LinkedIn"
+                aria-label="Odwiedź nasz profil na LinkedIn"
               >
                 <FaLinkedin className="text-xl text-weldingRed hover:text-white transition-colors duration-300" />
               </Link>
@@ -174,10 +175,11 @@ export default function Footer() {
               <p className="text-sm mb-4 text-gray-600">
                 Zapisz się, aby otrzymywać najnowsze informacje i promocje.
               </p>
-              <form className="flex flex-col space-y-3">
+              <form aria-label="Formularz zapisu do newslettera" className="flex flex-col space-y-3">
                 <input 
                   type="email" 
-                  placeholder="Twój adres email" 
+                  placeholder="Twój adres email"
+                  aria-label="Adres email do newslettera"
                   className="px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-weldingRed bg-white border-gray-300 text-gray-900 placeholder-gray-400"
                 />
                 <button 

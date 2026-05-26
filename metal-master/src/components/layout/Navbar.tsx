@@ -98,7 +98,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6 flex-nowrap whitespace-nowrap">
+        <nav aria-label="Nawigacja główna" className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6 flex-nowrap whitespace-nowrap">
             <Link 
             href="/" 
             className={`font-roboto text-sm lg:text-base xl:text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-ctaOrange after:transition-all whitespace-nowrap ${pathname === '/' ? 'text-ctaOrange after:w-full' : 'hover:text-ctaOrange after:w-0 hover:after:w-full'}`}
@@ -118,14 +118,15 @@ export default function Navbar() {
               </Link>
             );
           })}
-        </div>
+        </nav>
 
         <button 
           className="md:hidden text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg hover:bg-weldingRed/10" 
           onClick={() => {
             setIsOpen(!isOpen);
           }}
-          aria-label="Menu"
+          aria-label={isOpen ? "Zamknij menu" : "Otwórz menu"}
+          aria-expanded={isOpen}
         >
           {isOpen ? 
             <FiX className="transform scale-110 transition-transform duration-300" /> : 
@@ -154,12 +155,12 @@ export default function Navbar() {
           <button 
             className="text-2xl hover:text-ctaOrange transition-all duration-300 p-2 rounded-lg hover:bg-weldingRed/10" 
             onClick={() => setIsOpen(false)}
-            aria-label="Close Menu"
+            aria-label="Zamknij menu"
           >
             <FiX className="transform scale-110 transition-transform duration-300" />
           </button>
         </div>
-        <nav className="flex flex-col h-full max-w-4xl mx-auto px-6 pt-20 pb-20">
+        <nav aria-label="Menu mobilne" className="flex flex-col h-full max-w-4xl mx-auto px-6 pt-20 pb-20">
           <Link 
             href="/" 
             className={`font-roboto p-4 my-1 rounded-lg transition-all duration-300 flex items-center gap-3 ${pathname === '/' ? 'bg-industrialGray text-ctaOrange' : 'text-gray-900 hover:bg-industrialGray hover:text-ctaOrange'}`} 
