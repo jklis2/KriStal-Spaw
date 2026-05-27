@@ -1,7 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { FaCamera, FaFilter, FaSearch } from "react-icons/fa";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import {
+  FaCamera,
+  FaChevronLeft,
+  FaChevronRight,
+  FaFilter,
+  FaSearch,
+} from "react-icons/fa";
 import GalleryCard from "@/components/ui/GalleryCard";
 
 interface GalleryItem {
@@ -19,8 +26,8 @@ export default function GalleryContent({
   galleryItems,
   categories,
 }: GalleryContentProps) {
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>("Wszystkie");
+  const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
 
   const filteredItems = useMemo(
     () =>
@@ -31,6 +38,61 @@ export default function GalleryContent({
       ),
     [galleryItems, selectedCategory]
   );
+
+  const activeItem =
+    activeImageIndex !== null ? filteredItems[activeImageIndex] : null;
+
+  const closePreview = useCallback(() => {
+    setActiveImageIndex(null);
+  }, []);
+
+  const showPreviousImage = useCallback(() => {
+    setActiveImageIndex((currentIndex) => {
+      if (currentIndex === null || filteredItems.length === 0) {
+        return currentIndex;
+      }
+
+      return currentIndex === 0 ? filteredItems.length - 1 : currentIndex - 1;
+    });
+  }, [filteredItems.length]);
+
+  const showNextImage = useCallback(() => {
+    setActiveImageIndex((currentIndex) => {
+      if (currentIndex === null || filteredItems.length === 0) {
+        return currentIndex;
+      }
+
+      return currentIndex === filteredItems.length - 1 ? 0 : currentIndex + 1;
+    });
+  }, [filteredItems.length]);
+
+  useEffect(() => {
+    if (activeImageIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closePreview();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPreviousImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNextImage();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeImageIndex, closePreview, showNextImage, showPreviousImage]);
 
   return (
     <section
@@ -85,7 +147,10 @@ export default function GalleryContent({
                   <button
                     key={category}
                     type="button"
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setActiveImageIndex(null);
+                    }}
                     aria-pressed={isSelected}
                     aria-label={`Pokaż realizacje z kategorii: ${category}`}
                     className={`px-6 py-3 rounded-lg font-oswald text-lg transition-all duration-300 flex items-center gap-2 animate-fade-up hover:scale-105 active:scale-[0.98]
@@ -122,6 +187,7 @@ export default function GalleryContent({
                   category={item.category}
                   image={item.image}
                   index={index}
+                  onOpen={() => setActiveImageIndex(index)}
                 />
               </li>
             ))}
@@ -149,6 +215,64 @@ export default function GalleryContent({
           </div>
         )}
       </div>
+
+      {activeItem && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Realizacja KriStal-Spaw - ${activeItem.category}`}
+          onClick={closePreview}
+        >
+          <button
+            type="button"
+            onClick={closePreview}
+            className="absolute top-5 right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-3xl text-white transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Zamknij podgląd zdjęcia"
+          >
+            ×
+          </button>
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              showPreviousImage();
+            }}
+            className="absolute left-4 md:left-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Poprzednie zdjęcie"
+          >
+            <FaChevronLeft aria-hidden="true" />
+          </button>
+
+          <div
+            className="relative h-[90vh] w-full max-w-6xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Image
+              src={activeItem.image}
+              alt={`Realizacja KriStal-Spaw - ${activeItem.category}`}
+              fill
+              priority
+              sizes="100vw"
+              quality={90}
+              className="object-contain"
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              showNextImage();
+            }}
+            className="absolute right-4 md:right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label="Następne zdjęcie"
+          >
+            <FaChevronRight aria-hidden="true" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
