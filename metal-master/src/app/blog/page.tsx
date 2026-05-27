@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import SmallHeroSection from "@/components/ui/SmallHeroSection";
-import { blogPosts } from "@/consts/blogPosts";
+// import { blogPosts } from "@/consts/blogPosts";
 
 const BlogContent = dynamic(() => import("@/components/ui/BlogContent"));
 
@@ -66,7 +66,8 @@ export default function Blog() {
         description="Odkryj świat spawalnictwa poprzez nasze profesjonalne artykuły i poradniki."
       />
 
-      <BlogContent blogPosts={blogPosts} />
+      {/* <BlogContent blogPosts={blogPosts} /> jak beda artykuly to to zamiast tego nizej*/}
+      <BlogContent />
     </main>
   );
 }

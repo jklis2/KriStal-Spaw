@@ -1,62 +1,58 @@
 import { FaNewspaper, FaSearch } from 'react-icons/fa';
-import PostCard from "@/components/ui/PostCard";
+// import PostCard from "@/components/ui/PostCard";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  description: string;
-  content: string;
-  date: string;
-  author: string;
-  image: string;
-  slug: string;
-}
-
-interface BlogContentProps {
-  blogPosts: BlogPost[];
-}
-
-export default function BlogContent({ blogPosts }: BlogContentProps) {
+export default function BlogContent() {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-72 h-72 bg-weldingRed/10 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3 opacity-70"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-ctaOrange/10 rounded-full filter blur-3xl translate-y-1/2 -translate-x-1/3 opacity-70"></div>
+
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12 animate-fade-down">
           <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-weldingRed/10 mb-4">
             <FaNewspaper className="text-weldingRed" />
-            <span className="text-sm font-medium uppercase text-weldingRed">BLOG TECHNICZNY</span>
+            <span className="text-sm font-medium uppercase text-weldingRed">
+              BLOG TECHNICZNY
+            </span>
           </div>
+
           <h2 className="text-3xl md:text-4xl font-oswald mb-4 text-gray-900">
             Najnowsze artykuły i poradniki
           </h2>
+
           <p className="max-w-2xl mx-auto mb-8 text-gray-600">
             Poszerzaj swoją wiedzę o spawalnictwie dzięki profesjonalnym artykułom
-            przygotowanym przez naszych ekspertów
+            przygotowanym przez naszych ekspertów.
           </p>
-          
+
           <div className="flex justify-center mb-8">
             <div className="relative max-w-md w-full">
-              <input 
-                type="text" 
-                placeholder="Szukaj artykułów..." 
+              <input
+                type="text"
+                placeholder="Szukaj artykułów..."
                 className="w-full py-3 px-5 pl-12 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-weldingRed/50 transition-all bg-white border-gray-300 text-gray-900 placeholder-gray-400"
               />
               <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-weldingRed" />
             </div>
           </div>
         </div>
-        
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 animate-fade-in-only delay-200">
-          {blogPosts.map((post, index) => (
-            <div
-              key={post.id}
-              className="animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <PostCard post={post} />
+
+        <div className="max-w-3xl mx-auto animate-fade-up">
+          <div className="bg-white border border-gray-200 rounded-3xl shadow-lg p-8 md:p-12 text-center">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-weldingRed/10">
+              <FaNewspaper className="text-3xl text-weldingRed" />
             </div>
-          ))}
+
+            <h3 className="text-2xl font-oswald text-gray-900 mb-4">
+              Artykuły będą dostępne wkrótce
+            </h3>
+
+            <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              Aktualnie przygotowujemy praktyczne poradniki, artykuły techniczne
+              oraz aktualności branżowe. Wróć tutaj już niedługo, aby sprawdzić
+              nowe materiały.
+            </p>
+          </div>
         </div>
       </div>
     </section>
