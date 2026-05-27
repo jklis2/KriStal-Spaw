@@ -13,16 +13,16 @@ const jsonLd = {
       url: "https://kristal-spaw.pl",
       name: "KriStal-Spaw",
       description:
-        "Profesjonalne usługi spawalnicze i ślusarskie w Tresnej. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar.",
+        "Profesjonalne usługi spawalnicze i ślusarskie w województwie śląskim i małopolskim. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar.",
       inLanguage: "pl-PL",
     },
     {
       "@type": "WebPage",
       "@id": "https://kristal-spaw.pl/#webpage",
       url: "https://kristal-spaw.pl",
-      name: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie - Tresna",
+      name: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie - województwo śląskie i małopolskie",
       description:
-        "KriStal-Spaw – profesjonalne usługi spawalnicze i ślusarskie w Tresnej. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości.",
+        "KriStal-Spaw – profesjonalne usługi spawalnicze i ślusarskie w województwie śląskim i małopolskim. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości.",
       isPartOf: { "@id": "https://kristal-spaw.pl/#website" },
       inLanguage: "pl-PL",
     },

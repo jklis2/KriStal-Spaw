@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oferta – Bramy, ogrodzenia, balustrady | KriStal-Spaw",
     description:
-      "Bramy przesuwne i dwuskrzydłowe, ogrodzenia systemowe, balustrady balkonowe, wewnętrzne, szklane i francuskie. Realizacje na wymiar z montażem w Tresnej i okolicach.",
+      "Bramy przesuwne i dwuskrzydłowe, ogrodzenia systemowe, balustrady balkonowe, wewnętrzne, szklane i francuskie. Realizacje na wymiar z montażem w województwie śląskim i małopolskim.",
     url: "https://kristal-spaw.pl/oferta",
     images: [
       {

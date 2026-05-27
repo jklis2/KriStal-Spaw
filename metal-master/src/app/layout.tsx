@@ -31,11 +31,11 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
   title: {
-    default: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie - Tresna",
+    default: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie - województwo śląskie i małopolskie",
     template: "%s | KriStal-Spaw",
   },
   description:
-    "KriStal-Spaw – profesjonalne usługi spawalnicze i ślusarskie w Tresnej. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości.",
+    "KriStal-Spaw – profesjonalne usługi spawalnicze i ślusarskie w województwie śląskim i małopolskim. Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości.",
   metadataBase: new URL("https://kristal-spaw.pl"),
   alternates: {
     canonical: "/",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "KriStal-Spaw",
     title: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie",
     description:
-      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości. Tresna i okolice.",
+      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Ocynkowanie ogniowe, lakierowanie proszkowe, gwarancja jakości. Działamy w województwie śląskim i małopolskim.",
     images: [
       {
         url: "/images/weldingHero.webp",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KriStal-Spaw | Profesjonalne usługi spawalnicze i ślusarskie",
     description:
-      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Tresna i okolice.",
+      "Bramy, ogrodzenia, balustrady i konstrukcje stalowe na wymiar. Działamy w województwie śląskim i małopolskim.",
     images: ["/images/weldingHero.webp"],
   },
 };

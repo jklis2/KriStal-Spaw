@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Galeria realizacji | KriStal-Spaw",
     description:
-      "Bramy, balustrady, ogrodzenia i konstrukcje stalowe – zobacz zdjęcia naszych realizacji z Tresnej i okolic.",
+      "Bramy, balustrady, ogrodzenia i konstrukcje stalowe – zobacz zdjęcia naszych realizacji z województwa śląskiego i małopolskiego.",
     url: "https://kristal-spaw.pl/galeria",
     images: [
       {
