@@ -295,18 +295,19 @@ export default function GalleryContent({
           </button>
 
           <div
-            className="relative flex h-[90vh] w-full max-w-6xl flex-col"
+            key={activeItem.id}
+            className="relative grid h-[90dvh] w-full max-w-6xl grid-rows-[auto_minmax(65dvh,1fr)] gap-6 overflow-y-auto overscroll-contain md:h-[90vh] md:grid-rows-[auto_minmax(0,1fr)] md:gap-4 md:overflow-visible"
             onClick={(event) => event.stopPropagation()}
           >
             <h3
               id="lightbox-title"
-              className="mb-4 px-12 text-center text-2xl font-normal italic leading-snug tracking-[0.03em] text-weldingRed-light md:text-3xl"
+              className="m-0 break-words px-12 py-1 text-center text-base font-normal italic leading-snug tracking-[0.02em] text-weldingRed-light md:text-3xl md:tracking-[0.03em]"
               style={{ fontFamily: 'Didot, "Bodoni MT", "Times New Roman", serif' }}
               aria-live="polite"
             >
               {activeItem.title}
             </h3>
-            <div className="relative min-h-0 flex-1">
+            <div className="relative min-h-0 overflow-hidden">
               {imageStatus?.src !== activeItem.image && (
                 <div className="absolute inset-0 flex items-center justify-center" role="status">
                   <span className="h-8 w-8 rounded-full border-2 border-white/20 border-t-white/80 motion-safe:animate-spin" aria-hidden="true" />
