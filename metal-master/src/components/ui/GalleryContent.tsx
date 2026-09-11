@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import {
   FaCamera,
   FaChevronLeft,
@@ -11,16 +11,19 @@ import {
 } from "react-icons/fa";
 import GalleryCard from "@/components/ui/GalleryCard";
 
-interface GalleryItem {
-  id: number;
-  category: string;
-  image: string;
-}
+import type { GalleryItem } from "@/consts/galleryItems";
 
 interface GalleryContentProps {
   galleryItems: GalleryItem[];
   categories: string[];
 }
+
+// Te same parametry dla podglądu i preloadu: przeglądarka korzysta z tej samej wersji obrazu.
+const lightboxImageOptions = {
+  fill: true,
+  sizes: "(min-width: 1184px) 1152px, calc(100vw - 32px)",
+  quality: 85,
+} as const;
 
 export default function GalleryContent({
   galleryItems,
@@ -28,6 +31,10 @@ export default function GalleryContent({
 }: GalleryContentProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
+  const [imageStatus, setImageStatus] = useState<{
+    src: string;
+    status: "loaded" | "error";
+  } | null>(null);
 
   const filteredItems = useMemo(
     () =>
@@ -39,8 +46,46 @@ export default function GalleryContent({
     [galleryItems, selectedCategory]
   );
 
+  // Lightbox obejmuje wszystkie realizacje, niezależnie od filtra kafelków.
+  const lightboxImages = useMemo(
+    () => galleryItems.flatMap((item) =>
+      item.images.map((image) => ({ ...item, image }))
+    ),
+    [galleryItems]
+  );
+
   const activeItem =
-    activeImageIndex !== null ? filteredItems[activeImageIndex] : null;
+    activeImageIndex !== null ? lightboxImages[activeImageIndex] : null;
+
+  useEffect(() => {
+    // Sąsiedzi nie konkurują z aktualnym zdjęciem o pierwsze pobranie.
+    if (activeImageIndex === null || !activeItem ||
+        imageStatus?.src !== activeItem.image || imageStatus.status !== "loaded") return;
+
+    const neighborSources = new Set([
+      lightboxImages[(activeImageIndex + 1) % lightboxImages.length].image,
+      lightboxImages[(activeImageIndex - 1 + lightboxImages.length) % lightboxImages.length].image,
+    ]);
+    neighborSources.delete(activeItem.image);
+
+    const preloads = [...neighborSources].map((src) => {
+      const { props } = getImageProps({ ...lightboxImageOptions, src, alt: "" });
+      const image = new window.Image();
+      image.decoding = "async";
+      image.fetchPriority = "low";
+      image.sizes = props.sizes ?? "";
+      image.srcset = props.srcSet ?? "";
+      image.src = props.src;
+      return image;
+    });
+
+    return () => {
+      preloads.forEach((image) => {
+        image.removeAttribute("src");
+        image.removeAttribute("srcset");
+      });
+    };
+  }, [activeImageIndex, activeItem, imageStatus, lightboxImages]);
 
   const closePreview = useCallback(() => {
     setActiveImageIndex(null);
@@ -48,23 +93,23 @@ export default function GalleryContent({
 
   const showPreviousImage = useCallback(() => {
     setActiveImageIndex((currentIndex) => {
-      if (currentIndex === null || filteredItems.length === 0) {
+      if (currentIndex === null || lightboxImages.length === 0) {
         return currentIndex;
       }
 
-      return currentIndex === 0 ? filteredItems.length - 1 : currentIndex - 1;
+      return currentIndex === 0 ? lightboxImages.length - 1 : currentIndex - 1;
     });
-  }, [filteredItems.length]);
+  }, [lightboxImages.length]);
 
   const showNextImage = useCallback(() => {
     setActiveImageIndex((currentIndex) => {
-      if (currentIndex === null || filteredItems.length === 0) {
+      if (currentIndex === null || lightboxImages.length === 0) {
         return currentIndex;
       }
 
-      return currentIndex === filteredItems.length - 1 ? 0 : currentIndex + 1;
+      return currentIndex === lightboxImages.length - 1 ? 0 : currentIndex + 1;
     });
-  }, [filteredItems.length]);
+  }, [lightboxImages.length]);
 
   useEffect(() => {
     if (activeImageIndex === null) return;
@@ -184,10 +229,14 @@ export default function GalleryContent({
             {filteredItems.map((item, index) => (
               <li key={item.id}>
                 <GalleryCard
+                  title={item.title}
                   category={item.category}
-                  image={item.image}
+                  image={item.images[0]}
+                  imageCount={item.images.length}
                   index={index}
-                  onOpen={() => setActiveImageIndex(index)}
+                  onOpen={() => setActiveImageIndex(
+                    lightboxImages.findIndex((image) => image.id === item.id)
+                  )}
                 />
               </li>
             ))}
@@ -221,7 +270,7 @@ export default function GalleryContent({
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           role="dialog"
           aria-modal="true"
-          aria-label={`Realizacja KriStal-Spaw - ${activeItem.category}`}
+          aria-labelledby="lightbox-title"
           onClick={closePreview}
         >
           <button
@@ -246,18 +295,41 @@ export default function GalleryContent({
           </button>
 
           <div
-            className="relative h-[90vh] w-full max-w-6xl"
+            className="relative flex h-[90vh] w-full max-w-6xl flex-col"
             onClick={(event) => event.stopPropagation()}
           >
-            <Image
-              src={activeItem.image}
-              alt={`Realizacja KriStal-Spaw - ${activeItem.category}`}
-              fill
-              priority
-              sizes="100vw"
-              quality={90}
-              className="object-contain"
-            />
+            <h3
+              id="lightbox-title"
+              className="mb-4 px-12 text-center font-oswald text-xl md:text-2xl text-white"
+              aria-live="polite"
+            >
+              {activeItem.title}
+            </h3>
+            <div className="relative min-h-0 flex-1">
+              {imageStatus?.src !== activeItem.image && (
+                <div className="absolute inset-0 flex items-center justify-center" role="status">
+                  <span className="h-8 w-8 rounded-full border-2 border-white/20 border-t-white/80 motion-safe:animate-spin" aria-hidden="true" />
+                  <span className="sr-only">Ładowanie zdjęcia…</span>
+                </div>
+              )}
+              {imageStatus?.src === activeItem.image && imageStatus.status === "error" && (
+                <p className="absolute inset-0 flex items-center justify-center text-sm text-white/80" role="status">
+                  Nie udało się załadować zdjęcia. Spróbuj przejść do kolejnego.
+                </p>
+              )}
+              <Image
+                key={activeItem.image}
+                {...lightboxImageOptions}
+                src={activeItem.image}
+                alt={`${activeItem.title} - ${activeItem.category}`}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                onLoad={() => setImageStatus({ src: activeItem.image, status: "loaded" })}
+                onError={() => setImageStatus({ src: activeItem.image, status: "error" })}
+                className="object-contain"
+              />
+            </div>
           </div>
 
           <button

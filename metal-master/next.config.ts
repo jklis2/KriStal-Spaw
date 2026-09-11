@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Oddzielny katalog dev zapobiega konfliktom z równoległym next build.
+  distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],

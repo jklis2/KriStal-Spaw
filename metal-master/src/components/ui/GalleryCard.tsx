@@ -4,19 +4,31 @@ import React from "react";
 import Image from "next/image";
 
 interface GalleryCardProps {
+  title: string;
   category: string;
   image: string;
+  imageCount: number;
   index?: number;
   onOpen: () => void;
 }
 
 const GalleryCard: React.FC<GalleryCardProps> = ({
+  title,
   category,
   image,
+  imageCount,
   index = 0,
   onOpen,
 }) => {
-  const imageDescription = `Realizacja KriStal-Spaw - ${category}`;
+  const imageDescription = `${title} - ${category}`;
+  const imageCountLabel = `${imageCount} ${
+    imageCount === 1
+      ? "zdjęcie"
+      : imageCount % 10 >= 2 && imageCount % 10 <= 4 &&
+          (imageCount % 100 < 12 || imageCount % 100 > 14)
+        ? "zdjęcia"
+        : "zdjęć"
+  }`;
 
   return (
     <article
@@ -31,7 +43,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
         type="button"
         onClick={onOpen}
         className="block w-full cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-weldingRed focus-visible:ring-offset-2"
-        aria-label={`Powiększ zdjęcie: ${imageDescription}`}
+        aria-label={`Powiększ zdjęcie: ${imageDescription}, ${imageCountLabel}`}
       >
         <figure className="aspect-square relative m-0">
           <Image
@@ -39,7 +51,8 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
             alt={imageDescription}
             fill
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            decoding="async"
+            sizes="(min-width: 1280px) 389px, (min-width: 1024px) calc((100vw - 112px) / 3), (min-width: 768px) calc((100vw - 80px) / 2), calc(100vw - 48px)"
             quality={70}
             className="object-cover transform group-hover:scale-105 transition-transform duration-500"
             itemProp="contentUrl"
@@ -55,6 +68,9 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
           >
             {category}
           </div>
+          <span className="absolute bottom-4 right-4 rounded bg-black/65 px-2.5 py-1 text-xs font-medium text-white">
+            {imageCountLabel}
+          </span>
         </figure>
 
         <div
