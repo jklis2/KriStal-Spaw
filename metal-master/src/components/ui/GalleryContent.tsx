@@ -300,7 +300,8 @@ export default function GalleryContent({
           >
             <h3
               id="lightbox-title"
-              className="mb-4 px-12 text-center font-oswald text-xl md:text-2xl text-white"
+              className="mb-4 px-12 text-center text-2xl font-normal italic leading-snug tracking-[0.03em] text-weldingRed-light md:text-3xl"
+              style={{ fontFamily: 'Didot, "Bodoni MT", "Times New Roman", serif' }}
               aria-live="polite"
             >
               {activeItem.title}
