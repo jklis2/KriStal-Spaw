@@ -1,3 +1,4 @@
+import { createRateLimiter } from './lib/rate-limit';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -53,35 +54,11 @@ const BLOCKED_USER_AGENTS = [
 const MW_RATE_LIMIT_WINDOW_MS = 60_000;
 const MW_RATE_LIMIT_MAX = 100; // max 100 requests per minute per IP
 
-interface MwRateLimitEntry {
-  count: number;
-  windowStart: number;
-}
-
-const mwRateLimitMap = new Map<string, MwRateLimitEntry>();
-
-function cleanupMwRateLimit() {
-  const now = Date.now();
-  for (const [key, entry] of mwRateLimitMap) {
-    if (now - entry.windowStart > MW_RATE_LIMIT_WINDOW_MS) {
-      mwRateLimitMap.delete(key);
-    }
-  }
-}
-
-function isMwRateLimited(ip: string): boolean {
-  cleanupMwRateLimit();
-  const now = Date.now();
-  const entry = mwRateLimitMap.get(ip);
-
-  if (!entry || now - entry.windowStart > MW_RATE_LIMIT_WINDOW_MS) {
-    mwRateLimitMap.set(ip, { count: 1, windowStart: now });
-    return false;
-  }
-
-  entry.count++;
-  return entry.count > MW_RATE_LIMIT_MAX;
-}
+const isMwRateLimited = createRateLimiter({
+  windowMs: MW_RATE_LIMIT_WINDOW_MS,
+  maxRequests: MW_RATE_LIMIT_MAX,
+  maxEntries: 5000,
+});
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

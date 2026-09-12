@@ -1,3 +1,5 @@
+import { createRateLimiter } from '@/lib/rate-limit';
+import { readLimitedText, BodyTooLargeError } from '@/lib/limited-body';
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { Resend } from 'resend';
@@ -18,46 +20,19 @@ const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_PHONE_LENGTH = 30;
 const MAX_MESSAGE_LENGTH = 5000;
+// Preserve the previous 10,000-character limit, including Unicode text.
 const MAX_BODY_SIZE = 10_000;
+const MAX_BODY_BYTES = MAX_BODY_SIZE * 4;
 
 // --- Rate Limiting ---
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 5; // max 5 emails per window per IP
 
-interface RateLimitEntry {
-  count: number;
-  firstRequest: number;
-}
-
-const rateLimitMap = new Map<string, RateLimitEntry>();
-
-function cleanupRateLimitMap() {
-  const now = Date.now();
-  for (const [key, entry] of rateLimitMap) {
-    if (now - entry.firstRequest > RATE_LIMIT_WINDOW_MS) {
-      rateLimitMap.delete(key);
-    }
-  }
-}
-
-function isRateLimited(ip: string): boolean {
-  cleanupRateLimitMap();
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-
-  if (!entry) {
-    rateLimitMap.set(ip, { count: 1, firstRequest: now });
-    return false;
-  }
-
-  if (now - entry.firstRequest > RATE_LIMIT_WINDOW_MS) {
-    rateLimitMap.set(ip, { count: 1, firstRequest: now });
-    return false;
-  }
-
-  entry.count++;
-  return entry.count > RATE_LIMIT_MAX_REQUESTS;
-}
+const isRateLimited = createRateLimiter({
+  windowMs: RATE_LIMIT_WINDOW_MS,
+  maxRequests: RATE_LIMIT_MAX_REQUESTS,
+  maxEntries: 5000,
+});
 
 function getClientIp(headersList: Headers): string {
   return (
@@ -206,7 +181,7 @@ export async function POST(request: Request) {
     }
 
     // --- Body size check ---
-    const rawBody = await request.text();
+    const rawBody = await readLimitedText(request, MAX_BODY_BYTES);
     if (rawBody.length > MAX_BODY_SIZE) {
       return NextResponse.json(
         { success: false, error: 'Żądanie jest zbyt duże.' },
@@ -287,6 +262,12 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
+    if (err instanceof BodyTooLargeError) {
+      return NextResponse.json(
+        { success: false, error: 'Żądanie jest zbyt duże.' },
+        { status: 413 }
+      );
+    }
     console.error('Contact form error:', err instanceof Error ? err.message : err);
     return NextResponse.json(
       { success: false, error: 'Nie udało się wysłać wiadomości. Spróbuj ponownie później.' },

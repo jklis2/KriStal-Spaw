@@ -4,8 +4,11 @@ const nextConfig: NextConfig = {
   // Oddzielny katalog dev zapobiega konfliktom z równoległym next build.
   distDir: process.env.NODE_ENV === 'development' ? '.next-dev' : '.next',
   poweredByHeader: false,
+  // Keep a small hot cache; prerendered pages remain available on disk.
+  cacheMaxMemorySize: 10 * 1024 * 1024,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // AVIF encoding retained ~1 GB RSS in the production image workload.
+    formats: ['image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000,
@@ -16,6 +19,8 @@ const nextConfig: NextConfig = {
     } : false,
   },
   experimental: {
+    // Threads per image, distinct from the libuv worker pool at startup.
+    imgOptConcurrency: 1,
     optimizePackageImports: ['react-icons', 'framer-motion'],
   },
   async headers() {
