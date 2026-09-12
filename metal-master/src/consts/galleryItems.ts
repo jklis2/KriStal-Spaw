@@ -10,7 +10,7 @@ export interface GalleryItem {
 export const galleryItems: GalleryItem[] = [
     {
     "id": 29,
-    "title": "Kuta balustrada wewnętrzna wykonana na kręconych schodach, z wymagającym łukiem na piętrze. Ręcznie wyginane elementy zostały precyzyjnie dopasowane do drewnianej konstrukcji we współpracy ze stolarzem.",
+    "title": "Kuta balustrada wewnętrzna, wykonana na kręconych schodach z wymagającym łukiem na piętrze. Recznie wyginane elementy zostały precyzyjnie dopasowane między górnym i dolnym pasem biegu, w kolorze RAL 9005 mat, wykończenie dębowe poręczy przez stolarza",
     "category": "Balustrady",
     "images": [
       "/portfolio/realizacja_29/WhatsApp Image 2026-09-11 at 18.58.54.webp",

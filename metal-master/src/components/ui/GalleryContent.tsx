@@ -1,12 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image, { getImageProps } from "next/image";
 import {
   FaCamera,
   FaChevronLeft,
   FaChevronRight,
+  FaEye,
+  FaEyeSlash,
   FaFilter,
+  FaMinus,
+  FaPlus,
   FaSearch,
 } from "react-icons/fa";
 import GalleryCard from "@/components/ui/GalleryCard";
@@ -31,6 +35,17 @@ export default function GalleryContent({
 }: GalleryContentProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Wszystkie");
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
+  const [showDescription, setShowDescription] = useState(true);
+  const previewContentRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(1);
+  const imageViewportRef = useRef<HTMLDivElement>(null);
+  const dragOrigin = useRef<{
+    pointerId: number;
+    x: number;
+    y: number;
+    left: number;
+    top: number;
+  } | null>(null);
   const [imageStatus, setImageStatus] = useState<{
     src: string;
     status: "loaded" | "error";
@@ -56,6 +71,18 @@ export default function GalleryContent({
 
   const activeItem =
     activeImageIndex !== null ? lightboxImages[activeImageIndex] : null;
+
+  useEffect(() => {
+    setZoom(1);
+    dragOrigin.current = null;
+  }, [activeImageIndex, showDescription]);
+
+  useEffect(() => {
+    const viewport = imageViewportRef.current;
+    if (!viewport) return;
+    viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
+    viewport.scrollTop = (viewport.scrollHeight - viewport.clientHeight) / 2;
+  }, [zoom, activeImageIndex]);
 
   useEffect(() => {
     // Sąsiedzi nie konkurują z aktualnym zdjęciem o pierwsze pobranie.
@@ -286,6 +313,53 @@ export default function GalleryContent({
             type="button"
             onClick={(event) => {
               event.stopPropagation();
+              if (previewContentRef.current) previewContentRef.current.scrollTop = 0;
+              setShowDescription((visible) => !visible);
+            }}
+            className="absolute top-[4.25rem] right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-lg text-white transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-label={showDescription ? "Ukryj opis" : "Pokaż opis"}
+            title={showDescription ? "Ukryj opis" : "Pokaż opis"}
+            aria-expanded={showDescription}
+            aria-controls="lightbox-title"
+          >
+            {showDescription ? <FaEyeSlash aria-hidden="true" /> : <FaEye aria-hidden="true" />}
+          </button>
+
+          <div
+            className="absolute top-[7.25rem] right-5 z-50 flex flex-col items-center gap-2"
+            onClick={(event) => event.stopPropagation()}
+            role="group"
+            aria-label="Powiększenie zdjęcia"
+          >
+            <button
+              type="button"
+              onClick={() => setZoom((value) => Math.min(3, value + 0.5))}
+              disabled={zoom === 3}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 disabled:opacity-30 disabled:cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              aria-label="Powiększ zdjęcie"
+              title="Powiększ zdjęcie"
+            >
+              <FaPlus aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setZoom((value) => Math.max(1, value - 0.5))}
+              disabled={zoom === 1}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 disabled:opacity-30 disabled:cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              aria-label="Pomniejsz zdjęcie"
+              title="Pomniejsz zdjęcie"
+            >
+              <FaMinus aria-hidden="true" />
+            </button>
+            <span className="text-xs tabular-nums text-white/80" role="status">
+              {Math.round(zoom * 100)}%
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
               showPreviousImage();
             }}
             className="absolute left-4 md:left-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -296,41 +370,82 @@ export default function GalleryContent({
 
           <div
             key={activeItem.id}
-            className="relative grid h-[90dvh] w-full max-w-6xl grid-rows-[auto_minmax(65dvh,1fr)] gap-6 overflow-y-auto overscroll-contain md:h-[90vh] md:grid-rows-[auto_minmax(0,1fr)] md:gap-4 md:overflow-visible"
+            ref={previewContentRef}
+            className={`relative grid h-[90dvh] w-full max-w-6xl overscroll-contain md:h-[90vh] ${
+              showDescription
+                ? "grid-rows-[auto_minmax(65dvh,1fr)] gap-6 overflow-y-auto md:grid-rows-[auto_minmax(0,1fr)] md:gap-4 md:overflow-visible"
+                : "grid-rows-[minmax(0,1fr)] overflow-hidden"
+            }`}
             onClick={(event) => event.stopPropagation()}
           >
             <h3
               id="lightbox-title"
-              className="m-0 break-words px-12 py-1 text-center text-base font-normal italic leading-snug tracking-[0.02em] text-weldingRed-light md:text-3xl md:tracking-[0.03em]"
+              className={showDescription
+                ? "m-0 break-words px-12 py-1 text-center text-base font-normal italic leading-snug tracking-[0.02em] text-weldingRed-light md:text-3xl md:tracking-[0.03em]"
+                : "sr-only"}
               style={{ fontFamily: 'Didot, "Bodoni MT", "Times New Roman", serif' }}
               aria-live="polite"
             >
               {activeItem.title}
             </h3>
-            <div className="relative min-h-0 overflow-hidden">
-              {imageStatus?.src !== activeItem.image && (
-                <div className="absolute inset-0 flex items-center justify-center" role="status">
-                  <span className="h-8 w-8 rounded-full border-2 border-white/20 border-t-white/80 motion-safe:animate-spin" aria-hidden="true" />
-                  <span className="sr-only">Ładowanie zdjęcia…</span>
-                </div>
-              )}
-              {imageStatus?.src === activeItem.image && imageStatus.status === "error" && (
-                <p className="absolute inset-0 flex items-center justify-center text-sm text-white/80" role="status">
-                  Nie udało się załadować zdjęcia. Spróbuj przejść do kolejnego.
-                </p>
-              )}
-              <Image
-                key={activeItem.image}
-                {...lightboxImageOptions}
-                src={activeItem.image}
-                alt={`${activeItem.title} - ${activeItem.category}`}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                onLoad={() => setImageStatus({ src: activeItem.image, status: "loaded" })}
-                onError={() => setImageStatus({ src: activeItem.image, status: "error" })}
-                className="object-contain"
-              />
+            <div
+              ref={imageViewportRef}
+              className={`relative min-h-0 ${zoom > 1 ? "overflow-auto overscroll-contain cursor-grab active:cursor-grabbing" : "overflow-hidden"}`}
+              onPointerDown={(event) => {
+                // Dotyk korzysta z natywnego przewijania; mysz z przeciągania.
+                if (zoom === 1 || event.pointerType === "touch" || event.button !== 0) return;
+                const viewport = event.currentTarget;
+                dragOrigin.current = {
+                  pointerId: event.pointerId,
+                  x: event.clientX,
+                  y: event.clientY,
+                  left: viewport.scrollLeft,
+                  top: viewport.scrollTop,
+                };
+                viewport.setPointerCapture(event.pointerId);
+                event.preventDefault();
+              }}
+              onPointerMove={(event) => {
+                const origin = dragOrigin.current;
+                if (!origin || origin.pointerId !== event.pointerId) return;
+                event.currentTarget.scrollLeft = origin.left - (event.clientX - origin.x);
+                event.currentTarget.scrollTop = origin.top - (event.clientY - origin.y);
+              }}
+              onPointerUp={(event) => {
+                dragOrigin.current = null;
+                if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                  event.currentTarget.releasePointerCapture(event.pointerId);
+                }
+              }}
+              onPointerCancel={() => { dragOrigin.current = null; }}
+              onLostPointerCapture={() => { dragOrigin.current = null; }}
+            >
+              <div className="relative" style={{ width: `${zoom * 100}%`, height: `${zoom * 100}%` }}>
+                {imageStatus?.src !== activeItem.image && (
+                  <div className="absolute inset-0 flex items-center justify-center" role="status">
+                    <span className="h-8 w-8 rounded-full border-2 border-white/20 border-t-white/80 motion-safe:animate-spin" aria-hidden="true" />
+                    <span className="sr-only">Ładowanie zdjęcia…</span>
+                  </div>
+                )}
+                {imageStatus?.src === activeItem.image && imageStatus.status === "error" && (
+                  <p className="absolute inset-0 flex items-center justify-center text-sm text-white/80" role="status">
+                    Nie udało się załadować zdjęcia. Spróbuj przejść do kolejnego.
+                  </p>
+                )}
+                <Image
+                  key={activeItem.image}
+                  {...lightboxImageOptions}
+                  src={activeItem.image}
+                  alt={`${activeItem.title} - ${activeItem.category}`}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  draggable={false}
+                  onLoad={() => setImageStatus({ src: activeItem.image, status: "loaded" })}
+                  onError={() => setImageStatus({ src: activeItem.image, status: "error" })}
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
 
