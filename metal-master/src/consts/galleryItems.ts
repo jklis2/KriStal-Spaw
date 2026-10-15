@@ -55,6 +55,48 @@ export const galleryItems: GalleryItem[] = [
       "/portfolio/realizacja_31/WhatsApp Image 2026-09-11 at 18.59.07.webp"
     ]
   },
+    {
+    "id": 35,
+    "title": "Montaż barierki schodowej do policzka schodów z uwzględnieniem miejsca na regulację pionu, kolor czarny mat w połączeniu z wykończoną poręczą z litego dębu.",
+    "category": "Balustrady",
+    "images": [
+      "/portfolio/realizacja_35/WhatsApp Image 2026-10-15 at 18.03.52.jpeg",
+      "/portfolio/realizacja_35/WhatsApp Image 2026-10-15 at 18.03.52 (1).jpeg",
+      "/portfolio/realizacja_35/WhatsApp Image 2026-10-15 at 18.03.52 (2).jpeg",
+      "/portfolio/realizacja_35/WhatsApp Image 2026-10-15 at 18.03.52 (3).jpeg"
+    ]
+  },
+    {
+    "id": 36,
+    "title": "Zabudowa przestrzeni schodowej tralkami pionowymi w kształcie litery L, wykonanymi z rur o średnicy 17,2 mm. Całość mocowana do sufitowej belki konstrukcyjnej z litego betonu za pomocą żywicy epoksydowej. Montaż harfy schodowej odbywał się przy użyciu śrub dwugwintowych, mocowanych od boku stopni schodowych.",
+    "category": "Balustrady",
+    "images": [
+      "/portfolio/realizacja_36/WhatsApp Image 2026-10-15 at 18.04.12.jpeg",
+      "/portfolio/realizacja_36/WhatsApp Image 2026-10-15 at 18.04.13 (1).jpeg",
+      "/portfolio/realizacja_36/WhatsApp Image 2026-10-15 at 18.04.13.jpeg"
+    ]
+  },
+    {
+    "id": 37,
+    "title": "Balustrada schodowa połączona z balustradą typu harfa w ramie, z zastosowaniem trwałego połączenia przy użyciu żywicy epoksydowej. Całość wykończona poręczą z litego drewna bukowego. Konstrukcja balustrady w kolorze czarny mat.",
+    "category": "Balustrady",
+    "images": [
+      "/portfolio/realizacja_37/WhatsApp Image 2026-10-15 at 18.04.50 (1).jpeg",
+      "/portfolio/realizacja_37/WhatsApp Image 2026-10-15 at 18.04.50 (2).jpeg",
+      "/portfolio/realizacja_37/WhatsApp Image 2026-10-15 at 18.04.50.jpeg"
+    ]
+  },
+    {
+    "id": 38,
+    "title": "Balustrada schodowa o niestandardowym wzorze, wykonana z gładkich prętów stalowych o średnicy fi 10 mm, w kolorze białym matowym, wykończona poręczą z litego drewna dębowego.",
+    "category": "Balustrady",
+    "images": [
+      "/portfolio/realizacja_38/WhatsApp Image 2026-10-15 at 18.05.21 (1).jpeg",
+      "/portfolio/realizacja_38/WhatsApp Image 2026-10-15 at 18.05.21 (2).jpeg",
+      "/portfolio/realizacja_38/WhatsApp Image 2026-10-15 at 18.05.21.jpeg",
+      "/portfolio/realizacja_38/WhatsApp Image 2026-10-15 at 18.05.22.jpeg"
+    ]
+  },
    {
     "id": 4,
     "title": "Balustrady zewnetrzne balkokonowe/tarasowe",
